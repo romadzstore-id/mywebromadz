@@ -1,4 +1,4 @@
-/* Reset dan Base Styles - Tema Retro Cyberpunk */
+/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,560 +6,446 @@
 }
 
 body {
-    font-family: 'Press Start 2P', 'IBM Plex Mono', monospace;
-    background-color: #0d0221;
-    color: #f1e9e5;
+    font-family: 'Courier New', 'Consolas', monospace;
+    background-color: #0a0a0f;
+    color: #e0e0e0;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     overflow-x: hidden;
-    position: relative;
+}
+
+/* Pixel Grid Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: 
-        linear-gradient(to bottom, rgba(189, 19, 248, 0.05) 1px, transparent 1px),
-        linear-gradient(to right, rgba(45, 226, 230, 0.03) 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-/* CRT Effect */
-.crt-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-    z-index: 9998;
-    animation: flicker 0.15s infinite;
-}
-
-.scanlines {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        to bottom,
-        transparent 50%,
-        rgba(0, 0, 0, 0.5) 51%
-    );
-    background-size: 100% 4px;
-    pointer-events: none;
-    z-index: 9997;
+        linear-gradient(rgba(20, 20, 30, 0.9) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 20, 30, 0.9) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: center center;
+    z-index: -1;
     opacity: 0.3;
 }
 
-.container {
-    width: 100%;
-    max-width: 800px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
-
-/* Loading Screen Cyberpunk */
+/* Loading Screen */
 .loading-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0d0221;
+    background-color: #0a0a0f;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000;
-    opacity: 1;
-    transition: opacity 0.8s ease;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
 }
 
-.loading-screen.fade-out {
-    opacity: 0;
-    pointer-events: none;
+.loading-content {
+    text-align: center;
 }
 
-.loading-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+.pixel-loader {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    position: relative;
 }
 
-.loading-pixel-grid {
-    display: flex;
-    gap: 10px;
-    transform: skewX(-15deg);
+.pixel-loader::before,
+.pixel-loader::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #4a6fa5;
+    animation: pixelPulse 1.5s infinite ease-in-out;
 }
 
-.pixel-block {
-    width: 16px;
-    height: 16px;
-    background-color: #ff3864;
-    animation: cyber-pulse 1s infinite ease-in-out;
-    box-shadow: 0 0 10px #ff3864;
+.pixel-loader::before {
+    top: 0;
+    left: 0;
+    animation-delay: 0s;
 }
 
-.pixel-block:nth-child(1) { animation-delay: 0s; }
-.pixel-block:nth-child(2) { animation-delay: 0.1s; }
-.pixel-block:nth-child(3) { animation-delay: 0.2s; }
-.pixel-block:nth-child(4) { animation-delay: 0.3s; }
-.pixel-block:nth-child(5) { animation-delay: 0.4s; }
+.pixel-loader::after {
+    bottom: 0;
+    right: 0;
+    animation-delay: 0.75s;
+}
+
+@keyframes pixelPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+        background-color: #4a6fa5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+        background-color: #6d9be0;
+    }
+}
 
 .loading-text {
-    font-size: 14px;
-    color: #2de2e6;
-    text-align: center;
-    text-shadow: 0 0 10px #2de2e6;
+    font-size: 1.2rem;
+    color: #6d9be0;
     letter-spacing: 2px;
-    animation: glitch 3s infinite;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-/* Header Cyberpunk */
+/* Main Content */
+.main-content {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.main-content.visible {
+    opacity: 1;
+}
+
+/* Header */
 .header {
     text-align: center;
-    margin-bottom: 20px;
+    padding: 2rem 1rem 1.5rem;
     position: relative;
 }
 
 .logo-container {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 20px;
-    border: 4px solid #2de2e6;
-    border-radius: 8px;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    border-radius: 12px;
     overflow: hidden;
-    position: relative;
-    background-color: #261447;
-    box-shadow: 
-        0 0 20px #2de2e6,
-        inset 0 0 20px rgba(45, 226, 230, 0.3);
-    transform: rotate(45deg);
-    animation: float 6s ease-in-out infinite;
+    border: 3px solid #2a2a3a;
+    box-shadow: 0 0 20px rgba(109, 155, 224, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 25px rgba(109, 155, 224, 0.3);
 }
 
 .logo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    image-rendering: pixelated;
-    transform: rotate(-45deg) scale(1.5);
-    filter: 
-        contrast(1.3) 
-        brightness(1.1)
-        hue-rotate(-10deg);
+    display: block;
 }
 
-.logo-glow {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    background: radial-gradient(circle, #ff3864 0%, transparent 70%);
-    opacity: 0.3;
-    z-index: -1;
-    animation: pulse 4s infinite;
-}
-
-.store-name {
-    font-size: 28px;
-    color: #2de2e6;
-    margin-bottom: 10px;
-    text-shadow: 
-        0 0 10px #2de2e6,
-        0 0 20px #2de2e6,
-        3px 3px 0 #ff3864;
+.brand-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
     letter-spacing: 1px;
-    animation: text-glow 2s infinite alternate;
+    text-shadow: 0 0 10px rgba(109, 155, 224, 0.3);
 }
 
-.pixel-subtitle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 10px;
+.slogan {
+    font-size: 1.1rem;
+    color: #8a9bb2;
+    font-style: italic;
+    letter-spacing: 0.5px;
 }
 
-.pixel-subtitle-text {
-    font-size: 12px;
-    color: #b913f8;
-    text-shadow: 0 0 5px #b913f8;
+/* Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
 }
 
-.pixel-divider-small {
-    color: #ff3864;
-    font-size: 14px;
+/* Cards */
+.card {
+    background-color: #131320;
+    border-radius: 12px;
+    padding: 1.8rem;
+    margin-bottom: 1.8rem;
+    border: 1px solid #2a2a3a;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Panel Umum - Cyberpunk Style */
-.panel {
-    width: 100%;
-    background-color: rgba(38, 20, 71, 0.9);
-    border: 3px solid #2de2e6;
-    border-radius: 0;
-    padding: 25px;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(5px);
-    box-shadow: 
-        0 0 20px rgba(45, 226, 230, 0.3),
-        inset 0 0 30px rgba(255, 56, 100, 0.1);
-    transition: all 0.3s ease;
-}
-
-.panel:hover {
-    box-shadow: 
-        0 0 30px rgba(45, 226, 230, 0.5),
-        inset 0 0 40px rgba(255, 56, 100, 0.2);
+.card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
 }
 
-.panel::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #ff3864, #2de2e6, #b913f8);
-    animation: scan 3s linear infinite;
+.card-title {
+    font-size: 1.5rem;
+    color: #6d9be0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.panel-header {
-    margin-bottom: 25px;
-    text-align: center;
-    position: relative;
-}
-
-.panel-title-icon {
-    font-size: 24px;
-    margin-bottom: 10px;
+/* Pixel Icons */
+.pixel-icon {
     display: inline-block;
-    animation: bounce 2s infinite;
+    width: 28px;
+    height: 28px;
+    background-color: #6d9be0;
 }
 
-.panel-title {
-    font-size: 18px;
-    color: #ff3864;
-    margin-bottom: 15px;
-    text-shadow: 0 0 8px #ff3864;
-    letter-spacing: 1px;
+.contact-icon {
+    /* Phone icon - pixel art */
     position: relative;
+    background-color: transparent;
 }
 
-.pixel-divider {
+.contact-icon::before,
+.contact-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #6d9be0;
+}
+
+.contact-icon::before {
+    width: 20px;
+    height: 28px;
+    top: 0;
+    left: 4px;
+    border-radius: 4px;
+}
+
+.contact-icon::after {
+    width: 12px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #2de2e6, transparent);
+    top: 5px;
+    left: 8px;
+    box-shadow: 
+        0 4px 0 #6d9be0,
+        0 8px 0 #6d9be0;
+}
+
+.testimoni-icon {
+    /* Star icon - pixel art */
     position: relative;
-    overflow: hidden;
+    background-color: transparent;
 }
 
-/* Panel Spesifik */
-.contact-panel {
-    border-color: #2de2e6;
+.testimoni-icon::before,
+.testimoni-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #ffd700;
 }
 
-.contact-panel::before {
-    background: linear-gradient(90deg, #2de2e6, #b913f8);
+.testimoni-icon::before {
+    width: 20px;
+    height: 20px;
+    top: 4px;
+    left: 4px;
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 
+        79% 91%, 50% 70%, 21% 91%, 32% 57%, 
+        2% 35%, 39% 35%
+    );
 }
 
-.testimoni-panel {
-    border-color: #ff3864;
+.group-icon {
+    /* Group icon - pixel art */
+    position: relative;
+    background-color: transparent;
 }
 
-.testimoni-panel::before {
-    background: linear-gradient(90deg, #ff3864, #b913f8);
+.group-icon::before,
+.group-icon::after {
+    content: '';
+    position: absolute;
+    background-color: #6d9be0;
+    border-radius: 50%;
 }
 
-.group-panel {
-    border-color: #b913f8;
+.group-icon::before {
+    width: 12px;
+    height: 12px;
+    top: 8px;
+    left: 4px;
 }
 
-.group-panel::before {
-    background: linear-gradient(90deg, #b913f8, #2de2e6);
+.group-icon::after {
+    width: 12px;
+    height: 12px;
+    top: 8px;
+    right: 4px;
+    box-shadow: 
+        -8px 8px 0 #6d9be0,
+        0 8px 0 #6d9be0;
 }
 
-/* Button Container */
-.button-container {
+/* Links Container */
+.links-container {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1rem;
 }
 
-/* Pixel Button Cyberpunk */
-.pixel-button {
+/* Link Buttons */
+.link-button {
     display: flex;
     align-items: center;
-    padding: 18px 20px;
-    background-color: rgba(13, 2, 33, 0.9);
-    border: 2px solid;
-    border-radius: 0;
+    gap: 12px;
+    background-color: #1a1a2a;
+    color: #e0e0e0;
     text-decoration: none;
-    color: #f1e9e5;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.3s ease;
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #2a2a3a;
+    transition: all 0.2s ease;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    gap: 15px;
 }
 
-.pixel-button::before {
-    content: "";
+.link-button::before {
+    content: '';
     position: absolute;
     top: 0;
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 56, 100, 0.4), 
-        transparent);
-    transition: left 0.6s ease;
+    background: linear-gradient(90deg, transparent, rgba(109, 155, 224, 0.1), transparent);
+    transition: left 0.5s ease;
 }
 
-.pixel-button:hover::before {
+.link-button:hover::before {
     left: 100%;
 }
 
-.pixel-button:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-.pixel-button:active {
+.link-button:hover {
     transform: translateY(-4px);
-    transition: transform 0.1s;
+    background-color: #202036;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    border-color: #4a6fa5;
 }
 
-/* Button Types */
-.contact-btn {
-    border-color: #2de2e6;
-    box-shadow: 0 5px 15px rgba(45, 226, 230, 0.3);
+.link-button:active {
+    transform: translateY(-1px);
+    transition: transform 0.1s ease;
 }
 
-.contact-btn:hover {
-    border-color: #ff3864;
-    box-shadow: 0 8px 25px rgba(255, 56, 100, 0.5);
-    background-color: rgba(38, 20, 71, 0.95);
-}
-
-.testimoni-btn {
-    border-color: #ff3864;
-    box-shadow: 0 5px 15px rgba(255, 56, 100, 0.3);
-}
-
-.testimoni-btn:hover {
-    border-color: #b913f8;
-    box-shadow: 0 8px 25px rgba(185, 19, 248, 0.5);
-    background-color: rgba(38, 20, 71, 0.95);
-}
-
-.group-btn {
-    border-color: #b913f8;
-    box-shadow: 0 5px 15px rgba(185, 19, 248, 0.3);
-    justify-content: space-between;
-}
-
-.group-btn:hover {
-    border-color: #2de2e6;
-    box-shadow: 0 8px 25px rgba(45, 226, 230, 0.5);
-    background-color: rgba(38, 20, 71, 0.95);
-}
-
-.pixel-icon {
+.button-icon {
+    display: inline-block;
     width: 24px;
     height: 24px;
-    flex-shrink: 0;
-    filter: drop-shadow(0 0 3px currentColor);
+}
+
+/* WhatsApp Icon - Pixel Art */
+.pixel-whatsapp {
+    position: relative;
+    background-color: #25d366;
+    border-radius: 50%;
+}
+
+.pixel-whatsapp::before,
+.pixel-whatsapp::after {
+    content: '';
+    position: absolute;
+    background-color: #ffffff;
+}
+
+.pixel-whatsapp::before {
+    width: 12px;
+    height: 12px;
+    top: 6px;
+    left: 6px;
+    border-radius: 50% 50% 0 50%;
+}
+
+.pixel-whatsapp::after {
+    width: 6px;
+    height: 2px;
+    top: 9px;
+    left: 15px;
+    transform: rotate(45deg);
+}
+
+/* Telegram Icon - Pixel Art */
+.pixel-telegram {
+    position: relative;
+    background-color: #0088cc;
+    border-radius: 50%;
+}
+
+.pixel-telegram::before,
+.pixel-telegram::after {
+    content: '';
+    position: absolute;
+    background-color: #ffffff;
+}
+
+.pixel-telegram::before {
+    width: 10px;
+    height: 10px;
+    top: 7px;
+    left: 7px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 
 .button-text {
-    flex: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex-grow: 1;
     text-align: left;
-    font-size: 12px;
 }
 
-.button-text-badge {
-    background-color: #ff3864;
-    color: #0d0221;
-    padding: 4px 8px;
-    font-size: 10px;
-    border-radius: 0;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.button-arrow {
-    color: #2de2e6;
-    font-size: 16px;
-    animation: blink 1s infinite;
-}
-
-/* Footer Cyberpunk */
+/* Footer */
 .footer {
-    margin-top: 30px;
-    padding: 20px;
     text-align: center;
-    width: 100%;
-    position: relative;
+    padding: 2rem 1.5rem;
+    background-color: #0a0a0f;
+    border-top: 1px solid #2a2a3a;
+    margin-top: 2rem;
 }
-
-.footer-grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.footer-pixel {
-    width: 8px;
-    height: 8px;
-    background-color: #ff3864;
-    animation: footer-glow 2s infinite alternate;
-}
-
-.footer-pixel:nth-child(2) { animation-delay: 0.2s; background-color: #2de2e6; }
-.footer-pixel:nth-child(3) { animation-delay: 0.4s; background-color: #b913f8; }
-.footer-pixel:nth-child(5) { animation-delay: 0.6s; background-color: #2de2e6; }
-.footer-pixel:nth-child(6) { animation-delay: 0.8s; background-color: #ff3864; }
-.footer-pixel:nth-child(7) { animation-delay: 1s; background-color: #b913f8; }
 
 .footer-text {
-    color: #2de2e6;
-    font-size: 12px;
-    text-shadow: 0 0 5px #2de2e6;
-    margin: 0 15px;
+    font-size: 0.95rem;
+    color: #8a9bb2;
+    letter-spacing: 0.5px;
 }
 
-/* Animations Cyberpunk */
-@keyframes cyber-pulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.7;
-        box-shadow: 0 0 10px #ff3864;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .brand-name {
+        font-size: 2rem;
     }
-    50% {
-        transform: scale(1.3);
-        opacity: 1;
-        box-shadow: 0 0 20px #ff3864;
+    
+    .card {
+        padding: 1.5rem;
     }
-}
-
-@keyframes flicker {
-    0%, 100% { opacity: 0.9; }
-    50% { opacity: 1; }
-}
-
-@keyframes glitch {
-    0%, 100% { transform: translate(0); }
-    20% { transform: translate(-2px, 2px); }
-    40% { transform: translate(-2px, -2px); }
-    60% { transform: translate(2px, 2px); }
-    80% { transform: translate(2px, -2px); }
-}
-
-@keyframes float {
-    0%, 100% { transform: rotate(45deg) translateY(0); }
-    50% { transform: rotate(45deg) translateY(-10px); }
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-}
-
-@keyframes text-glow {
-    0% { text-shadow: 0 0 10px #2de2e6, 0 0 20px #2de2e6, 3px 3px 0 #ff3864; }
-    100% { text-shadow: 0 0 15px #2de2e6, 0 0 30px #2de2e6, 5px 5px 0 #ff3864; }
-}
-
-@keyframes scan {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
-
-@keyframes footer-glow {
-    0% { opacity: 0.3; }
-    100% { opacity: 1; }
-}
-
-/* Responsive */
-@media (min-width: 768px) {
+    
     .container {
-        padding: 40px 20px;
+        padding: 0 1rem 2rem;
     }
     
-    .store-name {
-        font-size: 32px;
-    }
-    
-    .panel-title {
-        font-size: 20px;
-    }
-    
-    .pixel-button {
-        font-size: 16px;
-        padding: 20px 25px;
-    }
-    
-    .logo-container {
-        width: 160px;
-        height: 160px;
+    .link-button {
+        padding: 1rem 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
-    .store-name {
-        font-size: 22px;
+    .brand-name {
+        font-size: 1.8rem;
     }
     
-    .panel-title {
-        font-size: 16px;
+    .logo-container {
+        width: 100px;
+        height: 100px;
     }
     
-    .pixel-button {
-        font-size: 12px;
-        padding: 15px;
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
+    .card-title {
+        font-size: 1.3rem;
     }
     
     .button-text {
-        text-align: center;
-    }
-    
-    .loading-text {
-        font-size: 12px;
-    }
-    
-    .footer-grid {
-        flex-direction: column;
-        gap: 5px;
+        font-size: 1rem;
     }
 }
