@@ -1,108 +1,774 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROMADZ STORE - Digital Store</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="https://files.catbox.moe/5vidyd.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linktree - ROMADZ STORE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* CSS Reset & Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --primary: #2a2d7a;
+      --secondary: #4a4fc9;
+      --accent: #ff6b6b;
+      --success: #1dd1a1;
+      --light: #f8f9fa;
+      --dark: #1a1a2e;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+      --border-radius: 16px;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    
+    /* Loading Overlay */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    
+    .loading-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loading-pixels {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .loading-pixel {
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border-radius: 4px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+    
+    .loading-pixel:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    
+    .loading-pixel:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.7;
+      }
+      50% {
+        transform: scale(1.3);
+        opacity: 1;
+      }
+    }
+    
+    /* Main Container */
+    .container {
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    /* Profile Section */
+    .profile-card {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 25px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .profile-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent));
+    }
+    
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 8px 20px rgba(42, 45, 122, 0.15);
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+    
+    .profile-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .profile-desc {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 25px;
+      line-height: 1.6;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .profile-desc::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    /* Social Media Icons */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--light-gray);
+      color: var(--primary);
+      font-size: 22px;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-5px);
+      color: white;
+    }
+    
+    .social-icon.whatsapp:hover {
+      background: #25D366;
+    }
+    
+    .social-icon.telegram:hover {
+      background: #0088cc;
+    }
+    
+    .social-icon.email:hover {
+      background: var(--accent);
+    }
+    
+    .social-icon.instagram:hover {
+      background: linear-gradient(45deg, #405DE6, #E1306C, #FFDC80);
+    }
+    
+    /* Links Container */
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    /* Category Sections */
+    .category {
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .category:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    
+    .category-header {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 18px 25px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    
+    .category-icon {
+      font-size: 20px;
+    }
+    
+    .category-links {
+      padding: 20px 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    /* Individual Links */
+    .link-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 16px 20px;
+      background: var(--light-gray);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--dark);
+      transition: var(--transition);
+      border-left: 4px solid transparent;
+    }
+    
+    .link-item:hover {
+      background: white;
+      border-left-color: var(--accent);
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .link-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    
+    .link-text {
+      flex-grow: 1;
+      font-weight: 500;
+      font-size: 16px;
+    }
+    
+    .link-arrow {
+      color: var(--gray);
+      font-size: 14px;
+      transition: var(--transition);
+    }
+    
+    .link-item:hover .link-arrow {
+      color: var(--accent);
+      transform: translateX(5px);
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: var(--gray);
+      font-size: 14px;
+      border-top: 1px solid var(--light-gray);
+      margin-top: 20px;
+      animation: fadeIn 1s ease-out 0.5s both;
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+      
+      .profile-card {
+        padding: 25px 20px;
+      }
+      
+      .profile-name {
+        font-size: 24px;
+      }
+      
+      .category-header, .category-links {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .link-item {
+        padding: 14px 18px;
+      }
+      
+      .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .profile-img {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .profile-name {
+        font-size: 22px;
+      }
+      
+      .social-icons {
+        gap: 12px;
+      }
+      
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="pixel-loader"></div>
-            <p class="loading-text">Memuat Store..</p>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading">
+    <div class="loading-pixels">
+      <div class="loading-pixel"></div>
+      <div class="loading-pixel"></div>
+      <div class="loading-pixel"></div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <img src="https://files.catbox.moe/tdv5h0.jpg" alt="ROMADZ STORE" class="profile-img" id="profile-img">
+      <h1 class="profile-name" id="profile-name">ROMADZ STORE</h1>
+      <p class="profile-desc" id="profile-desc">Anda Puas - Kami Senang</p>
+      
+      <!-- Social Media Icons -->
+      <div class="social-icons" id="social-icons">
+        <!-- Icons will be dynamically added here -->
+      </div>
+    </div>
+    
+    <!-- Links Container -->
+    <div class="links-container" id="links-container">
+      <!-- Contact Section -->
+      <div class="category" id="contact-category">
+        <div class="category-header">
+          <i class="fas fa-address-book category-icon"></i>
+          <span>Kontak & Media Sosial</span>
         </div>
+        <div class="category-links" id="contact-links">
+          <!-- Contact links will be dynamically added here -->
+        </div>
+      </div>
+      
+      <!-- Groups Section -->
+      <div class="category" id="groups-category">
+        <div class="category-header">
+          <i class="fas fa-users category-icon"></i>
+          <span>Grup WhatsApp</span>
+        </div>
+        <div class="category-links" id="group-links">
+          <!-- Group links will be dynamically added here -->
+        </div>
+      </div>
+      
+      <!-- Testimonials Section -->
+      <div class="category" id="testimonials-category">
+        <div class="category-header">
+          <i class="fas fa-star category-icon"></i>
+          <span>Testimoni Pelanggan</span>
+        </div>
+        <div class="category-links" id="testimonial-links">
+          <!-- Testimonial links will be dynamically added here -->
+        </div>
+      </div>
     </div>
-
-    <!-- Main Content -->
-    <div id="main-content" class="main-content">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo-container">
-                <img src="https://files.catbox.moe/5vidyd.jpg" alt="ROMADZ STORE Logo" class="logo">
-            </div>
-            <h1 class="brand-name">ROMADZ STORE</h1>
-            <p class="slogan">anda puas - Kami senang</p>
-        </header>
-
-        <!-- Main Content Container -->
-        <main class="container">
-            <!-- Contact Section -->
-            <section class="card">
-                <h2 class="card-title">
-                    <span class="pixel-icon contact-icon"></span> Contact
-                </h2>
-                <div class="links-container">
-                    <a href="https://wa.me/6283171889478" target="_blank" class="link-button">
-                        <span class="button-icon pixel-whatsapp"></span>
-                        <span class="button-text">WhatsApp</span>
-                    </a>
-                    <a href="https://t.me/rmddz" target="_blank" class="link-button">
-                        <span class="button-icon pixel-telegram"></span>
-                        <span class="button-text">Telegram</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Testimoni Section -->
-            <section class="card">
-                <h2 class="card-title">
-                    <span class="pixel-icon testimoni-icon"></span> Testimoni
-                </h2>
-                <div class="links-container">
-                    <a href="https://t.me/rmddztrust" target="_blank" class="link-button">
-                        <span class="button-icon pixel-telegram"></span>
-                        <span class="button-text">Telegram Trust</span>
-                    </a>
-                    <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" target="_blank" class="link-button">
-                        <span class="button-icon pixel-whatsapp"></span>
-                        <span class="button-text">WhatsApp Channel</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Group Section -->
-            <section class="card">
-                <h2 class="card-title">
-                    <span class="pixel-icon group-icon"></span> Group
-                </h2>
-                <div class="links-container">
-                    <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" target="_blank" class="link-button">
-                        <span class="button-icon pixel-whatsapp"></span>
-                        <span class="button-text">Group WhatsApp 1</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" target="_blank" class="link-button">
-                        <span class="button-icon pixel-whatsapp"></span>
-                        <span class="button-text">Group WhatsApp 2</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" target="_blank" class="link-button">
-                        <span class="button-icon pixel-whatsapp"></span>
-                        <span class="button-text">Group WhatsApp 3</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" target="_blank" class="link-button">
-                        <span class="button-icon pixel-whatsapp"></span>
-                        <span class="button-text">Group WhatsApp 4</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" target="_blank" class="link-button">
-                        <span class="button-icon pixel-whatsapp"></span>
-                        <span class="button-text">Group WhatsApp 5</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" target="_blank" class="link-button">
-                        <span class="button-icon pixel-whatsapp"></span>
-                        <span class="button-text">Group WhatsApp 6</span>
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p class="footer-text">© ROMADZ STORE ID – Digital Store</p>
-        </footer>
+    
+    <!-- Footer -->
+    <div class="footer" id="footer">
+      © 2026 ROMADZ STORE ID
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script>
+    // Configuration
+    const config = {
+      img: "https://files.catbox.moe/tdv5h0.jpg",
+      nama: "ROMADZ STORE",
+      deskripsi: "Anda Puas - Kami Senang",
+      medsos: [
+        {
+          platform: "whatsapp",
+          url: "6183171889474"
+        },
+        {
+          platform: "telegram",
+          url: "@rmddz"
+        },
+        {
+          platform: "email",
+          url: "romadzstoreid@gmail.com"
+        },
+        {
+          platform: "instagram",
+          url: "madd"
+        }
+      ],
+      links: [
+        {
+          text: "Groups WhatsApp 1",
+          url: "https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q",
+          category: "group"
+        },
+        {
+          text: "Groups WhatsApp 2",
+          url: "https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF",
+          category: "group"
+        },
+        {
+          text: "Groups WhatsApp 3",
+          url: "https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m",
+          category: "group"
+        },
+        {
+          text: "Groups WhatsApp 4",
+          url: "https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU",
+          category: "group"
+        },
+        {
+          text: "Groups WhatsApp 5",
+          url: "https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd",
+          category: "group"
+        },
+        {
+          text: "Groups Khusus Stok",
+          url: "https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP",
+          category: "group"
+        },
+        {
+          text: "Testimoni (Telegram)",
+          url: "https://rmddztrust",
+          category: "testimonial"
+        },
+        {
+          text: "Testimoni (WhatsApp)",
+          url: "https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q",
+          category: "testimonial"
+        }
+      ],
+      footer: "© 2026 ROMADZ STORE ID"
+    };
+    
+    // DOM Elements
+    const loadingOverlay = document.getElementById('loading');
+    const profileImg = document.getElementById('profile-img');
+    const profileName = document.getElementById('profile-name');
+    const profileDesc = document.getElementById('profile-desc');
+    const socialIcons = document.getElementById('social-icons');
+    const contactLinks = document.getElementById('contact-links');
+    const groupLinks = document.getElementById('group-links');
+    const testimonialLinks = document.getElementById('testimonial-links');
+    const footer = document.getElementById('footer');
+    
+    // Platform icons mapping
+    const platformIcons = {
+      whatsapp: 'fab fa-whatsapp',
+      telegram: 'fab fa-telegram',
+      email: 'fas fa-envelope',
+      instagram: 'fab fa-instagram',
+      default: 'fas fa-link'
+    };
+    
+    // Platform colors mapping
+    const platformColors = {
+      whatsapp: '#25D366',
+      telegram: '#0088cc',
+      email: '#ff6b6b',
+      instagram: '#E1306C',
+      default: '#4a4fc9'
+    };
+    
+    // Platform URL prefixes
+    const platformURLs = {
+      whatsapp: (url) => `https://wa.me/${url}`,
+      telegram: (url) => `https://t.me/${url.replace('@', '')}`,
+      email: (url) => `mailto:${url}`,
+      instagram: (url) => `https://instagram.com/${url}`,
+      default: (url) => url
+    };
+    
+    // Initialize the application
+    function initApp() {
+      // Set profile information
+      profileImg.src = config.img;
+      profileName.textContent = config.nama;
+      profileDesc.textContent = config.deskripsi;
+      
+      // Create social media icons
+      createSocialIcons();
+      
+      // Create categorized links
+      createCategorizedLinks();
+      
+      // Set footer
+      footer.textContent = config.footer;
+      
+      // Hide loading overlay after 1.5 seconds
+      setTimeout(() => {
+        loadingOverlay.classList.add('hidden');
+      }, 1500);
+    }
+    
+    // Create social media icons
+    function createSocialIcons() {
+      config.medsos.forEach(medsos => {
+        const icon = document.createElement('a');
+        icon.href = platformURLs[medsos.platform] ? platformURLs[medsos.platform](medsos.url) : medsos.url;
+        icon.target = "_blank";
+        icon.rel = "noopener noreferrer";
+        icon.className = `social-icon ${medsos.platform}`;
+        
+        const i = document.createElement('i');
+        i.className = platformIcons[medsos.platform] || platformIcons.default;
+        
+        icon.appendChild(i);
+        socialIcons.appendChild(icon);
+      });
+    }
+    
+    // Create categorized links
+    function createCategorizedLinks() {
+      // First, add contact links from medsos
+      config.medsos.forEach(medsos => {
+        const linkItem = createLinkItem(
+          formatPlatformName(medsos.platform),
+          platformURLs[medsos.platform] ? platformURLs[medsos.platform](medsos.url) : medsos.url,
+          medsos.platform
+        );
+        contactLinks.appendChild(linkItem);
+      });
+      
+      // Then add categorized links from config
+      config.links.forEach(link => {
+        const linkItem = createLinkItem(
+          link.text,
+          link.url,
+          link.category === 'testimonial' ? 'star' : 'whatsapp'
+        );
+        
+        // Add to appropriate category
+        if (link.category === 'group') {
+          groupLinks.appendChild(linkItem);
+        } else if (link.category === 'testimonial') {
+          testimonialLinks.appendChild(linkItem);
+        }
+      });
+      
+      // Hide categories if they have no links
+      if (groupLinks.children.length === 0) {
+        document.getElementById('groups-category').style.display = 'none';
+      }
+      
+      if (testimonialLinks.children.length === 0) {
+        document.getElementById('testimonials-category').style.display = 'none';
+      }
+    }
+    
+    // Create a link item element
+    function createLinkItem(text, url, iconType) {
+      const linkItem = document.createElement('a');
+      linkItem.href = url;
+      linkItem.target = "_blank";
+      linkItem.rel = "noopener noreferrer";
+      linkItem.className = "link-item";
+      
+      // Create icon container
+      const iconDiv = document.createElement('div');
+      iconDiv.className = "link-icon";
+      
+      const icon = document.createElement('i');
+      icon.className = getIconClass(iconType);
+      iconDiv.appendChild(icon);
+      
+      // Create text container
+      const textDiv = document.createElement('div');
+      textDiv.className = "link-text";
+      textDiv.textContent = text;
+      
+      // Create arrow container
+      const arrowDiv = document.createElement('div');
+      arrowDiv.className = "link-arrow";
+      arrowDiv.innerHTML = '<i class="fas fa-chevron-right"></i>';
+      
+      // Append all elements
+      linkItem.appendChild(iconDiv);
+      linkItem.appendChild(textDiv);
+      linkItem.appendChild(arrowDiv);
+      
+      return linkItem;
+    }
+    
+    // Get icon class based on platform/type
+    function getIconClass(type) {
+      if (type === 'whatsapp') return 'fab fa-whatsapp';
+      if (type === 'telegram') return 'fab fa-telegram';
+      if (type === 'email') return 'fas fa-envelope';
+      if (type === 'instagram') return 'fab fa-instagram';
+      if (type === 'star') return 'fas fa-star';
+      return 'fas fa-link';
+    }
+    
+    // Format platform name for display
+    function formatPlatformName(platform) {
+      const names = {
+        whatsapp: 'WhatsApp',
+        telegram: 'Telegram',
+        email: 'Email',
+        instagram: 'Instagram'
+      };
+      return names[platform] || platform;
+    }
+    
+    // Add some interactive effects
+    function addInteractiveEffects() {
+      // Add hover effect to profile image
+      profileImg.addEventListener('mouseenter', () => {
+        profileImg.style.transform = 'scale(1.05) rotate(2deg)';
+      });
+      
+      profileImg.addEventListener('mouseleave', () => {
+        profileImg.style.transform = 'scale(1) rotate(0deg)';
+      });
+      
+      // Add click animation to links
+      const links = document.querySelectorAll('.link-item');
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Add ripple effect
+          const ripple = document.createElement('span');
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+          
+          ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 107, 107, 0.5);
+            width: ${size}px;
+            height: ${size}px;
+            top: ${y}px;
+            left: ${x}px;
+            pointer-events: none;
+            animation: ripple 0.6s ease-out;
+          `;
+          
+          this.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        });
+      });
+    }
+    
+    // Add CSS for ripple effect
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        from {
+          transform: scale(0);
+          opacity: 1;
+        }
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      initApp();
+      setTimeout(addInteractiveEffects, 100);
+    });
+    
+    // Handle image loading error
+    profileImg.onerror = function() {
+      this.src = 'https://via.placeholder.com/400x400/2a2d7a/ffffff?text=ROMADZ+STORE';
+    };
+  </script>
 </body>
 </html>
