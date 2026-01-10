@@ -3,63 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romadz Store • All Platforms </title>
+    <title>PixelLink - Link-in-Bio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://files.catbox.moe/5vidyd.jpg" type="image/jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Loading Screen -->
-    <div id="loading-screen" class="loading">
-        <div class="loading-container">
-            <div class="loading-text">Romadz Store..</div>
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
             <div class="pixel-loader">
-                <div class="pixel-bar"></div>
-                <div class="pixel-dots">
-                    <div class="pixel-dot"></div>
-                    <div class="pixel-dot"></div>
-                    <div class="pixel-dot"></div>
-                </div>
+                <div class="pixel-block"></div>
+                <div class="pixel-block"></div>
+                <div class="pixel-block"></div>
+                <div class="pixel-block"></div>
+                <div class="pixel-block"></div>
             </div>
+            <h2 class="loading-text">Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></h2>
         </div>
     </div>
 
-    <!-- Halaman Utama -->
-    <div id="main-content" class="main-content">
+    <!-- Background Effect -->
+    <div class="background-effect"></div>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Header -->
         <header class="header">
-            <h1 class="brand-name">ROMADZ STORE</h1>
-            <p class="brand-subtitle">Marketplace Terpercaya & Berkualitas</p>
+            <div class="brand-container">
+                <h1 class="brand-name">Pixel<span class="brand-accent">Link</span></h1>
+                <p class="subtitle">Digital Portal | Dark Aesthetic</p>
+            </div>
         </header>
 
-        <main class="container">
-            <!-- Logo Area -->
-            <div class="logo-container">
-                <div class="logo-frame">
-                    <img src="https://files.catbox.moe/5vidyd.jpg" alt="Logo Pixel Store" class="logo-img">
+        <!-- Logo Container -->
+        <div class="logo-container">
+            <div class="logo-frame">
+                <div class="logo-inner">
+                    <img src="https://files.catbox.moe/5vidyd.jpg" alt="Logo Brand" class="logo-img" id="logo">
+                </div>
+                <div class="logo-glow"></div>
+            </div>
+        </div>
+
+        <!-- Main Panel -->
+        <div class="main-panel">
+            <!-- Panel Title -->
+            <div class="panel-header">
+                <h2 class="panel-title">
+                    <i class="fas fa-bars-staggered"></i>
+                    <span class="title-text">Link Categories</span>
+                </h2>
+                <div class="panel-subtitle">Organized by category for easy navigation</div>
+            </div>
+
+            <!-- Categories Container -->
+            <div class="categories-container">
+                <!-- Contact Section -->
+                <div class="category-section" id="contact-section">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h3 class="category-title">Contact</h3>
+                    </div>
+                    <div class="links-container" id="contact-links"></div>
+                </div>
+
+                <!-- Testimoni Section -->
+                <div class="category-section" id="testimoni-section">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="category-title">Testimoni</h3>
+                    </div>
+                    <div class="links-container" id="testimoni-links"></div>
+                </div>
+
+                <!-- Groups Section -->
+                <div class="category-section" id="groups-section">
+                    <div class="category-header">
+                        <div class="category-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="category-title">Groups</h3>
+                        <span class="category-badge">6 Groups</span>
+                    </div>
+                    <div class="links-container" id="groups-links"></div>
                 </div>
             </div>
 
-            <!-- Panel Tombol -->
-            <div class="button-panel">
-                <div class="panel-header">
-                    <div class="panel-title">SEMUA PLATFORM</div>
-                </div>
-                
-                <!-- Daftar Tombol -->
-                <div class="links-container">
-                    <!-- Tombol akan di-generate oleh JavaScript -->
-                </div>
-                
-                <div class="panel-footer">
-                    <div class="footer-text">© ROMADZ STORE ID – Hak Cipta Dilindungi</div>
+            <!-- Footer -->
+            <div class="panel-footer">
+                <div class="footer-content">
+                    <p class="footer-text">© 2026 Romadz Store ID • Digital Services </p>
+                    <div class="footer-stats">
+                        <span class="stat-item"><i class="fas fa-link"></i> 10 Links</span>
+                        <span class="stat-item"><i class="fas fa-layer-group"></i> 3 Categories</span>
+                    </div>
                 </div>
             </div>
-        </main>
-
-        <footer class="footer">
-            <p>Website dibuat dengan tema Minecraft Pixel Art</p>
-            <p class="footer-note">Semua link aman dan terverifikasi</p>
-        </footer>
-    </div>
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
