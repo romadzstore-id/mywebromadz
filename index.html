@@ -3,207 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelLink - Minecraft Link-in-Bio</title>
+    <title>Pixel Store | Link-in-Bio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="https://files.catbox.moe/5vidyd.jpg">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-container">
-            <div class="loading-terrain">
-                <div class="terrain-block grass"></div>
-                <div class="terrain-block dirt"></div>
-                <div class="terrain-block dirt"></div>
-                <div class="terrain-block stone"></div>
-                <div class="terrain-block stone"></div>
-                <div class="terrain-block bedrock"></div>
-            </div>
-            <div class="loading-progress-container">
-                <div class="loading-text">Memuat Store..</div>
-                <div class="loading-progress-bar">
-                    <div class="loading-progress-fill"></div>
-                </div>
-                <div class="loading-blocks">
-                    <div class="loading-block"></div>
-                    <div class="loading-block"></div>
-                    <div class="loading-block"></div>
-                    <div class="loading-block"></div>
-                    <div class="loading-block"></div>
-                </div>
+
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <p>Memuat Store</p>
+            <div class="pixel-loader-bar">
+                <div class="pixel-progress"></div>
             </div>
         </div>
     </div>
 
-    <!-- Main Container -->
-    <div id="main-container" class="main-container hidden">
-        <!-- Sound Toggle -->
-        <div class="sound-toggle" id="sound-toggle">
-            <div class="toggle-button">
-                <div class="toggle-pixel"></div>
-                <div class="toggle-pixel"></div>
-                <div class="toggle-pixel"></div>
-                <div class="toggle-pixel"></div>
+    <div class="container">
+        <header class="profile-section">
+            <div class="avatar-wrapper">
+                <img src="https://files.catbox.moe/5vidyd.jpg" alt="Logo" class="avatar-pixel">
             </div>
-            <span class="toggle-label">SFX ON</span>
-        </div>
+            <h1 class="brand-name">RMDDZ STORE</h1>
+            <p class="brand-subtitle">Marketplace & Digital Solution</p>
+        </header>
 
-        <!-- Day/Night Toggle -->
-        <div class="theme-toggle" id="theme-toggle">
-            <div class="toggle-slider">
-                <div class="toggle-icon sun">
-                    <div class="pixel-icon"></div>
-                </div>
-                <div class="toggle-icon moon">
-                    <div class="pixel-icon"></div>
-                </div>
-                <div class="toggle-knob"></div>
-            </div>
-        </div>
+        <main class="links-container">
+            <a href="https://wa.me/6283171889478" class="btn-pixel btn-whatsapp" target="_blank">
+                <span class="icon"></span> WHATSAPP UTAMA
+            </a>
+            <a href="https://t.me/rmddz" class="btn-pixel btn-telegram" target="_blank">
+                <span class="icon"></span> TELEGRAM ADMIN
+            </a>
 
-        <!-- Animated Background -->
-        <div class="background-container">
-            <div class="pixel-cloud pixel-cloud-1"></div>
-            <div class="pixel-cloud pixel-cloud-2"></div>
-            <div class="pixel-cloud pixel-cloud-3"></div>
-            <div class="pixel-particle particle-1"></div>
-            <div class="pixel-particle particle-2"></div>
-            <div class="pixel-particle particle-3"></div>
-            <div class="pixel-particle particle-4"></div>
-            <div class="pixel-particle particle-5"></div>
-            <div class="pixel-particle particle-6"></div>
-        </div>
+            <div class="divider">TESTIMONI</div>
 
-        <!-- Content -->
-        <div class="content-container">
-            <!-- Header -->
-            <header class="header">
-                <h1 class="brand-name">Pixel<span class="brand-name-highlight">Link</span></h1>
-                <p class="subtitle">Minecraft-Inspired Link Collection</p>
-            </header>
+            <a href="https://t.me/rmddztrust" class="btn-pixel btn-info" target="_blank">
+                <span class="icon"></span> TESTIMONI TELEGRAM
+            </a>
+            <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" class="btn-pixel btn-info" target="_blank">
+                <span class="icon"></span> TESTIMONI WHATSAPP
+            </a>
 
-            <!-- Logo Avatar -->
-            <div class="logo-container">
-                <div class="logo-frame">
-                    <div class="logo-frame-bevel"></div>
-                    <div class="logo-frame-bevel bottom"></div>
-                    <div class="logo-avatar" id="logo-avatar">
-                        <img src="https://files.catbox.moe/5vidyd.jpg" alt="Logo" class="logo-image">
-                    </div>
-                    <div class="logo-shadow"></div>
-                    <div class="logo-glow"></div>
-                </div>
-            </div>
+            <div class="divider">GROUPS MARKETPLACE</div>
 
-            <!-- Links -->
-            <main class="links-container">
-                <!-- WhatsApp -->
-                <a href="https://wa.me/6283171889478" class="link-button whatsapp-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon whatsapp-icon"></div>
-                    </div>
-                    <span class="button-text">WhatsApp</span>
-                    <div class="button-shadow"></div>
-                </a>
+            <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" class="btn-pixel btn-group" target="_blank">GROUP MARKETPLACE 1</a>
+            <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" class="btn-pixel btn-group" target="_blank">GROUP MARKETPLACE 2</a>
+            <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" class="btn-pixel btn-group" target="_blank">GROUP MARKETPLACE 3</a>
+            <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" class="btn-pixel btn-group" target="_blank">GROUP MARKETPLACE 4</a>
+            <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" class="btn-pixel btn-group" target="_blank">GROUP MARKETPLACE 5</a>
+            
+            <div class="divider">STOK TERBARU</div>
+            
+            <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" class="btn-pixel btn-special" target="_blank">GROUP KHUSUS STOK</a>
+        </main>
 
-                <!-- Telegram -->
-                <a href="https://t.me/rmddz" class="link-button telegram-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon telegram-icon"></div>
-                    </div>
-                    <span class="button-text">Telegram</span>
-                    <div class="button-shadow"></div>
-                </a>
-
-                <!-- Testimoni Telegram -->
-                <a href="https://t.me/rmddztrust" class="link-button testimoni-telegram-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon testimoni-icon"></div>
-                    </div>
-                    <span class="button-text">Testimoni Telegram</span>
-                    <div class="button-shadow"></div>
-                </a>
-
-                <!-- Testimoni WhatsApp -->
-                <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" class="link-button testimoni-whatsapp-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon channel-icon"></div>
-                    </div>
-                    <span class="button-text">Testimoni WhatsApp</span>
-                    <div class="button-shadow"></div>
-                </a>
-
-                <!-- Groups Marketplace 1 -->
-                <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" class="link-button marketplace-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon marketplace-icon"></div>
-                    </div>
-                    <span class="button-text">Marketplace Group 1</span>
-                    <div class="button-shadow"></div>
-                </a>
-
-                <!-- Groups Marketplace 2 -->
-                <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" class="link-button marketplace-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon marketplace-icon"></div>
-                    </div>
-                    <span class="button-text">Marketplace Group 2</span>
-                    <div class="button-shadow"></div>
-                </a>
-
-                <!-- Groups Marketplace 3 -->
-                <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" class="link-button marketplace-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon marketplace-icon"></div>
-                    </div>
-                    <span class="button-text">Marketplace Group 3</span>
-                    <div class="button-shadow"></div>
-                </a>
-
-                <!-- Groups Marketplace 4 -->
-                <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" class="link-button marketplace-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon marketplace-icon"></div>
-                    </div>
-                    <span class="button-text">Marketplace Group 4</span>
-                    <div class="button-shadow"></div>
-                </a>
-
-                <!-- Groups Marketplace 5 -->
-                <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" class="link-button marketplace-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon marketplace-icon"></div>
-                    </div>
-                    <span class="button-text">Marketplace Group 5</span>
-                    <div class="button-shadow"></div>
-                </a>
-
-                <!-- Groups Khusus Stok -->
-                <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" class="link-button stock-button" target="_blank" data-sound="click">
-                    <div class="button-icon">
-                        <div class="pixel-icon stock-icon"></div>
-                    </div>
-                    <span class="button-text">Khusus Stok Group</span>
-                    <div class="button-shadow"></div>
-                </a>
-            </main>
-
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="footer-text">
-                    <span class="footer-pixel">■</span> PixelLink Store <span class="footer-pixel">■</span>
-                </div>
-                <div class="footer-subtext">Crafted with pixel precision</div>
-            </footer>
-        </div>
-
-        <!-- Audio Elements (hidden) -->
-        <audio id="click-sound" preload="auto">
-            <source src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="hover-sound" preload="auto">
-            <source src="https://assets.mixkit.co/sfx/preview/mixkit-plastic-bubble-click-1124.mp3" type="audio/mpeg">
-        </audio>
+        <footer class="footer">
+            <p>&copy; 2024 RMDDZ Pixel Store</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
