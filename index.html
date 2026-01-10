@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROMADZ STORE - Link-in-Bio</title>
+    <title>ROMADZ STORE - Pixel Cyber Bio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,9 +21,15 @@
                 <div class="pixel-block"></div>
                 <div class="pixel-block"></div>
             </div>
-            <p class="loading-text">Memuat Store..</p>
+            <p class="loading-text">BOOTING STORE..</p>
         </div>
     </div>
+
+    <!-- CRT Screen Effect -->
+    <div class="crt-overlay"></div>
+    
+    <!-- Scanlines Effect -->
+    <div class="scanlines"></div>
 
     <!-- Main Content -->
     <div class="container">
@@ -31,42 +37,38 @@
         <header class="header">
             <div class="logo-container">
                 <img src="https://files.catbox.moe/5vidyd.jpg" alt="ROMADZ STORE Logo" class="logo">
+                <div class="logo-glow"></div>
             </div>
             <h1 class="store-name">ROMADZ STORE</h1>
-            <p class="slogan">anda puas - Kami senang</p>
+            <div class="pixel-subtitle">
+                <span class="pixel-subtitle-text">ANDA PUAS</span>
+                <span class="pixel-divider-small">//</span>
+                <span class="pixel-subtitle-text">KAMI SENANG</span>
+            </div>
         </header>
 
         <!-- Contact Panel -->
         <section class="panel contact-panel">
             <div class="panel-header">
-                <h2 class="panel-title">CONTACT</h2>
+                <div class="panel-title-icon">📡</div>
+                <h2 class="panel-title">CONTACT CHANNEL</h2>
                 <div class="pixel-divider"></div>
             </div>
             <div class="button-container">
-                <a href="https://wa.me/6283171889478" target="_blank" class="pixel-button">
-                    <span class="button-icon">
-                        <svg class="pixel-icon" viewBox="0 0 16 16">
-                            <rect x="2" y="2" width="3" height="3" fill="#10B981"/>
-                            <rect x="2" y="6" width="3" height="3" fill="#10B981"/>
-                            <rect x="6" y="2" width="3" height="3" fill="#10B981"/>
-                            <rect x="10" y="2" width="3" height="3" fill="#10B981"/>
-                            <rect x="6" y="6" width="7" height="7" fill="#10B981"/>
-                        </svg>
-                    </span>
-                    <span class="button-text">WhatsApp</span>
+                <a href="https://wa.me/6283171889478" target="_blank" class="pixel-button contact-btn">
+                    <svg class="pixel-icon" viewBox="0 0 24 24">
+                        <path d="M17 4h2v9h-2v2h-2v2h-2v-2h-2v2H9v-2H7v-2H5V4h2v5h2v2h2v2h2v-2h2V9h2V4z" fill="currentColor"/>
+                    </svg>
+                    <span class="button-text">WHATSAPP DIRECT</span>
+                    <span class="button-arrow">▶</span>
                 </a>
                 
-                <a href="https://t.me/rmddz" target="_blank" class="pixel-button">
-                    <span class="button-icon">
-                        <svg class="pixel-icon" viewBox="0 0 16 16">
-                            <rect x="3" y="2" width="10" height="2" fill="#10B981"/>
-                            <rect x="4" y="4" width="8" height="2" fill="#10B981"/>
-                            <rect x="5" y="6" width="6" height="2" fill="#10B981"/>
-                            <rect x="6" y="8" width="4" height="2" fill="#10B981"/>
-                            <rect x="7" y="10" width="2" height="4" fill="#10B981"/>
-                        </svg>
-                    </span>
-                    <span class="button-text">Telegram</span>
+                <a href="https://t.me/rmddz" target="_blank" class="pixel-button contact-btn">
+                    <svg class="pixel-icon" viewBox="0 0 24 24">
+                        <path d="M5 4h14v16H5V4zm12 12v-4h-2v4h-2v-4h-2v4H9v-4H7v-2h2V8h2v2h2V8h2v2h2V8h2v8h-2z" fill="currentColor"/>
+                    </svg>
+                    <span class="button-text">TELEGRAM CHAT</span>
+                    <span class="button-arrow">▶</span>
                 </a>
             </div>
         </section>
@@ -74,37 +76,25 @@
         <!-- Testimoni Panel -->
         <section class="panel testimoni-panel">
             <div class="panel-header">
-                <h2 class="panel-title">TESTIMONI</h2>
+                <div class="panel-title-icon">⭐</div>
+                <h2 class="panel-title">TESTIMONI & REVIEW</h2>
                 <div class="pixel-divider"></div>
             </div>
             <div class="button-container">
-                <a href="https://t.me/rmddztrust" target="_blank" class="pixel-button">
-                    <span class="button-icon">
-                        <svg class="pixel-icon" viewBox="0 0 16 16">
-                            <rect x="3" y="3" width="10" height="2" fill="#10B981"/>
-                            <rect x="4" y="5" width="8" height="2" fill="#10B981"/>
-                            <rect x="2" y="7" width="12" height="4" fill="#10B981"/>
-                            <rect x="4" y="11" width="8" height="2" fill="#10B981"/>
-                        </svg>
-                    </span>
-                    <span class="button-text">Channel Testimoni Telegram</span>
+                <a href="https://t.me/rmddztrust" target="_blank" class="pixel-button testimoni-btn">
+                    <svg class="pixel-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                    </svg>
+                    <span class="button-text">TELEGRAM TESTIMONI</span>
+                    <span class="button-arrow">▶</span>
                 </a>
                 
-                <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" target="_blank" class="pixel-button">
-                    <span class="button-icon">
-                        <svg class="pixel-icon" viewBox="0 0 16 16">
-                            <rect x="2" y="2" width="3" height="3" fill="#10B981"/>
-                            <rect x="6" y="2" width="3" height="3" fill="#10B981"/>
-                            <rect x="10" y="2" width="3" height="3" fill="#10B981"/>
-                            <rect x="2" y="6" width="3" height="3" fill="#10B981"/>
-                            <rect x="6" y="6" width="3" height="3" fill="#10B981"/>
-                            <rect x="10" y="6" width="3" height="3" fill="#10B981"/>
-                            <rect x="2" y="10" width="3" height="3" fill="#10B981"/>
-                            <rect x="6" y="10" width="3" height="3" fill="#10B981"/>
-                            <rect x="10" y="10" width="3" height="3" fill="#10B981"/>
-                        </svg>
-                    </span>
-                    <span class="button-text">Channel WhatsApp</span>
+                <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" target="_blank" class="pixel-button testimoni-btn">
+                    <svg class="pixel-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                    </svg>
+                    <span class="button-text">WHATSAPP CHANNEL</span>
+                    <span class="button-arrow">▶</span>
                 </a>
             </div>
         </section>
@@ -112,39 +102,54 @@
         <!-- Group Panel -->
         <section class="panel group-panel">
             <div class="panel-header">
-                <h2 class="panel-title">GROUP</h2>
+                <div class="panel-title-icon">👥</div>
+                <h2 class="panel-title">COMMUNITY GROUPS</h2>
                 <div class="pixel-divider"></div>
             </div>
             <div class="button-container">
-                <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" target="_blank" class="pixel-button">
-                    <span class="button-text">Group WhatsApp 1</span>
+                <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" target="_blank" class="pixel-button group-btn">
+                    <span class="button-text-badge">GROUP 01</span>
+                    <span class="button-text">WHATSAPP GROUP</span>
                 </a>
                 
-                <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" target="_blank" class="pixel-button">
-                    <span class="button-text">Group WhatsApp 2</span>
+                <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" target="_blank" class="pixel-button group-btn">
+                    <span class="button-text-badge">GROUP 02</span>
+                    <span class="button-text">WHATSAPP GROUP</span>
                 </a>
                 
-                <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" target="_blank" class="pixel-button">
-                    <span class="button-text">Group WhatsApp 3</span>
+                <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" target="_blank" class="pixel-button group-btn">
+                    <span class="button-text-badge">GROUP 03</span>
+                    <span class="button-text">WHATSAPP GROUP</span>
                 </a>
                 
-                <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" target="_blank" class="pixel-button">
-                    <span class="button-text">Group WhatsApp 4</span>
+                <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" target="_blank" class="pixel-button group-btn">
+                    <span class="button-text-badge">GROUP 04</span>
+                    <span class="button-text">WHATSAPP GROUP</span>
                 </a>
                 
-                <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" target="_blank" class="pixel-button">
-                    <span class="button-text">Group WhatsApp 5</span>
+                <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" target="_blank" class="pixel-button group-btn">
+                    <span class="button-text-badge">GROUP 05</span>
+                    <span class="button-text">WHATSAPP GROUP</span>
                 </a>
                 
-                <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" target="_blank" class="pixel-button">
-                    <span class="button-text">Group WhatsApp 6</span>
+                <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" target="_blank" class="pixel-button group-btn">
+                    <span class="button-text-badge">GROUP 06</span>
+                    <span class="button-text">WHATSAPP GROUP</span>
                 </a>
             </div>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
-            <p class="footer-text">© ROMADZ STORE ID – Digital Store</p>
+            <div class="footer-grid">
+                <div class="footer-pixel"></div>
+                <div class="footer-pixel"></div>
+                <div class="footer-pixel"></div>
+                <p class="footer-text">© ROMADZ STORE ID – DIGITAL STORE</p>
+                <div class="footer-pixel"></div>
+                <div class="footer-pixel"></div>
+                <div class="footer-pixel"></div>
+            </div>
         </footer>
     </div>
 
