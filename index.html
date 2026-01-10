@@ -3,91 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romadz Store - All Platfrom</title>
+    <title>PixelGate | Link-in-Bio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
-            <div class="pixel-loader">
-                <div class="pixel-block"></div>
-                <div class="pixel-block"></div>
-                <div class="pixel-block"></div>
-                <div class="pixel-block"></div>
-                <div class="pixel-block"></div>
+            <div class="pixel-grid-loader">
+                <div class="pixel-row">
+                    <div class="pixel-cell active"></div>
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell"></div>
+                </div>
+                <div class="pixel-row">
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell active"></div>
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell"></div>
+                </div>
+                <div class="pixel-row">
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell active"></div>
+                    <div class="pixel-cell"></div>
+                    <div class="pixel-cell"></div>
+                </div>
             </div>
-            <h2 class="loading-text">Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></h2>
+            <h2 class="loading-text">INITIALIZING<span class="blink">_</span></h2>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">LOADING ROMADZ STORE...</div>
+            </div>
         </div>
     </div>
 
-    <!-- Background Effect -->
-    <div class="background-effect"></div>
+    <!-- Pixel Background -->
+    <div class="pixel-background">
+        <div class="pixel-grid-layer"></div>
+        <div class="pixel-noise"></div>
+    </div>
     
     <!-- Main Content -->
     <main class="container">
         <!-- Header -->
         <header class="header">
+            <div class="pixel-border-top"></div>
             <div class="brand-container">
-                <h1 class="brand-name">Romadz<span class="brand-accent">Store</span></h1>
-                <p class="subtitle"> </p>
+                <div class="pixel-title">
+                    <span class="title-pixel">█</span>
+                    <h1 class="brand-name">ROMADZ<span class="brand-accent">STORE</span></h1>
+                    <span class="title-pixel">█</span>
+                </div>
+                <p class="subtitle">DIGITAL PORTAL SYSTEM</p>
             </div>
+            <div class="pixel-border-bottom"></div>
         </header>
 
         <!-- Logo Container -->
         <div class="logo-container">
-            <div class="logo-frame">
-                <div class="logo-inner">
-                    <img src="https://files.catbox.moe/5vidyd.jpg" alt="Logo Brand" class="logo-img" id="logo">
+            <div class="pixel-frame">
+                <div class="pixel-frame-inner">
+                    <div class="pixel-frame-corner tl"></div>
+                    <div class="pixel-frame-corner tr"></div>
+                    <div class="pixel-frame-corner bl"></div>
+                    <div class="pixel-frame-corner br"></div>
+                    
+                    <div class="logo-wrapper">
+                        <img src="https://files.catbox.moe/5vidyd.jpg" alt="Logo Brand" class="logo-img pixelated" id="logo">
+                        <div class="pixel-overlay"></div>
+                    </div>
                 </div>
-                <div class="logo-glow"></div>
+                <div class="pixel-glow"></div>
             </div>
+            <div class="pixel-connector"></div>
         </div>
 
         <!-- Main Panel -->
         <div class="main-panel">
-            <!-- Panel Title -->
+            <!-- Panel Decoration -->
+            <div class="panel-decoration">
+                <div class="pixel-corner tl"></div>
+                <div class="pixel-corner tr"></div>
+                <div class="pixel-corner bl"></div>
+                <div class="pixel-corner br"></div>
+                <div class="pixel-border-h"></div>
+                <div class="pixel-border-v"></div>
+            </div>
+
+            <!-- Panel Header -->
             <div class="panel-header">
-                <h2 class="panel-title">
-                    <i class="fas fa-bars-staggered"></i>
-                    <span class="title-text">List Platform </span>
-                </h2>
-                <div class="panel-subtitle"> </div>
+                <div class="panel-title-container">
+                    <div class="pixel-icon-title">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h2 class="panel-title">
+                        <span class="title-char">L</span>
+                        <span class="title-char">I</span>
+                        <span class="title-char">N</span>
+                        <span class="title-char">K</span>
+                        <span class="title-space"> </span>
+                        <span class="title-char">C</span>
+                        <span class="title-char">A</span>
+                        <span class="title-char">T</span>
+                        <span class="title-char">E</span>
+                        <span class="title-char">G</span>
+                        <span class="title-char">O</span>
+                        <span class="title-char">R</span>
+                        <span class="title-char">I</span>
+                        <span class="title-char">E</span>
+                        <span class="title-char">S</span>
+                    </h2>
+                </div>
+                <div class="panel-status">
+                    <div class="status-led active"></div>
+                    <span class="status-text">ONLINE</span>
+                </div>
             </div>
 
             <!-- Categories Container -->
             <div class="categories-container">
                 <!-- Contact Section -->
-                <div class="category-section" id="contact-section">
+                <div class="category-section pixel-card" data-category="contact">
                     <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-user-circle"></i>
+                        <div class="category-icon contact-icon">
+                            <div class="pixel-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
                         </div>
-                        <h3 class="category-title">Contact</h3>
+                        <div class="category-info">
+                            <h3 class="category-title">CONTACT</h3>
+                            <div class="category-count">2 CHANNELS</div>
+                        </div>
+                        <div class="category-indicator">
+                            <div class="pixel-arrow">▶</div>
+                        </div>
                     </div>
                     <div class="links-container" id="contact-links"></div>
                 </div>
 
                 <!-- Testimoni Section -->
-                <div class="category-section" id="testimoni-section">
+                <div class="category-section pixel-card" data-category="testimoni">
                     <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-star"></i>
+                        <div class="category-icon testimoni-icon">
+                            <div class="pixel-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
-                        <h3 class="category-title">Testimoni</h3>
+                        <div class="category-info">
+                            <h3 class="category-title">TESTIMONI</h3>
+                            <div class="category-count">2 CHANNELS</div>
+                        </div>
+                        <div class="category-indicator">
+                            <div class="pixel-arrow">▶</div>
+                        </div>
                     </div>
                     <div class="links-container" id="testimoni-links"></div>
                 </div>
 
                 <!-- Groups Section -->
-                <div class="category-section" id="groups-section">
+                <div class="category-section pixel-card" data-category="groups">
                     <div class="category-header">
-                        <div class="category-icon">
-                            <i class="fas fa-users"></i>
+                        <div class="category-icon groups-icon">
+                            <div class="pixel-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="category-info">
+                            <h3 class="category-title">GROUPS</h3>
+                            <div class="category-count">6 CHANNELS</div>
+                        </div>
+                        <div class="category-indicator">
+                            <div class="pixel-arrow">▶</div>
                         </div>
                     </div>
                     <div class="links-container" id="groups-links"></div>
@@ -96,12 +192,29 @@
 
             <!-- Footer -->
             <div class="panel-footer">
-                <div class="footer-content">
-                    <p class="footer-text">© 2026 Romadz Store ID • Digital Services </p>
-                    <div class="footer-stats">
+                <div class="footer-grid">
+                    <div class="footer-item">
+                        <div class="pixel-dot"></div>
+                        <span>SYSTEM READY</span>
+                    </div>
+                    <div class="footer-item">
+                        <div class="pixel-dot"></div>
+                        <span>10 LINKS ACTIVE</span>
+                    </div>
+                    <div class="footer-item">
+                        <div class="pixel-dot"></div>
+                        <span>V1.0.0</span>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Decorative Pixels -->
+        <div class="floating-pixels">
+            <div class="pixel-float p1"></div>
+            <div class="pixel-float p2"></div>
+            <div class="pixel-float p3"></div>
+            <div class="pixel-float p4"></div>
         </div>
     </main>
 
