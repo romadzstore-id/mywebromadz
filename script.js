@@ -1,194 +1,147 @@
-// Data untuk tombol link
+// script.js
+// Data link sesuai dengan yang diminta
 const linkData = [
     {
         name: "WhatsApp",
         url: "https://wa.me/6283171889478",
-        icon: "whatsapp-icon",
-        iconClass: "fab fa-whatsapp"
+        type: "whatsapp"
     },
     {
         name: "Telegram",
         url: "https://t.me/rmddz",
-        icon: "telegram-icon",
-        iconClass: "fab fa-telegram"
+        type: "telegram"
     },
     {
         name: "Testimoni Telegram",
         url: "https://t.me/rmddztrust",
-        icon: "comment-icon",
-        iconClass: "fas fa-comment-alt"
+        type: "testimoni"
     },
     {
         name: "Testimoni WhatsApp",
         url: "https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q",
-        icon: "comment-icon",
-        iconClass: "fas fa-comments"
+        type: "testimoni"
     },
     {
         name: "Groups Marketplace 1",
         url: "https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n",
-        icon: "group-icon",
-        iconClass: "fas fa-users"
+        type: "marketplace"
     },
     {
         name: "Groups Marketplace 2",
         url: "https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF",
-        icon: "group-icon",
-        iconClass: "fas fa-users"
+        type: "marketplace"
     },
     {
         name: "Groups Marketplace 3",
         url: "https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m",
-        icon: "group-icon",
-        iconClass: "fas fa-users"
+        type: "marketplace"
     },
     {
         name: "Groups Marketplace 4",
         url: "https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU",
-        icon: "group-icon",
-        iconClass: "fas fa-users"
+        type: "marketplace"
     },
     {
         name: "Groups Marketplace 5",
         url: "https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd",
-        icon: "group-icon",
-        iconClass: "fas fa-users"
+        type: "marketplace"
     },
     {
         name: "Groups Khusus Stok",
         url: "https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP",
-        icon: "stock-icon",
-        iconClass: "fas fa-boxes"
+        type: "stock"
     }
 ];
-
-// DOM Elements
-const loadingScreen = document.getElementById('loading-screen');
-const linksContainer = document.getElementById('links-container');
-const logo = document.getElementById('logo');
 
 // Fungsi untuk membuat tombol link
 function createLinkButton(link) {
     const button = document.createElement('a');
     button.href = link.url;
+    button.className = `link-button ${link.type}`;
+    button.textContent = link.name;
     button.target = "_blank";
     button.rel = "noopener noreferrer";
-    button.className = "link-button";
-    
-    button.innerHTML = `
-        <div class="button-icon">
-            <i class="${link.iconClass}"></i>
-        </div>
-        <span class="button-text">${link.name}</span>
-        <i class="fas fa-external-link-alt" style="font-size: 0.8rem; opacity: 0.7;"></i>
-    `;
-    
-    // Tambahkan efek klik
-    button.addEventListener('click', function(e) {
-        // Efek visual saat diklik
-        this.style.transform = 'translateY(1px)';
-        this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2), 0 0 8px rgba(0, 255, 157, 0.4)';
-        
-        // Revert setelah 150ms
-        setTimeout(() => {
-            this.style.transform = '';
-            this.style.boxShadow = '';
-        }, 150);
-    });
     
     return button;
 }
 
-// Fungsi untuk memuat semua tombol
-function loadLinks() {
+// Fungsi untuk menginisialisasi halaman
+function initPage() {
+    const linksContainer = document.querySelector('.links-container');
+    
+    // Tambahkan semua tombol link ke container
     linkData.forEach(link => {
         const button = createLinkButton(link);
         linksContainer.appendChild(button);
     });
-}
-
-// Fungsi untuk menyembunyikan loading screen
-function hideLoadingScreen() {
-    // Simulasi loading
-    setTimeout(() => {
-        loadingScreen.style.opacity = '0';
-        loadingScreen.style.visibility = 'hidden';
-        
-        // Setelah loading selesai, muat link
-        loadLinks();
-        
-        // Tambahkan efek pada logo setelah loading
-        setTimeout(() => {
-            logo.style.transform = 'scale(1.05)';
-            logo.style.transition = 'transform 0.3s ease';
+    
+    // Tambahkan efek klik pada semua tombol
+    const buttons = document.querySelectorAll('.link-button');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            // Efek klik
+            this.style.transform = 'translateY(4px)';
+            this.style.boxShadow = '2px 2px 0 #3a5c2e';
             
+            // Reset setelah 150ms
             setTimeout(() => {
-                logo.style.transform = 'scale(1)';
-            }, 300);
-        }, 100);
-    }, 1500); // Simulasi loading 1.5 detik
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            }, 150);
+            
+            // Tracking klik (opsional, bisa diisi dengan analytics)
+            console.log(`Link diklik: ${this.textContent}`);
+        });
+    });
 }
 
-// Fungsi untuk menambahkan efek visual acak pada background
-function addBackgroundEffects() {
-    const grid = document.querySelector('.pixel-grid');
+// Fungsi untuk menangani loading screen
+function handleLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    const mainContent = document.getElementById('main-content');
     
-    // Tambahkan beberapa pixel acak dengan glow
-    for (let i = 0; i < 20; i++) {
-        const pixel = document.createElement('div');
-        pixel.style.position = 'fixed';
-        pixel.style.width = Math.floor(Math.random() * 4 + 2) + 'px';
-        pixel.style.height = pixel.style.width;
-        pixel.style.backgroundColor = 'rgba(0, 255, 157, 0.1)';
-        pixel.style.borderRadius = '1px';
-        pixel.style.boxShadow = '0 0 5px rgba(0, 255, 157, 0.3)';
-        pixel.style.left = Math.random() * 100 + '%';
-        pixel.style.top = Math.random() * 100 + '%';
-        pixel.style.zIndex = '-1';
-        pixel.style.opacity = '0';
-        pixel.style.animation = `pixelFade ${Math.random() * 3 + 2}s infinite alternate`;
+    // Simulasi loading selama 2 detik
+    setTimeout(() => {
+        // Sembunyikan loading screen
+        loadingScreen.classList.add('hidden');
         
-        document.body.appendChild(pixel);
+        // Tampilkan konten utama
+        mainContent.style.opacity = '1';
         
-        // Animasi fade in/out untuk pixel
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pixelFade {
-                0%, 100% { opacity: 0; }
-                50% { opacity: ${Math.random() * 0.3 + 0.1}; }
-            }
-        `;
-        document.head.appendChild(style);
-    }
+        // Inisialisasi halaman setelah loading selesai
+        initPage();
+        
+        // Hapus loading screen dari DOM setelah animasi selesai
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+        }, 500);
+    }, 2000);
 }
 
-// Event listener untuk DOMContentLoaded
+// Inisialisasi saat halaman dimuat
 document.addEventListener('DOMContentLoaded', function() {
-    // Mulai loading
-    hideLoadingScreen();
+    // Mulai loading screen
+    handleLoadingScreen();
     
-    // Tambahkan efek background
-    addBackgroundEffects();
-    
-    // Tambahkan efek hover untuk panel
-    const panel = document.querySelector('.main-panel');
+    // Tambahkan efek interaktif untuk panel
+    const panel = document.querySelector('.button-panel');
     panel.addEventListener('mouseenter', function() {
-        this.style.boxShadow = 
-            '0 10px 30px rgba(0, 0, 0, 0.5), ' +
-            'inset 0 0 15px rgba(0, 0, 0, 0.3), ' +
-            '0 0 25px rgba(0, 255, 157, 0.2)';
+        this.style.transform = 'translateY(-5px)';
+        this.style.transition = 'transform 0.3s ease';
     });
     
     panel.addEventListener('mouseleave', function() {
-        this.style.boxShadow = 
-            '0 10px 30px rgba(0, 0, 0, 0.5), ' +
-            'inset 0 0 15px rgba(0, 0, 0, 0.3), ' +
-            '0 0 20px rgba(0, 255, 157, 0.1)';
+        this.style.transform = 'translateY(0)';
     });
-});
-
-// Fallback jika logo tidak dimuat
-logo.addEventListener('error', function() {
-    this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMGEwZjFlIi8+CjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjMDBmZjlkIi8+CjxwYXRoIGQ9Ik0zNSAzNVY2NU02NSA2NVYzNU0zNSA1MEg2NSIgc3Ryb2tlPSIjMGEwZjFlIiBzdHJva2Utd2lkdGg9IjgiLz4KPC9zdmc+';
-    this.alt = "PixelLink Logo";
+    
+    // Tambahkan efek untuk logo frame
+    const logoFrame = document.querySelector('.logo-frame');
+    logoFrame.addEventListener('mouseenter', function() {
+        this.style.transform = 'rotate(2deg) scale(1.05)';
+        this.style.transition = 'transform 0.3s ease';
+    });
+    
+    logoFrame.addEventListener('mouseleave', function() {
+        this.style.transform = 'rotate(0) scale(1)';
+    });
 });
