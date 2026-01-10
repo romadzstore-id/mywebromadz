@@ -1,247 +1,475 @@
-/* RESET & BASIC VARIABLES */
-:root {
-    --bg-color: #e0e0e0; /* Warna dasar seperti batu terang */
-    --card-bg: #f5f5f5;
-    --text-main: #212121;
-    --text-sub: #555555;
-    
-    /* Minecraft Palettes */
-    --pixel-black: #111111;
-    --btn-wa: #4caf50;
-    --btn-tg: #2196f3;
-    --btn-market: #ff9800;
-    --btn-stock: #f44336;
-    --btn-info: #9c27b0;
-    
-    --shadow-depth: 4px;
-    --border-width: 3px;
-}
-
+/* Reset & Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    background-color: var(--bg-color);
-    /* Pattern Grid Sederhana CSS Murni */
-    background-image: 
-        linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-    font-family: 'Courier New', Courier, monospace; /* Monospace = Pixel vibes */
-    color: var(--text-main);
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    overflow-x: hidden;
+:root {
+    --primary-dark: #0a0f1e;
+    --secondary-dark: #1a2332;
+    --accent-color: #00ff9d;
+    --accent-glow: rgba(0, 255, 157, 0.4);
+    --panel-color: #1e2a3a;
+    --button-color: #2a3a4e;
+    --button-hover: #344a64;
+    --text-color: #e0e0e0;
+    --text-glow: rgba(224, 224, 224, 0.7);
+    --border-color: #00ff9d;
+    --stone-gray: #3a4a5a;
+    --deep-green: #0d2b1a;
+    --charcoal: #151f2b;
+    --pixel-size: 4px;
 }
 
-/* LOADING SCREEN */
-#loading-screen {
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--primary-dark);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Loading Screen */
+.loading-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--pixel-black);
-    z-index: 9999;
+    background-color: var(--charcoal);
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    transition: opacity 0.5s ease;
+    z-index: 9999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-.pixel-text {
-    color: #fff;
+.loading-content {
+    text-align: center;
+}
+
+.pixel-loader {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 8px;
+}
+
+.pixel-block {
+    width: 16px;
+    height: 16px;
+    background-color: var(--accent-color);
+    animation: pixelPulse 1.5s infinite ease-in-out;
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.pixel-block:nth-child(2) { animation-delay: 0.2s; }
+.pixel-block:nth-child(3) { animation-delay: 0.4s; }
+.pixel-block:nth-child(4) { animation-delay: 0.6s; }
+.pixel-block:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes pixelPulse {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(-10px); opacity: 1; }
+}
+
+.loading-text {
+    font-family: 'Press Start 2P', cursive;
     font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
+    color: var(--text-color);
+    text-shadow: 0 0 6px var(--text-glow);
 }
 
-.loading-bar-container {
-    width: 200px;
-    height: 20px;
-    border: 3px solid #fff;
-    padding: 2px;
-    background: #000;
+.dot {
+    animation: dotBlink 1.4s infinite;
+    opacity: 0;
 }
 
-.loading-bar-fill {
-    height: 100%;
-    width: 0%;
-    background-color: #4caf50;
-    animation: loadProgress 1.5s forwards ease-in-out;
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dotBlink {
+    0%, 20% { opacity: 0; }
+    50%, 100% { opacity: 1; }
 }
 
-@keyframes loadProgress {
-    0% { width: 0%; }
-    50% { width: 60%; }
-    100% { width: 100%; }
-}
-
-/* CONTAINER */
-.container {
+/* Pixel Grid Background */
+.pixel-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 480px; /* Mobile width optimized */
-    padding: 40px 20px;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: center center;
+    z-index: -1;
+}
+
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     z-index: 1;
 }
 
-/* PROFILE HEADER */
-.profile-section {
+/* Header */
+.header {
     text-align: center;
-    margin-bottom: 30px;
-    animation: slideDown 0.6s ease-out;
-}
-
-.avatar-frame {
-    width: 110px;
-    height: 110px;
-    margin: 0 auto 15px;
-    background: #fff;
-    border: var(--border-width) solid var(--pixel-black);
-    /* Pixel Shadow Effect */
-    box-shadow: var(--shadow-depth) var(--shadow-depth) 0px var(--pixel-black);
-    padding: 4px;
-    transition: transform 0.2s;
-}
-
-.avatar-frame:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--pixel-black);
-}
-
-.avatar-img {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    image-rendering: pixelated; /* Mempertajam gambar */
 }
 
 .brand-name {
-    font-size: 1.5rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    margin-bottom: 5px;
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2.2rem;
+    color: var(--text-color);
+    text-shadow: 0 0 8px var(--text-glow);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
 }
 
-.brand-sub {
+.brand-accent {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.subtitle {
     font-size: 0.9rem;
-    color: var(--text-sub);
-    font-weight: bold;
+    color: var(--stone-gray);
+    letter-spacing: 2px;
+    font-weight: 500;
 }
 
-/* SEPARATOR */
-.separator {
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin: 25px 0 10px;
+/* Logo Container */
+.logo-container {
+    margin-bottom: 1.5rem;
     position: relative;
-    color: var(--pixel-black);
-    background: var(--bg-color);
-    display: inline-block;
-    padding: 0 10px;
-    border: 2px solid var(--pixel-black);
-    box-shadow: 2px 2px 0 var(--pixel-black);
 }
 
-.links-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-/* BUTTONS (Pixel Art Core) */
-.pixel-btn {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: var(--pixel-black);
-    font-weight: 800;
-    background-color: #fff;
-    border: var(--border-width) solid var(--pixel-black);
-    box-shadow: var(--shadow-depth) var(--shadow-depth) 0px var(--pixel-black);
-    transition: transform 0.1s, box-shadow 0.1s;
+.logo-frame {
+    width: 140px;
+    height: 140px;
+    border: 4px solid var(--stone-gray);
+    border-image-slice: 1;
     position: relative;
-    /* Sudut tajam */
-    border-radius: 0; 
-}
-
-/* Animasi Hover (Naik sedikit) */
-.pixel-btn:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px var(--pixel-black);
-    background-color: #fafafa;
-}
-
-/* Animasi Klik (Pressed) */
-.pixel-btn:active {
-    transform: translate(var(--shadow-depth), var(--shadow-depth));
-    box-shadow: 0px 0px 0px var(--pixel-black);
-}
-
-/* Button Colors (Border remains black, accents applied subtly or fully) */
-.wa-btn { border-left: 8px solid var(--btn-wa); }
-.tg-btn { border-left: 8px solid var(--btn-tg); }
-.market-btn { border-left: 8px solid var(--btn-market); }
-.stock-btn { border-left: 8px solid var(--btn-stock); }
-.info-btn { border-left: 8px solid var(--btn-info); }
-
-.btn-text {
-    flex-grow: 1;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 0.95rem;
-}
-
-/* ICON STYLES */
-.icon-box {
-    width: 24px;
-    height: 24px;
+    background-color: var(--secondary-dark);
+    box-shadow: 
+        inset 0 0 10px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(10, 15, 30, 0.8);
+    padding: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 10px;
 }
 
-.pixel-icon {
+.logo-img {
     width: 100%;
     height: 100%;
-    /* Membuat SVG terlihat tajam seperti pixel */
-    shape-rendering: crispEdges; 
+    object-fit: contain;
+    filter: brightness(1.05);
+    z-index: 2;
+    position: relative;
 }
 
-/* FOOTER */
-.footer {
-    margin-top: 40px;
+.logo-glow {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    animation: glowPulse 3s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 5px var(--accent-glow); }
+    100% { box-shadow: 0 0 15px var(--accent-glow); }
+}
+
+/* Main Panel */
+.main-panel {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--panel-color);
+    border: 4px solid var(--stone-gray);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.5),
+        inset 0 0 15px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(0, 255, 157, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.main-panel::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid var(--accent-color);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.panel-header {
     text-align: center;
-    font-size: 0.7rem;
-    color: var(--text-sub);
-    font-weight: bold;
-    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(58, 74, 90, 0.5);
 }
 
-/* ANIMATION KEYFRAMES */
-@keyframes slideDown {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.panel-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    text-shadow: 0 0 5px var(--text-glow);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 350px) {
-    .brand-name { font-size: 1.2rem; }
-    .btn-text { font-size: 0.8rem; }
+.panel-title i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
 }
+
+.panel-subtitle {
+    font-size: 0.85rem;
+    color: var(--stone-gray);
+    letter-spacing: 1px;
+}
+
+/* Links Container */
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+/* Button Styles */
+.link-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--button-color);
+    border: 2px solid var(--stone-gray);
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 1rem 1.2rem;
+    border-radius: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.link-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.link-button:hover::before {
+    left: 100%;
+}
+
+.link-button:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.3),
+        0 0 15px var(--accent-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    background-color: var(--button-hover);
+}
+
+.link-button:active {
+    transform: translateY(1px);
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        0 0 8px var(--accent-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: transform 0.1s ease;
+}
+
+.button-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    color: var(--accent-color);
+}
+
+.button-text {
+    flex-grow: 1;
+}
+
+/* Pixel icon styles */
+.pixel-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    margin-right: 12px;
+}
+
+.whatsapp-icon::before {
+    content: "";
+    font-family: "Font Awesome 6 Brands";
+    color: #25D366;
+}
+
+.telegram-icon::before {
+    content: "";
+    font-family: "Font Awesome 6 Brands";
+    color: #0088cc;
+}
+
+.comment-icon::before {
+    content: "";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--accent-color);
+}
+
+.group-icon::before {
+    content: "";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--accent-color);
+}
+
+.stock-icon::before {
+    content: "";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--accent-color);
+}
+
+/* Panel Footer */
+.panel-footer {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(58, 74, 90, 0.5);
+}
+
+.footer-text {
+    font-size: 0.8rem;
+    color: var(--stone-gray);
+    margin-bottom: 0.3rem;
+}
+
+.footer-note {
+    font-size: 0.75rem;
+    color: #4a5a6a;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .brand-name {
+        font-size: 1.8rem;
+    }
+    
+    .logo-frame {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .main-panel {
+        padding: 1.2rem;
+    }
+    
+    .panel-title {
+        font-size: 1.2rem;
+    }
+    
+    .link-button {
+        padding: 0.9rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-name {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.8rem;
+    }
+    
+    .logo-frame {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .panel-title {
+        font-size: 1rem;
+    }
+    
+    .link-button {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .button-icon {
+        margin-right: 8px;
+        font-size: 1rem;
+    }
+}
+
+/* Animation for page load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header, .logo-container, .main-panel {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.logo-container { animation-delay: 0.2s; }
+.main-panel { animation-delay: 0.4s; }

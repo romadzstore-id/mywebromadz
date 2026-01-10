@@ -3,116 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store Link-in-Bio</title>
-    <meta name="description" content="Official Store Links & Community">
+    <title>PixelLink - Link-in-Bio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <div id="loading-screen">
-        <div class="loader-content">
-            <div class="pixel-text">MEMUAT STORE..</div>
-            <div class="loading-bar-container">
-                <div class="loading-bar-fill"></div>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="pixel-loader">
+                <div class="pixel-block"></div>
+                <div class="pixel-block"></div>
+                <div class="pixel-block"></div>
+                <div class="pixel-block"></div>
+                <div class="pixel-block"></div>
             </div>
+            <h2 class="loading-text">Memuat Store<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></h2>
         </div>
     </div>
 
+    <!-- Background Pixel Grid -->
+    <div class="pixel-grid"></div>
+    
+    <!-- Main Content -->
     <main class="container">
-        
-        <header class="profile-section">
-            <div class="avatar-frame">
-                <img src="https://files.catbox.moe/5vidyd.jpg" alt="Store Logo" class="avatar-img">
-            </div>
-            <h1 class="brand-name">OFFICIAL STORE</h1>
-            <p class="brand-sub">Trusted • Fast • Secure</p>
+        <!-- Header -->
+        <header class="header">
+            <h1 class="brand-name">Pixel<span class="brand-accent">Link</span></h1>
+            <p class="subtitle">Portal Link Terkumpul</p>
         </header>
 
-        <div class="links-wrapper">
-            
-            <a href="https://wa.me/6283171889478" target="_blank" class="pixel-btn wa-btn">
-                <span class="icon-box">
-                    <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M4 4h16v12h-4l-4 4-4-4H4V4z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">WhatsApp Admin</span>
-            </a>
-
-            <a href="https://t.me/rmddz" target="_blank" class="pixel-btn tg-btn">
-                <span class="icon-box">
-                    <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M2 12l20-10-4 18-6-4-2 6v-6l-4-2z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Telegram Admin</span>
-            </a>
-
-            <div class="separator">TESTIMONI</div>
-
-            <a href="https://t.me/rmddztrust" target="_blank" class="pixel-btn info-btn">
-                <span class="icon-box">
-                    <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M12 2l3 7h7l-5 4 2 7-7-4-7 4 2-7-5-4h7z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Testimoni Telegram</span>
-            </a>
-
-            <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" target="_blank" class="pixel-btn info-btn">
-                <span class="icon-box">
-                    <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M12 2l3 7h7l-5 4 2 7-7-4-7 4 2-7-5-4h7z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Testimoni WhatsApp</span>
-            </a>
-
-            <div class="separator">MARKETPLACE</div>
-
-            <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" target="_blank" class="pixel-btn market-btn">
-                <span class="icon-box">
-                   <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M4 8h16v12H4V8zm2-6h10v4H6V2z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Group Market 1</span>
-            </a>
-
-            <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" target="_blank" class="pixel-btn market-btn">
-                <span class="icon-box">
-                   <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M4 8h16v12H4V8zm2-6h10v4H6V2z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Group Market 2</span>
-            </a>
-
-            <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" target="_blank" class="pixel-btn market-btn">
-                <span class="icon-box">
-                   <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M4 8h16v12H4V8zm2-6h10v4H6V2z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Group Market 3</span>
-            </a>
-
-            <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" target="_blank" class="pixel-btn market-btn">
-                <span class="icon-box">
-                   <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M4 8h16v12H4V8zm2-6h10v4H6V2z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Group Market 4</span>
-            </a>
-
-            <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" target="_blank" class="pixel-btn market-btn">
-                <span class="icon-box">
-                   <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M4 8h16v12H4V8zm2-6h10v4H6V2z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Group Market 5</span>
-            </a>
-
-            <div class="separator">INFO STOK</div>
-
-            <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" target="_blank" class="pixel-btn stock-btn">
-                <span class="icon-box">
-                    <svg viewBox="0 0 24 24" class="pixel-icon"><path d="M2 6h20v14H2V6zm2-4h16v2H4V2z" fill="currentColor"/></svg>
-                </span>
-                <span class="btn-text">Group Khusus Stok</span>
-            </a>
-
+        <!-- Logo Container -->
+        <div class="logo-container">
+            <div class="logo-frame">
+                <img src="https://files.catbox.moe/5vidyd.jpg" alt="Logo Brand" class="logo-img" id="logo">
+                <div class="logo-glow"></div>
+            </div>
         </div>
 
-        <footer class="footer">
-            <p>&copy; 2024 Store All Rights Reserved.</p>
-        </footer>
+        <!-- Main Panel -->
+        <div class="main-panel">
+            <!-- Panel Title -->
+            <div class="panel-header">
+                <h2 class="panel-title"><i class="fas fa-link"></i> Link Platform</h2>
+                <div class="panel-subtitle">Pilih platform yang ingin diakses</div>
+            </div>
 
+            <!-- Links Container -->
+            <div class="links-container" id="links-container">
+                <!-- Links will be generated by JavaScript -->
+            </div>
+
+            <!-- Footer -->
+            <div class="panel-footer">
+                <p class="footer-text">© 2023 PixelLink - Dark Pixel Theme</p>
+                <p class="footer-note">Semua link resmi dan terverifikasi</p>
+            </div>
+        </div>
     </main>
 
     <script src="script.js"></script>
