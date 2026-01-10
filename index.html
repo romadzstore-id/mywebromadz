@@ -5,109 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROMADZ STORE - Digital Store</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="https://files.catbox.moe/5vidyd.jpg">
+    <link rel="icon" href="https://files.catbox.moe/5vidyd.jpg">
 </head>
 <body>
     <!-- Loading Screen -->
-    <div id="loading-screen">
+    <div id="loading-screen" class="loading-screen">
         <div class="loading-container">
-            <div class="loading-pixel"></div>
-            <p class="loading-text">Memuat Store<span class="loading-dots">...</span></p>
+            <div class="pixel-loader"></div>
+            <h2 class="loading-text">Memuat Store..</h2>
         </div>
     </div>
 
     <!-- Main Content -->
-    <div id="main-content" class="hidden">
+    <div class="container">
+        <!-- Header with Logo -->
         <header class="header">
             <div class="logo-container">
-                <div class="logo-frame">
-                    <img src="https://files.catbox.moe/5vidyd.jpg" alt="ROMADZ STORE Logo" class="logo">
-                    <div class="logo-glow"></div>
-                </div>
-                <h1 class="brand-name">ROMADZ STORE</h1>
-                <p class="slogan">anda puas - Kami senang</p>
+                <img src="https://files.catbox.moe/5vidyd.jpg" alt="ROMADZ STORE Logo" class="logo">
+                <div class="pixel-frame"></div>
             </div>
+            <h1 class="brand-name">ROMADZ STORE</h1>
+            <p class="slogan">anda puas - Kami senang</p>
         </header>
 
-        <main class="container">
-            <!-- Section Contact -->
-            <section class="panel pixel-panel">
-                <div class="panel-header">
-                    <div class="pixel-title">CONTACT</div>
-                </div>
-                <div class="panel-content">
-                    <a href="https://wa.me/6283171889478" class="pixel-button" target="_blank">
-                        <span class="button-icon">📱</span>
-                        <span class="button-text">WhatsApp</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                    <a href="https://t.me/rmddz" class="pixel-button" target="_blank">
-                        <span class="button-icon">✈️</span>
-                        <span class="button-text">Telegram</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                </div>
-            </section>
+        <!-- Contact Section -->
+        <section class="section" id="contact-section">
+            <div class="section-header">
+                <div class="pixel-icon contact-icon"></div>
+                <h2 class="section-title">Contact</h2>
+            </div>
+            
+            <div class="links-grid">
+                <a href="https://wa.me/6283171889478" target="_blank" class="link-button whatsapp-btn">
+                    <div class="button-icon whatsapp-icon"></div>
+                    <span class="button-text">WhatsApp</span>
+                    <div class="button-glow"></div>
+                </a>
+                
+                <a href="https://t.me/rmddz" target="_blank" class="link-button telegram-btn">
+                    <div class="button-icon telegram-icon"></div>
+                    <span class="button-text">Telegram</span>
+                    <div class="button-glow"></div>
+                </a>
+            </div>
+        </section>
 
-            <!-- Section Testimoni -->
-            <section class="panel pixel-panel">
-                <div class="panel-header">
-                    <div class="pixel-title">TESTIMONI</div>
-                </div>
-                <div class="panel-content">
-                    <a href="https://t.me/rmddztrust" class="pixel-button" target="_blank">
-                        <span class="button-icon">💬</span>
-                        <span class="button-text">Testimoni Telegram</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                    <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" class="pixel-button" target="_blank">
-                        <span class="button-icon">⭐</span>
-                        <span class="button-text">Testimoni WhatsApp</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                </div>
-            </section>
+        <!-- Testimoni Section -->
+        <section class="section" id="testimoni-section">
+            <div class="section-header">
+                <div class="pixel-icon testimoni-icon"></div>
+                <h2 class="section-title">Testimoni</h2>
+            </div>
+            
+            <div class="links-grid">
+                <a href="https://t.me/rmddztrust" target="_blank" class="link-button telegram-btn">
+                    <div class="button-icon testimoni-telegram-icon"></div>
+                    <span class="button-text">Telegram</span>
+                    <div class="button-glow"></div>
+                </a>
+                
+                <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" target="_blank" class="link-button whatsapp-btn">
+                    <div class="button-icon testimoni-whatsapp-icon"></div>
+                    <span class="button-text">WhatsApp Channel</span>
+                    <div class="button-glow"></div>
+                </a>
+            </div>
+        </section>
 
-            <!-- Section Group -->
-            <section class="panel pixel-panel">
-                <div class="panel-header">
-                    <div class="pixel-title">GROUP MARKETPLACE</div>
-                </div>
-                <div class="panel-content">
-                    <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" class="pixel-button" target="_blank">
-                        <span class="button-icon">👥</span>
-                        <span class="button-text">Groups Marketplace 1</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" class="pixel-button" target="_blank">
-                        <span class="button-icon">👥</span>
-                        <span class="button-text">Groups Marketplace 2</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" class="pixel-button" target="_blank">
-                        <span class="button-icon">👥</span>
-                        <span class="button-text">Groups Marketplace 3</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" class="pixel-button" target="_blank">
-                        <span class="button-icon">👥</span>
-                        <span class="button-text">Groups Marketplace 4</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" class="pixel-button" target="_blank">
-                        <span class="button-icon">👥</span>
-                        <span class="button-text">Groups Marketplace 5</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                    <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" class="pixel-button" target="_blank">
-                        <span class="button-icon">📦</span>
-                        <span class="button-text">Groups Khusus Stok</span>
-                        <span class="button-arrow">→</span>
-                    </a>
-                </div>
-            </section>
-        </main>
+        <!-- Group Section -->
+        <section class="section" id="group-section">
+            <div class="section-header">
+                <div class="pixel-icon group-icon"></div>
+                <h2 class="section-title">Group</h2>
+            </div>
+            
+            <div class="links-grid">
+                <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" target="_blank" class="link-button group-btn">
+                    <div class="button-icon group-whatsapp-icon"></div>
+                    <span class="button-text">Marketplace 1</span>
+                    <div class="button-glow"></div>
+                </a>
+                
+                <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" target="_blank" class="link-button group-btn">
+                    <div class="button-icon group-whatsapp-icon"></div>
+                    <span class="button-text">Marketplace 2</span>
+                    <div class="button-glow"></div>
+                </a>
+                
+                <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" target="_blank" class="link-button group-btn">
+                    <div class="button-icon group-whatsapp-icon"></div>
+                    <span class="button-text">Marketplace 3</span>
+                    <div class="button-glow"></div>
+                </a>
+                
+                <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" target="_blank" class="link-button group-btn">
+                    <div class="button-icon group-whatsapp-icon"></div>
+                    <span class="button-text">Marketplace 4</span>
+                    <div class="button-glow"></div>
+                </a>
+                
+                <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" target="_blank" class="link-button group-btn">
+                    <div class="button-icon group-whatsapp-icon"></div>
+                    <span class="button-text">Marketplace 5</span>
+                    <div class="button-glow"></div>
+                </a>
+                
+                <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" target="_blank" class="link-button special-group-btn">
+                    <div class="button-icon special-group-icon"></div>
+                    <span class="button-text">Khusus Stok</span>
+                    <div class="button-glow"></div>
+                </a>
+            </div>
+        </section>
 
+        <!-- Footer -->
         <footer class="footer">
             <p class="footer-text">© ROMADZ STORE ID – Digital Store</p>
         </footer>
