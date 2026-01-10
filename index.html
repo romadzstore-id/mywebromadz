@@ -3,220 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelGate | Link-in-Bio</title>
+    <title>ROMADZ STORE - Digital Store</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://files.catbox.moe/5vidyd.jpg">
 </head>
 <body>
     <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <div class="pixel-grid-loader">
-                <div class="pixel-row">
-                    <div class="pixel-cell active"></div>
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell"></div>
-                </div>
-                <div class="pixel-row">
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell active"></div>
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell"></div>
-                </div>
-                <div class="pixel-row">
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell active"></div>
-                    <div class="pixel-cell"></div>
-                    <div class="pixel-cell"></div>
-                </div>
-            </div>
-            <h2 class="loading-text">INITIALIZING<span class="blink">_</span></h2>
-            <div class="loading-progress">
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
-                <div class="progress-text">LOADING ROMADZ STORE...</div>
-            </div>
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="loading-pixel"></div>
+            <p class="loading-text">Memuat Store<span class="loading-dots">...</span></p>
         </div>
     </div>
 
-    <!-- Pixel Background -->
-    <div class="pixel-background">
-        <div class="pixel-grid-layer"></div>
-        <div class="pixel-noise"></div>
-    </div>
-    
     <!-- Main Content -->
-    <main class="container">
-        <!-- Header -->
+    <div id="main-content" class="hidden">
         <header class="header">
-            <div class="pixel-border-top"></div>
-            <div class="brand-container">
-                <div class="pixel-title">
-                    <span class="title-pixel">█</span>
-                    <h1 class="brand-name">ROMADZ<span class="brand-accent">STORE</span></h1>
-                    <span class="title-pixel">█</span>
+            <div class="logo-container">
+                <div class="logo-frame">
+                    <img src="https://files.catbox.moe/5vidyd.jpg" alt="ROMADZ STORE Logo" class="logo">
+                    <div class="logo-glow"></div>
                 </div>
-                <p class="subtitle">DIGITAL PORTAL SYSTEM</p>
+                <h1 class="brand-name">ROMADZ STORE</h1>
+                <p class="slogan">anda puas - Kami senang</p>
             </div>
-            <div class="pixel-border-bottom"></div>
         </header>
 
-        <!-- Logo Container -->
-        <div class="logo-container">
-            <div class="pixel-frame">
-                <div class="pixel-frame-inner">
-                    <div class="pixel-frame-corner tl"></div>
-                    <div class="pixel-frame-corner tr"></div>
-                    <div class="pixel-frame-corner bl"></div>
-                    <div class="pixel-frame-corner br"></div>
-                    
-                    <div class="logo-wrapper">
-                        <img src="https://files.catbox.moe/5vidyd.jpg" alt="Logo Brand" class="logo-img pixelated" id="logo">
-                        <div class="pixel-overlay"></div>
-                    </div>
+        <main class="container">
+            <!-- Section Contact -->
+            <section class="panel pixel-panel">
+                <div class="panel-header">
+                    <div class="pixel-title">CONTACT</div>
                 </div>
-                <div class="pixel-glow"></div>
-            </div>
-            <div class="pixel-connector"></div>
-        </div>
-
-        <!-- Main Panel -->
-        <div class="main-panel">
-            <!-- Panel Decoration -->
-            <div class="panel-decoration">
-                <div class="pixel-corner tl"></div>
-                <div class="pixel-corner tr"></div>
-                <div class="pixel-corner bl"></div>
-                <div class="pixel-corner br"></div>
-                <div class="pixel-border-h"></div>
-                <div class="pixel-border-v"></div>
-            </div>
-
-            <!-- Panel Header -->
-            <div class="panel-header">
-                <div class="panel-title-container">
-                    <div class="pixel-icon-title">
-                        <i class="fas fa-link"></i>
-                    </div>
-                    <h2 class="panel-title">
-                        <span class="title-char">L</span>
-                        <span class="title-char">I</span>
-                        <span class="title-char">N</span>
-                        <span class="title-char">K</span>
-                        <span class="title-space"> </span>
-                        <span class="title-char">C</span>
-                        <span class="title-char">A</span>
-                        <span class="title-char">T</span>
-                        <span class="title-char">E</span>
-                        <span class="title-char">G</span>
-                        <span class="title-char">O</span>
-                        <span class="title-char">R</span>
-                        <span class="title-char">I</span>
-                        <span class="title-char">E</span>
-                        <span class="title-char">S</span>
-                    </h2>
+                <div class="panel-content">
+                    <a href="https://wa.me/6283171889478" class="pixel-button" target="_blank">
+                        <span class="button-icon">📱</span>
+                        <span class="button-text">WhatsApp</span>
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <a href="https://t.me/rmddz" class="pixel-button" target="_blank">
+                        <span class="button-icon">✈️</span>
+                        <span class="button-text">Telegram</span>
+                        <span class="button-arrow">→</span>
+                    </a>
                 </div>
-                <div class="panel-status">
-                    <div class="status-led active"></div>
-                    <span class="status-text">ONLINE</span>
-                </div>
-            </div>
+            </section>
 
-            <!-- Categories Container -->
-            <div class="categories-container">
-                <!-- Contact Section -->
-                <div class="category-section pixel-card" data-category="contact">
-                    <div class="category-header">
-                        <div class="category-icon contact-icon">
-                            <div class="pixel-icon">
-                                <i class="fas fa-user"></i>
-                            </div>
-                        </div>
-                        <div class="category-info">
-                            <h3 class="category-title">CONTACT</h3>
-                            <div class="category-count">2 CHANNELS</div>
-                        </div>
-                        <div class="category-indicator">
-                            <div class="pixel-arrow">▶</div>
-                        </div>
-                    </div>
-                    <div class="links-container" id="contact-links"></div>
+            <!-- Section Testimoni -->
+            <section class="panel pixel-panel">
+                <div class="panel-header">
+                    <div class="pixel-title">TESTIMONI</div>
                 </div>
-
-                <!-- Testimoni Section -->
-                <div class="category-section pixel-card" data-category="testimoni">
-                    <div class="category-header">
-                        <div class="category-icon testimoni-icon">
-                            <div class="pixel-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="category-info">
-                            <h3 class="category-title">TESTIMONI</h3>
-                            <div class="category-count">2 CHANNELS</div>
-                        </div>
-                        <div class="category-indicator">
-                            <div class="pixel-arrow">▶</div>
-                        </div>
-                    </div>
-                    <div class="links-container" id="testimoni-links"></div>
+                <div class="panel-content">
+                    <a href="https://t.me/rmddztrust" class="pixel-button" target="_blank">
+                        <span class="button-icon">💬</span>
+                        <span class="button-text">Testimoni Telegram</span>
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" class="pixel-button" target="_blank">
+                        <span class="button-icon">⭐</span>
+                        <span class="button-text">Testimoni WhatsApp</span>
+                        <span class="button-arrow">→</span>
+                    </a>
                 </div>
+            </section>
 
-                <!-- Groups Section -->
-                <div class="category-section pixel-card" data-category="groups">
-                    <div class="category-header">
-                        <div class="category-icon groups-icon">
-                            <div class="pixel-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                        </div>
-                        <div class="category-info">
-                            <h3 class="category-title">GROUPS</h3>
-                            <div class="category-count">6 CHANNELS</div>
-                        </div>
-                        <div class="category-indicator">
-                            <div class="pixel-arrow">▶</div>
-                        </div>
-                    </div>
-                    <div class="links-container" id="groups-links"></div>
+            <!-- Section Group -->
+            <section class="panel pixel-panel">
+                <div class="panel-header">
+                    <div class="pixel-title">GROUP MARKETPLACE</div>
                 </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="panel-footer">
-                <div class="footer-grid">
-                    <div class="footer-item">
-                        <div class="pixel-dot"></div>
-                        <span>SYSTEM READY</span>
-                    </div>
-                    <div class="footer-item">
-                        <div class="pixel-dot"></div>
-                        <span>10 LINKS ACTIVE</span>
-                    </div>
-                    <div class="footer-item">
-                        <div class="pixel-dot"></div>
-                        <span>V1.0.0</span>
-                    </div>
+                <div class="panel-content">
+                    <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" class="pixel-button" target="_blank">
+                        <span class="button-icon">👥</span>
+                        <span class="button-text">Groups Marketplace 1</span>
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" class="pixel-button" target="_blank">
+                        <span class="button-icon">👥</span>
+                        <span class="button-text">Groups Marketplace 2</span>
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" class="pixel-button" target="_blank">
+                        <span class="button-icon">👥</span>
+                        <span class="button-text">Groups Marketplace 3</span>
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" class="pixel-button" target="_blank">
+                        <span class="button-icon">👥</span>
+                        <span class="button-text">Groups Marketplace 4</span>
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" class="pixel-button" target="_blank">
+                        <span class="button-icon">👥</span>
+                        <span class="button-text">Groups Marketplace 5</span>
+                        <span class="button-arrow">→</span>
+                    </a>
+                    <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" class="pixel-button" target="_blank">
+                        <span class="button-icon">📦</span>
+                        <span class="button-text">Groups Khusus Stok</span>
+                        <span class="button-arrow">→</span>
+                    </a>
                 </div>
-            </div>
-        </div>
+            </section>
+        </main>
 
-        <!-- Decorative Pixels -->
-        <div class="floating-pixels">
-            <div class="pixel-float p1"></div>
-            <div class="pixel-float p2"></div>
-            <div class="pixel-float p3"></div>
-            <div class="pixel-float p4"></div>
-        </div>
-    </main>
+        <footer class="footer">
+            <p class="footer-text">© ROMADZ STORE ID – Digital Store</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
