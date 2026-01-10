@@ -1,20 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loader = document.getElementById('loader');
     
-    // Simulasi loading screen agar user bisa melihat animasi "Memuat Store"
-    // Dibuat singkat agar tetap snappy
+    // Smooth fade out untuk loader
     window.addEventListener('load', () => {
         setTimeout(() => {
             loader.style.opacity = '0';
-            loader.style.visibility = 'hidden';
-            
-            // Trigger haptic feedback ringan jika di mobile (opsional)
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }, 1000);
+    });
+
+    // Menghilangkan context menu default (opsional, untuk feel "App")
+    // Dihilangkan jika ingin tetap standar browser
+    /*
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    */
+
+    // Tambahkan feedback getar saat tombol ditekan (Hanya Android)
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('touchstart', () => {
             if (window.navigator.vibrate) {
-                window.navigator.vibrate(50);
+                window.navigator.vibrate(10);
             }
-        }, 1200); // 1.2 detik cukup untuk kesan premium
+        });
     });
 });
-
-// Efek suara click pixel (Opsional - Jika ingin ditambahkan nanti)
-// Untuk performa, kita fokus pada visual saja saat ini.
