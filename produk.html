@@ -1,77 +1,131 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produk — Romadz Store</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.2/src/css/icons.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk | Romadz Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <div class="nav">
-    <div class="logo">
-      <img src="https://files.catbox.moe/tdv5h0.jpg">
-      <span>Romadz Store</span>
+    <div id="loading-screen">
+        <div class="loader-spinner"></div>
     </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="produk.html" class="active">Produk</a>
-      <a href="#">Contact</a>
+
+    <div id="toast-container"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Romadz Store">
+            <span>Romadz Store</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="produk.html" class="active">Produk</a></li>
+            <li><a href="#" onclick="showToast('Silahkan hubungi via WA/Telegram')">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
-  </div>
-</header>
 
-<main class="products">
+    <main class="container">
+        <div class="page-header">
+            <h2>Layanan Kami</h2>
+            <p>Pilih layanan digital berkualitas tinggi.</p>
+        </div>
 
-  <h2>Layanan Kami</h2>
+        <section class="category-section">
+            <h3 class="category-title"><i class="fas fa-server"></i> Hosting & Panel</h3>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                    <h4>Install Panel Pterodactyl</h4>
+                    <p>Jasa instalasi panel full setup siap pakai.</p>
+                    <button class="btn-card" onclick="orderProduct('Install Panel Pterodactyl')">Hubungi Kami</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h4>Install Theme Pterodactyl</h4>
+                    <p>Kustomisasi tampilan panel agar lebih menarik.</p>
+                    <button class="btn-card" onclick="orderProduct('Install Theme Pterodactyl')">Hubungi Kami</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-tools"></i></div>
+                    <h4>Install / Fix Nodes</h4>
+                    <p>Perbaikan dan instalasi node server.</p>
+                    <button class="btn-card" onclick="orderProduct('Install/Fix Nodes')">Hubungi Kami</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-globe"></i></div>
+                    <h4>Domain Cloudflare 1 Tahun</h4>
+                    <p>Domain aktif 1 tahun full control.</p>
+                    <button class="btn-card" onclick="orderProduct('Domain Cloudflare')">Hubungi Kami</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-lock"></i></div>
+                    <h4>Panel Pterodactyl Private</h4>
+                    <p>Panel admin private performa tinggi.</p>
+                    <button class="btn-card" onclick="orderProduct('Panel Private')">Hubungi Kami</button>
+                </div>
+            </div>
+        </section>
 
-  <div class="product-grid">
+        <section class="category-section">
+            <h3 class="category-title"><i class="fas fa-code"></i> Script Bot</h3>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-bug"></i></div>
+                    <h4>Perbaikan / Tambah Fitur</h4>
+                    <p>Fix error script bot atau request fitur baru.</p>
+                    <button class="btn-card" onclick="orderProduct('Fix/Tambah Fitur Script')">Hubungi Kami</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-file-signature"></i></div>
+                    <h4>Rename Script</h4>
+                    <p>Rebranding script bot sesuai nama Anda.</p>
+                    <button class="btn-card" onclick="orderProduct('Rename Script')">Hubungi Kami</button>
+                </div>
+            </div>
+        </section>
 
-    <!-- Hosting -->
-    <div class="card">
-      <h3>Hosting</h3>
-      <ul>
-        <li>Install Panel Pterodactyl</li>
-        <li>Install Theme Pterodactyl</li>
-        <li>Install / Fix Nodes</li>
-        <li>Domain Cloudflare 1 Tahun</li>
-        <li>Panel Pterodactyl Private</li>
-      </ul>
-      <button onclick="toast('Hubungi kami untuk Hosting')">Hubungi Kami</button>
-    </div>
+        <section class="category-section">
+            <h3 class="category-title"><i class="fas fa-box-open"></i> Lainnya</h3>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h4>Nokos WhatsApp</h4>
+                    <p>Nomor kosong fresh atau aged (save).</p>
+                    <button class="btn-card" onclick="orderProduct('Nokos WhatsApp')">Hubungi Kami</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-crown"></i></div>
+                    <h4>Akun Premium</h4>
+                    <p>Netflix, Capcut, Spotify, dan lainnya.</p>
+                    <button class="btn-card" onclick="orderProduct('Akun Premium')">Hubungi Kami</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-hashtag"></i></div>
+                    <h4>Jasa Suntik Sosmed</h4>
+                    <p>Followers, Likes, Views untuk semua sosmed.</p>
+                    <button class="btn-card" onclick="orderProduct('Suntik Sosmed')">Hubungi Kami</button>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-question-circle"></i></div>
+                    <h4>Request Lainnya</h4>
+                    <p>Butuh hal lain? Tanyakan saja langsung.</p>
+                    <button class="btn-card" onclick="orderProduct('Request Lainnya')">Hubungi Kami</button>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Script Bot -->
-    <div class="card">
-      <h3>Script Bot</h3>
-      <ul>
-        <li>Perbaikan / Tambah Fitur</li>
-        <li>Rename Script</li>
-      </ul>
-      <button onclick="toast('Hubungi kami untuk Script Bot')">Hubungi Kami</button>
-    </div>
+    <footer>
+        <p>&copy; Romadz Store ID — Hak Cipta Dilindungi</p>
+    </footer>
 
-    <!-- Lainnya -->
-    <div class="card">
-      <h3>Lainnya</h3>
-      <ul>
-        <li>Nokos WhatsApp Fresh / Save</li>
-        <li>Akun Premium (Netflix, Spotify, dll)</li>
-        <li>Jasa Suntik All Sosmed</li>
-        <li>Lainnya (Tanyakan Saja)</li>
-      </ul>
-      <button onclick="toast('Hubungi kami untuk layanan lainnya')">Hubungi Kami</button>
-    </div>
-
-  </div>
-</main>
-
-<footer>
-  © Romadz Store ID — Hak Cipta Dilindungi
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

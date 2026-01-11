@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Romadz Store</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/phosphor-icons@1.4.2/src/css/icons.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romadz Store | Digital Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Loading Screen -->
-<div id="loading">
-  <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Logo">
-  <p>Loading Store...</p>
-</div>
-
-<header>
-  <div class="nav">
-    <div class="logo">
-      <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Romadz Store">
-      <span>Romadz Store</span>
+    <div id="loading-screen">
+        <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Logo" class="loading-logo">
+        <p>Loading Store...</p>
+        <div class="loader-line"></div>
     </div>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="produk.html">Produk</a>
-      <a href="#contact">Contact</a>
+
+    <div id="toast-container"></div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Romadz Store">
+            <span>Romadz Store</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="produk.html">Produk</a></li>
+            <li><a href="#" onclick="showToast('Silahkan hubungi via WA/Telegram')">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
     </nav>
-  </div>
-</header>
 
-<main class="hero">
-  <h1>Romadz Store</h1>
-  <p>Digital Services & Hosting</p>
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">Professional & Trusted</span>
+            <h1>Romadz Store</h1>
+            <p class="subtitle">Digital Services & Hosting Solutions</p>
+            <p class="description">Solusi terbaik untuk kebutuhan digital Anda. Cepat, Aman, dan Berkualitas.</p>
+            
+            <div class="cta-group">
+                <a href="produk.html" class="btn btn-primary">Mulai Sekarang</a>
+                <a href="produk.html" class="btn btn-outline">Lihat Produk <i class="fas fa-arrow-right"></i></a>
+            </div>
 
-  <div class="cta">
-    <button class="btn primary" onclick="toast('Selamat datang di Romadz Store')">Mulai</button>
-    <a href="produk.html" class="btn secondary">Lihat Produk</a>
-  </div>
+            <div class="social-icons">
+                <a href="#" class="icon-link" onclick="showToast('Membuka WhatsApp...')"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="icon-link" onclick="showToast('Membuka Telegram...')"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#" class="icon-link" onclick="showToast('Lihat Testimoni...')"><i class="fas fa-star"></i></a>
+            </div>
+        </div>
+        
+        <div class="glow-effect"></div>
+    </header>
 
-  <div id="contact" class="contact-icons">
-    <a href="#" title="WhatsApp"><i class="ph-whatsapp-logo"></i></a>
-    <a href="#" title="Telegram"><i class="ph-telegram-logo"></i></a>
-    <a href="#" title="Testimoni"><i class="ph-star"></i></a>
-  </div>
-</main>
+    <footer>
+        <p>&copy; Romadz Store ID — Hak Cipta Dilindungi</p>
+    </footer>
 
-<footer>
-  © Romadz Store ID — Hak Cipta Dilindungi
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
