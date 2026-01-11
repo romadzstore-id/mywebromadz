@@ -5,20 +5,44 @@ const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 const toast = document.getElementById('toast');
 const toastMessage = document.getElementById('toastMessage');
-const contactIcons = document.querySelectorAll('.contact-icon');
+const contactLinks = document.querySelectorAll('.contact-link');
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Start loading progress
+    startLoadingProgress();
+    
+    // Initialize tooltips
+    initTooltips();
+    
+    // Initialize animations
+    initAnimations();
+    
+    // Set active nav link based on current page
+    setActiveNavLink();
+    
+    // Add smooth scroll behavior
+    initSmoothScroll();
+});
 
 // Loading Screen
-window.addEventListener('load', () => {
-    // Simulate loading delay for better UX
-    setTimeout(() => {
-        loadingOverlay.style.opacity = '0';
+function startLoadingProgress() {
+    const loadingProgress = document.querySelector('.loading-progress');
+    if (loadingProgress) {
+        loadingProgress.style.width = '100%';
+        
+        // Hide loading overlay after animation completes
         setTimeout(() => {
-            loadingOverlay.style.display = 'none';
+            loadingOverlay.style.opacity = '0';
+            loadingOverlay.style.visibility = 'hidden';
+            
             // Show welcome toast
-            showToast('Selamat datang di Romadz Store!');
-        }, 500);
-    }, 1500);
-});
+            setTimeout(() => {
+                showToast('Selamat datang di Romadz Store!', 'success');
+            }, 500);
+        }, 2000);
+    }
+}
 
 // Mobile Menu Toggle
 mobileToggle.addEventListener('click', () => {
@@ -36,36 +60,73 @@ navLinks.forEach(link => {
     });
 });
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            const headerHeight = document.querySelector('.navbar').offsetHeight;
-            const targetPosition = targetElement.offsetTop - headerHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        mobileToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 });
 
-// Contact Icon Interactions
-contactIcons.forEach(icon => {
-    icon.addEventListener('click', (e) => {
+// Set active nav link based on current page
+function setActiveNavLink() {
+    const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        
+        const linkHref = link.getAttribute('href');
+        if (linkHref === '/' && currentPage === '') {
+            link.classList.add('active');
+        } else if (linkHref.includes(currentPage)) {
+            link.classList.add('active');
+        } else if (currentPage === '' && linkHref === '/') {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Smooth Scroll
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if it's just "#"
+            if (href === '#') return;
+            
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                e.preventDefault();
+                
+                const headerHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetElement.offsetTop - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                
+                // Update URL hash without scrolling
+                history.pushState(null, null, href);
+            }
+        });
+    });
+}
+
+// Contact Link Interactions
+contactLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        if (!link.getAttribute('href').startsWith('http')) return;
+        
         e.preventDefault();
-        const href = icon.getAttribute('href');
-        const title = icon.getAttribute('title');
+        const href = link.getAttribute('href');
+        const platform = link.closest('.contact-card').querySelector('.contact-title').textContent;
         
         // Show toast notification
-        showToast(`Membuka ${title}...`);
+        showToast(`Membuka ${platform}...`, 'info');
         
         // Open link after a short delay
         setTimeout(() => {
@@ -74,7 +135,7 @@ contactIcons.forEach(icon => {
     });
 });
 
-// Toast Notification Function
+// Toast Notification System
 function showToast(message, type = 'info') {
     // Set message
     toastMessage.textContent = message;
@@ -84,20 +145,24 @@ function showToast(message, type = 'info') {
     
     switch(type) {
         case 'success':
-            toast.style.backgroundColor = '#10B981';
+            toast.style.borderLeftColor = '#10B981';
             toastIcon.className = 'toast-icon fas fa-check-circle';
+            toastIcon.style.color = '#10B981';
             break;
         case 'error':
-            toast.style.backgroundColor = '#EF4444';
+            toast.style.borderLeftColor = '#EF4444';
             toastIcon.className = 'toast-icon fas fa-exclamation-circle';
+            toastIcon.style.color = '#EF4444';
             break;
         case 'warning':
-            toast.style.backgroundColor = '#F59E0B';
+            toast.style.borderLeftColor = '#F59E0B';
             toastIcon.className = 'toast-icon fas fa-exclamation-triangle';
+            toastIcon.style.color = '#F59E0B';
             break;
         default:
-            toast.style.backgroundColor = '#1E40AF';
+            toast.style.borderLeftColor = '#1E40AF';
             toastIcon.className = 'toast-icon fas fa-info-circle';
+            toastIcon.style.color = '#1E40AF';
     }
     
     // Show toast
@@ -110,54 +175,34 @@ function showToast(message, type = 'info') {
 }
 
 // Navbar scroll effect
+let lastScrollTop = 0;
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-        navbar.style.padding = '10px 0';
-    } else {
-        navbar.style.boxShadow = 'none';
-        navbar.style.padding = '15px 0';
-    }
-});
-
-// Card hover animation enhancement
-const cards = document.querySelectorAll('.service-card, .product-card');
-cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-    });
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    card.addEventListener('mouseleave', () => {
-        card.style.transition = 'all 0.3s ease';
-    });
-});
-
-// Page transition effect
-document.addEventListener('DOMContentLoaded', () => {
-    // Fade in content after loading
-    const mainContent = document.querySelector('main, .hero, .products-header');
-    if (mainContent) {
-        mainContent.style.opacity = '0';
-        mainContent.style.transition = 'opacity 0.5s ease';
-        
-        setTimeout(() => {
-            mainContent.style.opacity = '1';
-        }, 100);
+    // Add shadow on scroll
+    if (scrollTop > 50) {
+        navbar.style.boxShadow = 'var(--shadow)';
+        navbar.style.padding = '0.5rem 0';
+    } else {
+        navbar.style.boxShadow = 'var(--shadow-sm)';
+        navbar.style.padding = '0.75rem 0';
     }
-});
-
-// Prevent form submission if any form exists
-const forms = document.querySelectorAll('form');
-forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        showToast('Fitur formulir dalam pengembangan', 'info');
-    });
+    
+    // Hide/show navbar on scroll
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+        // Scrolling down
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling up
+        navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop;
 });
 
 // Initialize tooltips
-const initTooltips = () => {
+function initTooltips() {
     const tooltipElements = document.querySelectorAll('[title]');
     tooltipElements.forEach(el => {
         const title = el.getAttribute('title');
@@ -170,62 +215,73 @@ const initTooltips = () => {
                 tooltip.className = 'tooltip';
                 tooltip.textContent = title;
                 el.appendChild(tooltip);
+                
+                // Add event listeners
+                el.addEventListener('mouseenter', () => {
+                    tooltip.style.opacity = '1';
+                    tooltip.style.visibility = 'visible';
+                    tooltip.style.transform = 'translateY(0)';
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.transform = 'translateY(10px)';
+                });
             }
         }
     });
-};
+}
 
-// Initialize tooltips when DOM is loaded
-document.addEventListener('DOMContentLoaded', initTooltips);
+// Initialize animations
+function initAnimations() {
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
 
-// Handle page visibility change
-document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) {
-        showToast('Selamat datang kembali!', 'info');
-    }
-});
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                
+                // Add delay for staggered animations
+                if (entry.target.classList.contains('service-card') || 
+                    entry.target.classList.contains('product-card')) {
+                    const cards = Array.from(entry.target.parentElement.children);
+                    const index = cards.indexOf(entry.target);
+                    entry.target.style.transitionDelay = `${index * 0.1}s`;
+                }
+            }
+        });
+    }, observerOptions);
 
-// Keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-    // Ctrl+K or Cmd+K to focus search (if exists)
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        showToast('Fitur pencarian dalam pengembangan', 'info');
-    }
-    
-    // Escape key to close mobile menu
-    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-        mobileToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-});
-
-// Add animation to elements when they come into view
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-        }
+    // Observe elements for animation
+    document.querySelectorAll('.service-card, .product-card, .contact-card, .category-header').forEach(el => {
+        observer.observe(el);
     });
-}, observerOptions);
+}
 
-// Observe elements for animation
-document.querySelectorAll('.service-card, .product-card, .section-title, .category-title').forEach(el => {
-    observer.observe(el);
+// Card hover animation enhancement
+const cards = document.querySelectorAll('.service-card, .product-card, .contact-card');
+cards.forEach(card => {
+    card.addEventListener('mouseenter', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
 });
 
 // Add CSS for animations
-const style = document.createElement('style');
-style.textContent = `
+const animationStyles = document.createElement('style');
+animationStyles.textContent = `
     .animate-in {
-        animation: fadeInUp 0.6s ease forwards;
+        animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     
     @keyframes fadeInUp {
@@ -239,8 +295,143 @@ style.textContent = `
         }
     }
     
-    .service-card, .product-card, .section-title, .category-title {
+    .service-card, .product-card, .contact-card, .category-header {
         opacity: 0;
     }
+    
+    .service-card:hover, .product-card:hover {
+        --mouse-x: 50%;
+        --mouse-y: 50%;
+        background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), 
+            rgba(30, 64, 175, 0.05) 0%, 
+            transparent 50%);
+    }
 `;
-document.head.appendChild(style);
+document.head.appendChild(animationStyles);
+
+// Handle page visibility change
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+        showToast('Selamat datang kembali!', 'info');
+    }
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+    // Escape key to close mobile menu and modals
+    if (e.key === 'Escape') {
+        mobileToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+        toast.classList.remove('show');
+    }
+    
+    // Space key to scroll down
+    if (e.key === ' ' && !e.target.matches('input, textarea, button, a')) {
+        e.preventDefault();
+        window.scrollBy({
+            top: window.innerHeight * 0.8,
+            behavior: 'smooth'
+        });
+    }
+});
+
+// Performance optimization: Debounce scroll events
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        // Update active section in viewport
+        updateActiveSection();
+    }, 100);
+});
+
+// Update active section based on scroll position
+function updateActiveSection() {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPosition = window.scrollY + 100;
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    });
+}
+
+// Preload important resources
+function preloadResources() {
+    const resources = [
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+        'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap'
+    ];
+    
+    resources.forEach(resource => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'style';
+        link.href = resource;
+        document.head.appendChild(link);
+    });
+}
+
+// Initialize preload on page load
+window.addEventListener('load', preloadResources);
+
+// Form handling (if any forms exist)
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast('Terima kasih! Pesan Anda telah dikirim.', 'success');
+        form.reset();
+        
+        // Simulate form submission
+        setTimeout(() => {
+            showToast('Tim kami akan menghubungi Anda segera.', 'info');
+        }, 1500);
+    });
+});
+
+// Copy domain to clipboard
+const domainElement = document.querySelector('.footer-domain');
+if (domainElement) {
+    domainElement.addEventListener('click', () => {
+        const domain = domainElement.textContent;
+        navigator.clipboard.writeText(domain).then(() => {
+            showToast(`Domain "${domain}" disalin ke clipboard!`, 'success');
+        }).catch(err => {
+            showToast('Gagal menyalin domain.', 'error');
+        });
+    });
+    
+    // Add cursor pointer
+    domainElement.style.cursor = 'pointer';
+    domainElement.title = 'Klik untuk menyalin domain';
+}
+
+// Lazy loading for images (if any)
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}

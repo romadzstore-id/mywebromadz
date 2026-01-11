@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produk & Layanan - ROMADZ STORE</title>
+    <meta name="description" content="Temukan berbagai layanan digital profesional dari Romadz Store: hosting, bot development, panel management, dan solusi cloud lainnya.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
 </head>
@@ -15,22 +16,41 @@
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <div class="loading-text">Loading Store<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+            <div class="loading-logo">
+                <span>R</span>
+                <span>S</span>
+            </div>
+            <div class="loading-text">Loading Products<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
         </div>
     </div>
 
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
+                <div class="logo-icon">
+                    <span>R</span>
+                    <span>S</span>
+                </div>
                 <span class="logo-text">ROMADZ <span class="logo-highlight">STORE</span></span>
             </a>
             
             <div class="nav-menu" id="navMenu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="produk.html" class="nav-link active">Produk</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="/produk.html" class="nav-link active">
+                    <i class="fas fa-cube"></i>
+                    <span>Produk</span>
+                </a>
+                <a href="#contact" class="nav-link">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Contact</span>
+                </a>
             </div>
             
             <div class="mobile-toggle" id="mobileToggle">
@@ -44,8 +64,34 @@
     <!-- Products Header -->
     <section class="products-header">
         <div class="container">
-            <h1 class="page-title">Produk & Layanan <span class="highlight">Romadz Store</span></h1>
-            <p class="page-subtitle">Solusi digital lengkap untuk kebutuhan hosting, bot, dan layanan lainnya</p>
+            <div class="breadcrumb">
+                <a href="/" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Produk & Layanan</span>
+            </div>
+            
+            <div class="header-content">
+                <h1 class="page-title">
+                    <span class="title-line">Produk & Layanan</span>
+                    <span class="title-line highlight">Romadz Store</span>
+                </h1>
+                <p class="page-subtitle">Solusi digital lengkap untuk kebutuhan hosting, bot, dan layanan lainnya dengan kualitas terbaik</p>
+                
+                <div class="header-stats">
+                    <div class="stat-badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Garansi Kepuasan</span>
+                    </div>
+                    <div class="stat-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Keamanan Terjamin</span>
+                    </div>
+                    <div class="stat-badge">
+                        <i class="fas fa-headset"></i>
+                        <span>Support 24/7</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -54,68 +100,159 @@
         <div class="container">
             <!-- Kebutuhan Hosting -->
             <div class="category-section">
-                <h2 class="category-title">
-                    <i class="fas fa-server category-icon"></i>
-                    KEBUTUHAN HOSTING
-                </h2>
+                <div class="category-header">
+                    <div class="category-icon-wrapper">
+                        <i class="fas fa-server category-icon"></i>
+                    </div>
+                    <h2 class="category-title">KEBUTUHAN HOSTING</h2>
+                    <p class="category-subtitle">Solusi hosting dan server management terbaik untuk performa optimal</p>
+                </div>
+                
                 <div class="products-grid">
                     <div class="product-card">
+                        <div class="product-badge">POPULAR</div>
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-cogs"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-cogs"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Install Panel Pterodactyl</h3>
-                        <p class="product-description">Instalasi dan konfigurasi panel Pterodactyl untuk manajemen server game dan aplikasi.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Server</span>
-                            <span class="product-tag">Panel</span>
+                        <p class="product-description">Instalasi dan konfigurasi panel Pterodactyl untuk manajemen server game dan aplikasi dengan kontrol penuh.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Full Control</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Easy Management</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Install Panel Pterodactyl')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-palette"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-palette"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Install Tema Panel</h3>
-                        <p class="product-description">Kustomisasi tampilan panel dengan tema premium yang responsif dan modern.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Custom</span>
-                            <span class="product-tag">UI/UX</span>
+                        <p class="product-description">Kustomisasi tampilan panel dengan tema premium yang responsif, modern, dan user-friendly.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Modern Design</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Responsive</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Install Tema Panel')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-tools"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-tools"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Fix / Install Nodes</h3>
-                        <p class="product-description">Perbaikan dan instalasi nodes server untuk optimasi performa dan stabilitas.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Maintenance</span>
-                            <span class="product-tag">Optimization</span>
+                        <p class="product-description">Perbaikan dan instalasi nodes server untuk optimasi performa, stabilitas, dan keamanan maksimal.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Optimization</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Stability</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Fix / Install Nodes')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="product-badge">NEW</div>
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-globe"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-globe"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Domain Cloudflare 1 Tahun</h3>
-                        <p class="product-description">Layanan domain dengan proteksi Cloudflare dan manajemen DNS yang mudah.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Domain</span>
-                            <span class="product-tag">Security</span>
+                        <p class="product-description">Layanan domain dengan proteksi Cloudflare dan manajemen DNS yang mudah, cepat, dan aman.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Cloudflare Protection</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Easy Management</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Domain Cloudflare 1 Tahun')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-lock"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-lock"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Panel Private</h3>
-                        <p class="product-description">Panel eksklusif untuk kebutuhan khusus dengan kontrol penuh dan keamanan maksimal.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Private</span>
-                            <span class="product-tag">Exclusive</span>
+                        <p class="product-description">Panel eksklusif untuk kebutuhan khusus dengan kontrol penuh, keamanan maksimal, dan performa tinggi.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Exclusive</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>High Security</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Panel Private')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -123,44 +260,100 @@
             
             <!-- Script Bot -->
             <div class="category-section">
-                <h2 class="category-title">
-                    <i class="fas fa-robot category-icon"></i>
-                    SCRIPT BOT
-                </h2>
+                <div class="category-header">
+                    <div class="category-icon-wrapper">
+                        <i class="fas fa-robot category-icon"></i>
+                    </div>
+                    <h2 class="category-title">SCRIPT BOT</h2>
+                    <p class="category-subtitle">Pengembangan dan maintenance bot untuk berbagai platform dan kebutuhan</p>
+                </div>
+                
                 <div class="products-grid">
                     <div class="product-card">
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-wrench"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-wrench"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Perbaikan Script</h3>
-                        <p class="product-description">Debugging dan perbaikan script bot yang error atau tidak berfungsi dengan baik.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Fix</span>
-                            <span class="product-tag">Debug</span>
+                        <p class="product-description">Debugging dan perbaikan script bot yang error atau tidak berfungsi dengan analisis mendalam.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Debugging</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Error Fix</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Perbaikan Script')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="product-badge">RECOMMENDED</div>
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-plus-circle"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Tambah Fitur</h3>
-                        <p class="product-description">Pengembangan fitur baru untuk meningkatkan fungsionalitas bot sesuai kebutuhan.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Development</span>
-                            <span class="product-tag">Feature</span>
+                        <p class="product-description">Pengembangan fitur baru untuk meningkatkan fungsionalitas bot sesuai kebutuhan spesifik Anda.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Custom Features</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Enhanced Functionality</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Tambah Fitur')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-signature"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-signature"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Rename Script</h3>
-                        <p class="product-description">Kustomisasi nama dan branding script bot untuk kebutuhan khusus Anda.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Custom</span>
-                            <span class="product-tag">Branding</span>
+                        <p class="product-description">Kustomisasi nama dan branding script bot untuk kebutuhan khusus dan identitas unik.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Custom Branding</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Unique Identity</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Rename Script')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -168,56 +361,129 @@
             
             <!-- Layanan Lainnya -->
             <div class="category-section">
-                <h2 class="category-title">
-                    <i class="fas fa-layer-group category-icon"></i>
-                    LAYANAN LAINNYA
-                </h2>
+                <div class="category-header">
+                    <div class="category-icon-wrapper">
+                        <i class="fas fa-layer-group category-icon"></i>
+                    </div>
+                    <h2 class="category-title">LAYANAN LAINNYA</h2>
+                    <p class="category-subtitle">Berbagai layanan digital tambahan untuk kebutuhan bisnis modern</p>
+                </div>
+                
                 <div class="products-grid">
                     <div class="product-card">
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fab fa-whatsapp"></i>
+                            <div class="icon-wrapper">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Nokos WhatsApp</h3>
-                        <p class="product-description">Layanan WhatsApp untuk kebutuhan otomasi, broadcast, dan integrasi sistem.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">WhatsApp</span>
-                            <span class="product-tag">Automation</span>
+                        <p class="product-description">Layanan WhatsApp untuk kebutuhan otomasi, broadcast, dan integrasi sistem bisnis.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Automation</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Broadcast</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Nokos WhatsApp')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-crown"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-crown"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Akun Premium</h3>
-                        <p class="product-description">Akses akun premium untuk berbagai platform dengan fitur lengkap dan tanpa batasan.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Premium</span>
-                            <span class="product-tag">Account</span>
+                        <p class="product-description">Akses akun premium untuk berbagai platform dengan fitur lengkap tanpa batasan.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Full Access</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>No Limits</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Akun Premium')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="product-badge">HOT</div>
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-hashtag"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-hashtag"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Jasa Sosial Media</h3>
-                        <p class="product-description">Manajemen dan pengembangan media sosial untuk meningkatkan engagement dan reach.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Social Media</span>
-                            <span class="product-tag">Marketing</span>
+                        <p class="product-description">Manajemen dan pengembangan media sosial untuk meningkatkan engagement dan reach bisnis.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Social Media Management</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Engagement Boost</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Jasa Sosial Media')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                     
                     <div class="product-card">
+                        <div class="card-border"></div>
                         <div class="product-icon">
-                            <i class="fas fa-code"></i>
+                            <div class="icon-wrapper">
+                                <i class="fas fa-code"></i>
+                            </div>
                         </div>
                         <h3 class="product-title">Layanan Custom</h3>
-                        <p class="product-description">Solusi khusus yang dirancang sesuai dengan kebutuhan unik bisnis digital Anda.</p>
-                        <div class="product-tags">
-                            <span class="product-tag">Custom</span>
-                            <span class="product-tag">Tailored</span>
+                        <p class="product-description">Solusi khusus yang dirancang sesuai dengan kebutuhan unik dan spesifik bisnis digital Anda.</p>
+                        <div class="product-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Tailored Solution</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>Custom Development</span>
+                            </div>
+                        </div>
+                        <div class="product-action">
+                            <button class="btn btn-outline" onclick="showOrderToast('Layanan Custom')">
+                                <span class="btn-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                                <span class="btn-text">Pesan Sekarang</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -228,24 +494,47 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Hubungi <span class="highlight">Kami</span></h2>
-            <p class="section-subtitle">Tersedia melalui berbagai platform untuk kemudahan komunikasi</p>
+            <div class="section-header">
+                <h2 class="section-title">Hubungi <span class="highlight">Kami</span></h2>
+                <p class="section-subtitle">Konsultasikan kebutuhan produk dan layanan dengan tim profesional kami</p>
+            </div>
             
-            <div class="contact-icons">
-                <a href="https://wa.me/6283171889474" class="contact-icon" target="_blank" id="whatsappBtn" title="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                    <span class="tooltip">WhatsApp</span>
-                </a>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="contact-title">WhatsApp</h3>
+                    <p class="contact-description">Konsultasi langsung via WhatsApp dengan tim support kami</p>
+                    <a href="https://wa.me/6283171889474" class="contact-link" target="_blank" id="whatsappBtn">
+                        <span>Hubungi via WhatsApp</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
                 
-                <a href="https://t.me/rmddz" class="contact-icon" target="_blank" id="telegramBtn" title="Telegram">
-                    <i class="fab fa-telegram"></i>
-                    <span class="tooltip">Telegram</span>
-                </a>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3 class="contact-title">Telegram</h3>
+                    <p class="contact-description">Diskusi dan konsultasi via Telegram untuk kebutuhan teknis</p>
+                    <a href="https://t.me/rmddz" class="contact-link" target="_blank" id="telegramBtn">
+                        <span>Hubungi via Telegram</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
                 
-                <a href="https://t.me/rmddztrust" class="contact-icon" target="_blank" id="testimoniBtn" title="Testimoni">
-                    <i class="fas fa-star"></i>
-                    <span class="tooltip">Testimoni</span>
-                </a>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="contact-title">Testimoni</h3>
+                    <p class="contact-description">Lihat testimoni dan review dari klien kami sebelumnya</p>
+                    <a href="https://t.me/rmddztrust" class="contact-link" target="_blank" id="testimoniBtn">
+                        <span>Lihat Testimoni</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -253,7 +542,39 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="footer-text">© Romadz Store ID — Hak Cipta Dilindungi</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <div class="logo-icon">
+                            <span>R</span>
+                            <span>S</span>
+                        </div>
+                        <span class="logo-text">ROMADZ <span class="logo-highlight">STORE</span></span>
+                    </a>
+                    <p class="footer-tagline">Digital Solution for Modern Business</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4 class="link-title">Layanan</h4>
+                        <a href="/produk.html" class="footer-link">Hosting Solutions</a>
+                        <a href="/produk.html" class="footer-link">Bot Development</a>
+                        <a href="/produk.html" class="footer-link">Cloud Services</a>
+                    </div>
+                    
+                    <div class="link-group">
+                        <h4 class="link-title">Perusahaan</h4>
+                        <a href="/" class="footer-link">Tentang Kami</a>
+                        <a href="#contact" class="footer-link">Kontak</a>
+                        <a href="#contact" class="footer-link">Support</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-text">© 2023 Romadz Store ID — Hak Cipta Dilindungi</p>
+                <p class="footer-domain">romadzstore.biz.id</p>
+            </div>
         </div>
     </footer>
 
@@ -266,5 +587,36 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Function khusus untuk halaman produk
+        function showOrderToast(productName) {
+            showToast(`Memproses pesanan: ${productName}. Hubungi kami untuk melanjutkan.`, 'info');
+            
+            // Auto scroll ke contact section setelah 1.5 detik
+            setTimeout(() => {
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 1500);
+        }
+        
+        // Highlight produk dengan badge
+        document.addEventListener('DOMContentLoaded', function() {
+            const badges = document.querySelectorAll('.product-badge');
+            badges.forEach(badge => {
+                const badgeType = badge.textContent.trim();
+                if (badgeType === 'POPULAR') {
+                    badge.style.backgroundColor = '#EF4444';
+                } else if (badgeType === 'NEW') {
+                    badge.style.backgroundColor = '#10B981';
+                } else if (badgeType === 'RECOMMENDED') {
+                    badge.style.backgroundColor = '#F59E0B';
+                } else if (badgeType === 'HOT') {
+                    badge.style.backgroundColor = '#DC2626';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
