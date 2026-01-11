@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROMADZ STORE - Digital Service & Cloud Solution</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-light: #F4F6F8;
+            --bg-offwhite: #FAFAFA;
+            --primary-blue: #1E40AF;
+            --secondary-slate: #334155;
+            --accent-emerald: #10B981;
+            --accent-violet: #7C3AED;
+            --border-dark: #1F2937;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--secondary-slate);
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            color: var(--secondary-slate);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .loading-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-emerald);
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .dot:nth-child(1) { animation-delay: -0.32s; }
+        .dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--bg-offwhite);
+            border-bottom: 1px solid rgba(31, 41, 55, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-emerald);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-slate);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--secondary-slate);
+            cursor: pointer;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            border-radius: 0;
+            border: 1px solid var(--border-dark);
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: #1E3A8A;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary-slate);
+            border-color: var(--border-dark);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(30, 64, 175, 0.05);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background-color: var(--bg-offwhite);
+            border-bottom: 1px solid rgba(31, 41, 55, 0.1);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--secondary-slate);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            color: var(--secondary-slate);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: var(--secondary-slate);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-emerald);
+        }
+
+        /* Brand Value Cards */
+        .value-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background-color: var(--bg-offwhite);
+            border: 1px solid var(--border-dark);
+            padding: 40px 30px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
+        }
+
+        .value-card i {
+            font-size: 40px;
+            color: var(--accent-violet);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: var(--secondary-slate);
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--bg-offwhite);
+            border-top: 1px solid rgba(31, 41, 55, 0.1);
+            border-bottom: 1px solid rgba(31, 41, 55, 0.1);
+        }
+
+        .cta-box {
+            background-color: var(--primary-blue);
+            border: 1px solid var(--border-dark);
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-box h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .cta-box .btn {
+            background-color: white;
+            color: var(--primary-blue);
+            border-color: white;
+        }
+
+        .cta-box .btn:hover {
+            background-color: var(--bg-offwhite);
+            border-color: var(--bg-offwhite);
+        }
+
+        /* Products Page */
+        .products-hero {
+            padding: 160px 0 80px;
+            background-color: var(--bg-offwhite);
+            border-bottom: 1px solid rgba(31, 41, 55, 0.1);
+            text-align: center;
+        }
+
+        .category-section {
+            margin-bottom: 80px;
+        }
+
+        .category-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-emerald);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: var(--bg-offwhite);
+            border: 1px solid var(--border-dark);
+            padding: 30px 25px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--secondary-slate);
+        }
+
+        .product-card p {
+            color: var(--secondary-slate);
+            opacity: 0.8;
+            font-size: 15px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            padding: 80px 0;
+            background-color: var(--bg-offwhite);
+            border-top: 1px solid rgba(31, 41, 55, 0.1);
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-icon {
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-icon a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 0;
+            border: 1px solid var(--border-dark);
+            background-color: var(--bg-offwhite);
+            color: var(--accent-violet);
+            font-size: 30px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .contact-icon a:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            transform: translateY(-5px);
+            border-color: var(--primary-blue);
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--secondary-slate);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 0;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            margin-bottom: 10px;
+            border: 1px solid var(--border-dark);
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--secondary-slate) transparent transparent transparent;
+        }
+
+        .contact-icon:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-slate);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-dark);
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 15px;
+        }
+
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .toast {
+            background-color: var(--bg-offwhite);
+            border: 1px solid var(--border-dark);
+            padding: 18px 24px;
+            min-width: 300px;
+            box-shadow: var(--shadow-lg);
+            transform: translateX(100%);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .toast-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            color: var(--secondary-slate);
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--secondary-slate);
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .toast-close:hover {
+            opacity: 1;
+        }
+
+        .toast-message {
+            color: var(--secondary-slate);
+            font-size: 15px;
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--accent-emerald);
+        }
+
+        .toast.info {
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--bg-offwhite);
+            border: 1px solid var(--border-dark);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            color: var(--primary-blue);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--secondary-slate);
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal-body {
+            color: var(--secondary-slate);
+            margin-bottom: 30px;
+        }
+
+        /* Page Transitions */
+        .page {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .page.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero-subtitle {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-offwhite);
+                border-top: 1px solid rgba(31, 41, 55, 0.1);
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                box-shadow: var(--shadow-md);
+            }
+            
+            .mobile-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .mobile-nav a {
+                text-decoration: none;
+                color: var(--secondary-slate);
+                font-weight: 500;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(31, 41, 55, 0.1);
+            }
+            
+            .mobile-nav a:last-child {
+                border-bottom: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .category-title {
+                font-size: 24px;
+            }
+            
+            .cta-box {
+                padding: 40px 20px;
+            }
+            
+            .cta-box h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-text">Loading Store...</div>
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">ROMADZ<span>STORE</span></a>
+            
+            <nav class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#products">Produk</a>
+                <a href="#contact">Kontak</a>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav">
+            <a href="#home">Home</a>
+            <a href="#products">Produk</a>
+            <a href="#contact">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <!-- Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Hubungi Kami</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Untuk konsultasi dan informasi lebih lanjut tentang layanan kami, silakan hubungi melalui salah satu kontak berikut:</p>
+                <ul style="margin-top: 15px; padding-left: 20px;">
+                    <li>WhatsApp: <a href="https://wa.me/6283171889474" style="color: var(--primary-blue); text-decoration: none;">+62 831-7188-9474</a></li>
+                    <li>Telegram: <a href="https://t.me/rmddz" style="color: var(--primary-blue); text-decoration: none;">@rmddz</a></li>
+                    <li>Testimoni: <a href="https://t.me/rmddztrust" style="color: var(--primary-blue); text-decoration: none;">Channel Testimoni</a></li>
+                </ul>
+            </div>
+            <div style="text-align: right;">
+                <button class="btn btn-outline btn-small modal-close">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Home Page -->
+    <main id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>ROMADZ STORE</h1>
+                <div class="hero-subtitle">Digital Service & Cloud Solution</div>
+                <p class="hero-description">
+                    Romadz Store adalah penyedia layanan digital profesional yang berfokus 
+                    pada hosting, panel management, bot development, dan solusi online modern.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary" id="startBtn">MULAI</a>
+                    <a href="#products" class="btn btn-outline" id="productsBtn">LIHAT PRODUK</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brand Value Section -->
+        <section>
+            <div class="container">
+                <h2 class="section-title">Solusi Digital yang Andal</h2>
+                <div class="value-cards">
+                    <div class="value-card">
+                        <i class="fas fa-server"></i>
+                        <h3>Infrastruktur Stabil</h3>
+                        <p>Server dengan uptime tinggi dan performa optimal untuk mendukung operasi digital Anda 24/7.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Sistem Aman & Terpercaya</h3>
+                        <p>Keamanan data dan transaksi menjadi prioritas utama dengan sistem proteksi berlapis.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>Dukungan Profesional</h3>
+                        <p>Tim support berpengalaman siap membantu kapan saja dengan solusi tepat dan responsif.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-box">
+                    <h2>Siap membangun solusi digital Anda?</h2>
+                    <button class="btn btn-outline" id="contactBtn">HUBUNGI KAMI</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Products Page -->
+    <div id="products" class="page">
+        <!-- Products Hero -->
+        <section class="products-hero">
+            <div class="container">
+                <h1 class="section-title">Produk & Layanan</h1>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 18px;">
+                    Berbagai layanan digital profesional untuk mendukung kebutuhan online Anda
+                </p>
+            </div>
+        </section>
+
+        <!-- Products Content -->
+        <section style="padding-top: 0;">
+            <div class="container">
+                <!-- Kebutuhan Hosting -->
+                <div class="category-section">
+                    <h2 class="category-title">KEBUTUHAN HOSTING</h2>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <h3>Install Panel Pterodactyl</h3>
+                            <p>Installasi dan konfigurasi panel Pterodactyl untuk manajemen game server yang efisien.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Install Tema Panel</h3>
+                            <p>Kustomisasi tampilan panel dengan tema premium yang responsif dan user-friendly.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Fix / Install Nodes</h3>
+                            <p>Perbaikan dan instalasi nodes untuk optimasi performa server dan panel.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Domain Cloudflare 1 Tahun</h3>
+                            <p>Layanan pendaftaran domain dengan proteksi Cloudflare untuk keamanan maksimal.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Panel Private</h3>
+                            <p>Panel pribadi dengan konfigurasi khusus sesuai kebutuhan bisnis Anda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Script Bot -->
+                <div class="category-section">
+                    <h2 class="category-title">SCRIPT BOT</h2>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <h3>Perbaikan Script</h3>
+                            <p>Debugging dan perbaikan script bot untuk mengatasi masalah dan error.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Penambahan Fitur</h3>
+                            <p>Pengembangan dan penambahan fitur baru pada script bot yang sudah ada.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Rename Script</h3>
+                            <p>Kustomisasi nama dan identitas script bot sesuai brand Anda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Layanan Lainnya -->
+                <div class="category-section">
+                    <h2 class="category-title">LAYANAN LAINNYA</h2>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <h3>Nokos WhatsApp</h3>
+                            <p>Layanan nomor kosong WhatsApp untuk keperluan bisnis dan pemasaran.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Akun Premium</h3>
+                            <p>Penyediaan akun premium berbagai platform dengan harga kompetitif.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Jasa Sosial Media</h3>
+                            <p>Manajemen dan pengembangan akun sosial media untuk meningkatkan engagement.</p>
+                        </div>
+                        <div class="product-card">
+                            <h3>Layanan Custom</h3>
+                            <p>Solusi digital custom sesuai kebutuhan spesifik bisnis Anda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <h2 class="section-title">Hubungi Kami</h2>
+                <p style="max-width: 600px; margin: 0 auto 20px;">
+                    Untuk informasi lebih lanjut tentang layanan kami, hubungi melalui salah satu kontak berikut:
+                </p>
+                <div class="contact-icons">
+                    <div class="contact-icon">
+                        <a href="https://wa.me/6283171889474" target="_blank" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <div class="tooltip">WhatsApp</div>
+                    </div>
+                    <div class="contact-icon">
+                        <a href="https://t.me/rmddz" target="_blank" id="telegramBtn">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <div class="tooltip">Telegram</div>
+                    </div>
+                    <div class="contact-icon">
+                        <a href="https://t.me/rmddztrust" target="_blank" id="testimoniBtn">
+                            <i class="fas fa-star"></i>
+                        </a>
+                        <div class="tooltip">Testimoni</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; Romadz Store ID — Hak Cipta Dilindungi</p>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate loading screen
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                loadingScreen.style.opacity = '0';
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                    showToast('Selamat datang di ROMADZ STORE', 'info');
+                }, 500);
+            }, 2000);
+            
+            // Navigation handling
+            const homePage = document.getElementById('home');
+            const productsPage = document.getElementById('products');
+            const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileNav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.mobile-nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+            
+            // Navigation between pages
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    if (targetId === 'home') {
+                        // Show home page
+                        homePage.classList.add('active');
+                        productsPage.classList.remove('active');
+                        showToast('Beranda', 'info');
+                    } else if (targetId === 'products') {
+                        // Show products page
+                        homePage.classList.remove('active');
+                        productsPage.classList.add('active');
+                        showToast('Halaman Produk', 'info');
+                    } else if (targetId === 'contact') {
+                        // Scroll to contact section
+                        if (productsPage.classList.contains('active')) {
+                            const contactSection = document.getElementById('contact');
+                            window.scrollTo({
+                                top: contactSection.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        } else {
+                            // If on home page, show products page with contact section
+                            homePage.classList.remove('active');
+                            productsPage.classList.add('active');
+                            setTimeout(function() {
+                                const contactSection = document.getElementById('contact');
+                                window.scrollTo({
+                                    top: contactSection.offsetTop - 80,
+                                    behavior: 'smooth'
+                                });
+                            }, 100);
+                        }
+                    }
+                });
+            });
+            
+            // Button event handlers
+            document.getElementById('startBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                showToast('Memulai perjalanan digital Anda', 'success');
+                // Scroll to brand value section
+                const valueSection = document.querySelector('.value-cards');
+                window.scrollTo({
+                    top: valueSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+            
+            document.getElementById('productsBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Switch to products page
+                homePage.classList.remove('active');
+                productsPage.classList.add('active');
+                showToast('Menampilkan produk dan layanan', 'success');
+            });
+            
+            document.getElementById('contactBtn').addEventListener('click', function() {
+                openModal();
+            });
+            
+            // Modal functionality
+            const modal = document.getElementById('contactModal');
+            const modalCloseBtns = document.querySelectorAll('.modal-close');
+            
+            function openModal() {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function closeModal() {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+            
+            modalCloseBtns.forEach(btn => {
+                btn.addEventListener('click', closeModal);
+            });
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Contact buttons
+            document.getElementById('whatsappBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                showToast('Membuka WhatsApp...', 'info');
+                setTimeout(() => {
+                    window.open(this.href, '_blank');
+                }, 500);
+            });
+            
+            document.getElementById('telegramBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                showToast('Membuka Telegram...', 'info');
+                setTimeout(() => {
+                    window.open(this.href, '_blank');
+                }, 500);
+            });
+            
+            document.getElementById('testimoniBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                showToast('Membuka halaman testimoni...', 'info');
+                setTimeout(() => {
+                    window.open(this.href, '_blank');
+                }, 500);
+            });
+            
+            // Toast notification system
+            function showToast(message, type = 'info') {
+                const toastContainer = document.querySelector('.toast-container');
+                const toastId = 'toast-' + Date.now();
+                
+                const toast = document.createElement('div');
+                toast.className = `toast ${type}`;
+                toast.id = toastId;
+                
+                toast.innerHTML = `
+                    <div class="toast-header">
+                        <div class="toast-title">${type === 'success' ? 'Berhasil' : 'Info'}</div>
+                        <button class="toast-close" data-toast="${toastId}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="toast-message">${message}</div>
+                `;
+                
+                toastContainer.appendChild(toast);
+                
+                // Show toast
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 10);
+                
+                // Auto remove toast after 5 seconds
+                setTimeout(() => {
+                    removeToast(toastId);
+                }, 5000);
+                
+                // Close button event
+                toast.querySelector('.toast-close').addEventListener('click', function() {
+                    const toastId = this.getAttribute('data-toast');
+                    removeToast(toastId);
+                });
+            }
+            
+            function removeToast(toastId) {
+                const toast = document.getElementById(toastId);
+                if (toast) {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        if (toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
+                    }, 300);
+                }
+            }
+            
+            // Add subtle animations to cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe cards for animation
+            document.querySelectorAll('.value-card, .product-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Handle header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+                    header.style.padding = '10px 0';
+                } else {
+                    header.style.boxShadow = 'none';
+                    header.style.padding = '15px 0';
+                }
+            });
+            
+            // Initialize header with correct style
+            if (window.scrollY > 50) {
+                document.querySelector('header').style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+                document.querySelector('header').style.padding = '10px 0';
+            }
+        });
+    </script>
+</body>
+</html>
