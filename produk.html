@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk - Romadz Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <span class="logo-pixel">R</span>OMADZ <span class="logo-pixel">S</span>TORE
+            </div>
+            
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="produk.html" class="nav-link active">PRODUK</a>
+                <a href="index.html#contact-section" class="nav-link">CONTACT</a>
+            </nav>
+            
+            <button class="hamburger" id="hamburger">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+        
+        <nav class="nav-mobile" id="navMobile">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="produk.html" class="nav-link active">PRODUK</a>
+            <a href="index.html#contact-section" class="nav-link">CONTACT</a>
+        </nav>
+    </header>
+
+    <!-- PRODUCTS HERO -->
+    <section class="products-hero">
+        <div class="container">
+            <h1 class="pixel-text">
+                <span class="pixel-letter">🛍️</span>
+                <span class="pixel-letter">P</span>
+                <span class="pixel-letter">R</span>
+                <span class="pixel-letter">O</span>
+                <span class="pixel-letter">D</span>
+                <span class="pixel-letter">U</span>
+                <span class="pixel-letter">K</span>
+            </h1>
+            <p class="hero-subtitle pixel-subtitle">
+                LENGKAP DAN TERPERCAYA
+            </p>
+            <p class="hero-description">
+                Temukan berbagai layanan digital berkualitas dengan harga terjangkau. 
+                Solusi lengkap untuk semua kebutuhan hosting, bot, dan layanan premium.
+            </p>
+        </div>
+    </section>
+
+    <!-- PRODUCTS CATEGORIES -->
+    <section class="products-categories">
+        <div class="container">
+            <!-- KEBUTUHAN HOSTING -->
+            <div class="product-category">
+                <div class="category-header" style="border-color: var(--blue);">
+                    <div class="category-icon" style="background-color: var(--blue);">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h2 class="pixel-title">KEBUTUHAN HOSTING</h2>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card" style="border-color: var(--blue);">
+                        <div class="product-card-header">
+                            <h3>Jasa Install Panel Pterodactyl</h3>
+                            <div class="product-badge" style="background-color: var(--blue);">
+                                <i class="fas fa-star"></i> POPULER
+                            </div>
+                        </div>
+                        <p>Installasi dan konfigurasi panel Pterodactyl untuk game server hosting dengan setup cepat dan optimal.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Fast Setup</span>
+                            <span><i class="fas fa-check"></i> Full Support</span>
+                            <span><i class="fas fa-check"></i> Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--blue);">
+                        <div class="product-card-header">
+                            <h3>Jasa Install Tema Pterodactyl</h3>
+                        </div>
+                        <p>Kustomisasi tema panel Pterodactyl sesuai kebutuhan dengan berbagai pilihan tema premium.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Custom Design</span>
+                            <span><i class="fas fa-check"></i> Responsive</span>
+                            <span><i class="fas fa-check"></i> Dark/Light Mode</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--blue);">
+                        <div class="product-card-header">
+                            <h3>Install / Fix Nodes</h3>
+                        </div>
+                        <p>Setup dan perbaikan nodes untuk panel Pterodactyl dengan konfigurasi jaringan yang optimal.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Multi Location</span>
+                            <span><i class="fas fa-check"></i> Load Balancing</span>
+                            <span><i class="fas fa-check"></i> 24/7 Monitoring</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--blue);">
+                        <div class="product-card-header">
+                            <h3>Domain Cloudflare 1 Tahun</h3>
+                        </div>
+                        <p>Registrasi domain dengan proteksi Cloudflare untuk keamanan dan performa maksimal.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Free SSL</span>
+                            <span><i class="fas fa-check"></i> DDoS Protection</span>
+                            <span><i class="fas fa-check"></i> DNS Management</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--blue);">
+                        <div class="product-card-header">
+                            <h3>Panel Pterodactyl Private</h3>
+                            <div class="product-badge" style="background-color: var(--purple);">
+                                <i class="fas fa-crown"></i> PREMIUM
+                            </div>
+                        </div>
+                        <p>Panel Pterodactyl private dengan instalasi eksklusif dan kustomisasi penuh sesuai kebutuhan.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Private Instance</span>
+                            <span><i class="fas fa-check"></i> Full Control</span>
+                            <span><i class="fas fa-check"></i> Priority Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- KEBUTUHAN SCRIPT BOT -->
+            <div class="product-category">
+                <div class="category-header" style="border-color: var(--pink);">
+                    <div class="category-icon" style="background-color: var(--pink);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2 class="pixel-title">KEBUTUHAN SCRIPT BOT</h2>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card" style="border-color: var(--pink);">
+                        <div class="product-card-header">
+                            <h3>Perbaikan / Debug Script</h3>
+                        </div>
+                        <p>Debugging dan perbaikan script bot yang error dengan analisis mendalam dan solusi permanen.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Error Analysis</span>
+                            <span><i class="fas fa-check"></i> Bug Fixing</span>
+                            <span><i class="fas fa-check"></i> Code Review</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--pink);">
+                        <div class="product-card-header">
+                            <h3>Tambah Fitur Bot</h3>
+                        </div>
+                        <p>Pengembangan dan penambahan fitur baru pada bot sesuai permintaan dengan kode yang optimal.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Custom Features</span>
+                            <span><i class="fas fa-check"></i> API Integration</span>
+                            <span><i class="fas fa-check"></i> Performance Optimized</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--pink);">
+                        <div class="product-card-header">
+                            <h3>Rename / Rebranding Script</h3>
+                        </div>
+                        <p>Rebranding script bot dengan perubahan nama, logo, dan identitas sesuai brand Anda.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Complete Rename</span>
+                            <span><i class="fas fa-check"></i> Logo & Assets</span>
+                            <span><i class="fas fa-check"></i> Documentation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- KEBUTUHAN LAINNYA -->
+            <div class="product-category">
+                <div class="category-header" style="border-color: var(--orange);">
+                    <div class="category-icon" style="background-color: var(--orange);">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h2 class="pixel-title">KEBUTUHAN LAINNYA</h2>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card" style="border-color: var(--orange);">
+                        <div class="product-card-header">
+                            <h3>Nokos WhatsApp Fresh / Save</h3>
+                        </div>
+                        <p>Akun WhatsApp fresh atau save untuk kebutuhan verifikasi dan aktivasi dengan jaminan kerja.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Fresh Number</span>
+                            <span><i class="fas fa-check"></i> Save Number</span>
+                            <span><i class="fas fa-check"></i> Guaranteed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--orange);">
+                        <div class="product-card-header">
+                            <h3>Akun Premium</h3>
+                            <div class="product-badge" style="background-color: var(--green);">
+                                <i class="fas fa-fire"></i> HOT
+                            </div>
+                        </div>
+                        <p>Akun premium Netflix, Spotify, Capcut, Canva Pro, dan layanan premium lainnya dengan garansi.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Netflix</span>
+                            <span><i class="fas fa-check"></i> Spotify</span>
+                            <span><i class="fas fa-check"></i> Capcut Pro</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--orange);">
+                        <div class="product-card-header">
+                            <h3>Jasa Suntik All Sosmed</h3>
+                        </div>
+                        <p>Jasa suntik followers, likes, dan views untuk semua platform media sosial dengan hasil natural.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> All Platform</span>
+                            <span><i class="fas fa-check"></i> Real Growth</span>
+                            <span><i class="fas fa-check"></i> Safe & Secure</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" style="border-color: var(--orange);">
+                        <div class="product-card-header">
+                            <h3>Layanan lain (Tanya Admin)</h3>
+                            <div class="product-badge" style="background-color: var(--cyan);">
+                                <i class="fas fa-question"></i> CUSTOM
+                            </div>
+                        </div>
+                        <p>Konsultasi kebutuhan khusus Anda. Hubungi admin untuk layanan custom sesuai permintaan.</p>
+                        <div class="product-features">
+                            <span><i class="fas fa-check"></i> Custom Request</span>
+                            <span><i class="fas fa-check"></i> Consultation</span>
+                            <span><i class="fas fa-check"></i> Free Quote</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2 class="pixel-title">BUTUH LAYANAN KHUSUS?</h2>
+                <p>Hubungi kami untuk konsultasi kebutuhan custom atau informasi harga lebih detail.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> KONSULTASI VIA WA
+                    </a>
+                    <a href="index.html#contact-section" class="btn btn-secondary">
+                        <i class="fas fa-phone-alt"></i> LIHAT KONTAK LAIN
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-pixel">R</span>OMADZ <span class="logo-pixel">S</span>TORE
+                </div>
+                <p class="footer-text">© Romadz Store ID — Hak Cipta Dilindungi</p>
+                <p class="footer-subtext">Solusi Digital Profesional Sejak 2021</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <style>
+        /* Additional styles for produk.html */
+        .products-hero {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--gray) 0%, var(--white) 100%);
+            border-bottom: 4px solid var(--black);
+            text-align: center;
+        }
+        
+        .products-hero .pixel-text {
+            margin-bottom: 20px;
+        }
+        
+        .product-category {
+            margin-bottom: 80px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid;
+        }
+        
+        .category-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--black);
+            box-shadow: var(--shadow-offset-sm) var(--black);
+            color: var(--white);
+            font-size: 2rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border: 4px solid;
+            padding: 25px;
+            box-shadow: var(--shadow-offset) var(--black);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 8px 8px 0px var(--black);
+        }
+        
+        .product-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .product-card-header h3 {
+            font-family: 'Silkscreen', monospace;
+            font-size: 1.3rem;
+            margin-right: 15px;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 700;
+            border: 2px solid var(--black);
+            box-shadow: 2px 2px 0px var(--black);
+            white-space: nowrap;
+        }
+        
+        .product-card p {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .product-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .product-features span {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: var(--gray);
+            border: 2px solid var(--black);
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .cta-section {
+            padding: 60px 20px;
+            background-color: var(--gray);
+            border-top: 4px solid var(--black);
+            border-bottom: 4px solid var(--black);
+        }
+        
+        .cta-box {
+            background-color: var(--white);
+            border: 4px solid var(--black);
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-offset) var(--black);
+        }
+        
+        .cta-box h2 {
+            margin-bottom: 15px;
+        }
+        
+        .cta-box p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .product-card-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</body>
+</html>

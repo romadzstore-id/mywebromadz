@@ -4,686 +4,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Romadz Store - Solusi Hosting & Layanan Digital</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* RESET & BASE STYLES */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #FFE55C;
-            --primary-dark: #f5d840;
-            --black: #000000;
-            --white: #FFFFFF;
-            --purple: #9D4EDD;
-            --green: #38B000;
-            --blue: #4361EE;
-            --pink: #F72585;
-            --gray: #F5F5F5;
-            --dark-gray: #333333;
-            --shadow-offset: 4px 4px 0px;
-            --shadow-hover: 6px 6px 0px;
-            --transition: all 0.2s ease;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--white);
-            color: var(--black);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* TYPOGRAPHY */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* BUTTON STYLES */
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background-color: var(--primary);
-            color: var(--black);
-            border: 3px solid var(--black);
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: var(--shadow-offset) var(--black);
-            text-align: center;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover) var(--black);
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: var(--white);
-        }
-
-        /* HEADER STYLES */
-        header {
-            background-color: var(--primary);
-            border-bottom: 4px solid var(--black);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-desktop {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-desktop a {
-            padding: 10px 18px;
-            border: 2px solid var(--black);
-            font-weight: 700;
-            box-shadow: 2px 2px 0px var(--black);
-            transition: var(--transition);
-        }
-
-        .nav-desktop a:hover {
-            background-color: var(--black);
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 4px 4px 0px var(--black);
-        }
-
-        .nav-desktop a.active {
-            background-color: var(--black);
-            color: var(--primary);
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            background: none;
-            border: 3px solid var(--black);
-            padding: 8px 12px;
-            box-shadow: 2px 2px 0px var(--black);
-        }
-
-        .nav-mobile {
-            display: none;
-            flex-direction: column;
-            padding: 20px;
-            background-color: var(--primary);
-            border-top: 4px solid var(--black);
-        }
-
-        .nav-mobile.active {
-            display: flex;
-        }
-
-        .nav-mobile a {
-            padding: 15px;
-            border: 2px solid var(--black);
-            margin-bottom: 10px;
-            font-weight: 700;
-            box-shadow: 2px 2px 0px var(--black);
-            text-align: center;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: var(--white);
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--dark-gray);
-        }
-
-        .hero-description {
-            max-width: 800px;
-            margin: 0 auto 2.5rem;
-            font-size: 1.1rem;
-        }
-
-        /* SECTION STYLES */
-        section {
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            display: inline-block;
-            background-color: var(--purple);
-            color: var(--white);
-            padding: 12px 24px;
-            border: 3px solid var(--black);
-            margin-bottom: 1rem;
-            box-shadow: var(--shadow-offset) var(--black);
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 2.5rem;
-            color: var(--dark-gray);
-        }
-
-        /* CARD STYLES */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .card {
-            background-color: var(--white);
-            border: 3px solid var(--black);
-            padding: 25px;
-            box-shadow: var(--shadow-offset) var(--black);
-            transition: var(--transition);
-            height: 100%;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover) var(--black);
-        }
-
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid var(--black);
-            margin-bottom: 20px;
-            box-shadow: 2px 2px 0px var(--black);
-        }
-
-        .card-icon.purple {
-            background-color: var(--purple);
-            color: var(--white);
-        }
-
-        .card-icon.green {
-            background-color: var(--green);
-            color: var(--white);
-        }
-
-        .card-icon.blue {
-            background-color: var(--blue);
-            color: var(--white);
-        }
-
-        .card-icon.pink {
-            background-color: var(--pink);
-            color: var(--white);
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-
-        /* PRODUCTS PAGE */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .product-category {
-            margin-bottom: 40px;
-        }
-
-        .product-category-title {
-            background-color: var(--primary);
-            padding: 10px 20px;
-            border: 3px solid var(--black);
-            margin-bottom: 20px;
-            display: inline-block;
-            box-shadow: 2px 2px 0px var(--black);
-        }
-
-        .product-item {
-            background-color: var(--white);
-            border: 3px solid var(--black);
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: var(--shadow-offset) var(--black);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .product-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover) var(--black);
-            background-color: var(--primary);
-        }
-
-        .product-name {
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        /* CONTACT SECTION */
-        .contact-box {
-            background-color: var(--primary);
-            border: 4px solid var(--black);
-            padding: 40px;
-            box-shadow: var(--shadow-offset) var(--black);
-            margin-bottom: 40px;
-        }
-
-        .contact-info {
-            margin-bottom: 25px;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .contact-info-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--black);
-            margin-right: 15px;
-            background-color: var(--white);
-            box-shadow: 2px 2px 0px var(--black);
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: var(--white);
-            border-top: 4px solid var(--black);
-            padding: 30px 20px;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        /* PAGE CONTENT */
-        .page-content {
-            display: none;
-        }
-
-        .page-content.active {
-            display: block;
-        }
-
-        /* RESPONSIVE STYLES */
-        @media (max-width: 768px) {
-            .nav-desktop {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            .cards-container, .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-box {
-                padding: 25px;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .cards-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- HEADER -->
     <header>
         <div class="container header-container">
-            <div class="logo">ROMADZ STORE</div>
+            <div class="logo">
+                <span class="logo-pixel">R</span>OMADZ <span class="logo-pixel">S</span>TORE
+            </div>
             
             <nav class="nav-desktop">
-                <a href="#" class="nav-link active" data-page="home">HOME</a>
-                <a href="#" class="nav-link" data-page="produk">PRODUK</a>
-                <a href="#" class="nav-link" data-page="contact">CONTACT</a>
+                <a href="index.html" class="nav-link active">HOME</a>
+                <a href="produk.html" class="nav-link">PRODUK</a>
+                <a href="#contact-section" class="nav-link">CONTACT</a>
             </nav>
             
             <button class="hamburger" id="hamburger">
-                <i class="fas fa-bars"></i>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
             </button>
         </div>
         
         <nav class="nav-mobile" id="navMobile">
-            <a href="#" class="nav-link active" data-page="home">HOME</a>
-            <a href="#" class="nav-link" data-page="produk">PRODUK</a>
-            <a href="#" class="nav-link" data-page="contact">CONTACT</a>
+            <a href="index.html" class="nav-link active">HOME</a>
+            <a href="produk.html" class="nav-link">PRODUK</a>
+            <a href="#contact-section" class="nav-link">CONTACT</a>
         </nav>
     </header>
 
-    <!-- HOME PAGE -->
-    <main id="home" class="page-content active">
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="container">
-                <h1>ROMADZ STORE</h1>
-                <div class="hero-subtitle">Solusi Hosting, Panel Pterodactyl, Script Bot & Kebutuhan Digital</div>
-                <p class="hero-description">
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="pixel-text">
+                    <span class="pixel-letter">R</span>
+                    <span class="pixel-letter">O</span>
+                    <span class="pixel-letter">M</span>
+                    <span class="pixel-letter">A</span>
+                    <span class="pixel-letter">D</span>
+                    <span class="pixel-letter">Z</span>
+                    <br>
+                    <span class="pixel-letter">S</span>
+                    <span class="pixel-letter">T</span>
+                    <span class="pixel-letter">O</span>
+                    <span class="pixel-letter">R</span>
+                    <span class="pixel-letter">E</span>
+                </h1>
+                
+                <div class="hero-subtitle pixel-subtitle">
+                    SOLUSI HOSTING, PANEL PTERODACTYL, SCRIPT BOT & KEBUTUHAN DIGITAL
+                </div>
+                
+                <div class="hero-description">
                     Penyedia layanan digital profesional dengan sistem cepat, aman, dan scalable. 
                     Infrastruktur premium untuk semua kebutuhan hosting dan layanan digital Anda.
-                </p>
-                <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-whatsapp">
-                    <i class="fab fa-whatsapp"></i> HUBUNGI WHATSAPP
-                </a>
-            </div>
-        </section>
-
-        <!-- WHY US SECTION -->
-        <section class="why-us">
-            <div class="container">
-                <h2 class="section-title">KENAPA ROMADZ STORE?</h2>
-                <p class="section-subtitle">Infrastruktur premium untuk kebutuhan hosting & layanan digital.</p>
-                
-                <div class="cards-container">
-                    <div class="card">
-                        <div class="card-icon purple">
-                            <i class="fas fa-bolt fa-2x"></i>
-                        </div>
-                        <h3 class="card-title">Setup Cepat & Fast Response</h3>
-                        <p>Proses setup dalam hitungan menit dengan response time kurang dari 5 menit untuk setiap pertanyaan.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-icon green">
-                            <i class="fas fa-shield-alt fa-2x"></i>
-                        </div>
-                        <h3 class="card-title">Aman & Terpercaya</h3>
-                        <p>Keamanan data terjamin dengan sistem terenkripsi dan telah melayani ratusan client sejak 2021.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-icon blue">
-                            <i class="fas fa-headset fa-2x"></i>
-                        </div>
-                        <h3 class="card-title">CS Support Aktif</h3>
-                        <p>Customer support aktif 12 jam/hari siap membantu masalah teknis dan konsultasi kebutuhan Anda.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- PRODUK PAGE -->
-    <main id="produk" class="page-content">
-        <section class="products-page">
-            <div class="container">
-                <h1><i class="fas fa-shopping-bag"></i> PRODUK ROMADZ STORE</h1>
-                <p class="section-subtitle">Layanan digital berkualitas dengan harga terjangkau.</p>
-                
-                <!-- KEBUTUHAN HOSTING -->
-                <div class="product-category">
-                    <h2 class="product-category-title">KEBUTUHAN HOSTING</h2>
-                    <div class="products-grid">
-                        <div class="product-item">
-                            <div class="product-name">Jasa Install Panel Pterodactyl</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Jasa Install Tema Pterodactyl</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Install / Fix Nodes</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Domain Cloudflare 1 Tahun</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Panel Pterodactyl Private</div>
-                        </div>
-                    </div>
                 </div>
                 
-                <!-- KEBUTUHAN SCRIPT BOT -->
-                <div class="product-category">
-                    <h2 class="product-category-title">KEBUTUHAN SCRIPT BOT</h2>
-                    <div class="products-grid">
-                        <div class="product-item">
-                            <div class="product-name">Perbaikan / Debug Script</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Tambah Fitur Bot</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Rename / Rebranding Script</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- KEBUTUHAN LAINNYA -->
-                <div class="product-category">
-                    <h2 class="product-category-title">KEBUTUHAN LAINNYA</h2>
-                    <div class="products-grid">
-                        <div class="product-item">
-                            <div class="product-name">Nokos WhatsApp Fresh / Save</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Akun Premium (Netflix, Capcut, Spotify, dll)</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Jasa Suntik All Sosmed</div>
-                        </div>
-                        <div class="product-item">
-                            <div class="product-name">Layanan lain (Tanya Admin)</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- CONTACT PAGE -->
-    <main id="contact" class="page-content">
-        <section class="contact-page">
-            <div class="container">
-                <h1>CONTACT ADMIN</h1>
-                <p class="section-subtitle">Hubungi kami untuk konsultasi dan pemesanan layanan.</p>
-                
-                <div class="contact-box">
-                    <div class="contact-info">
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <strong>WhatsApp:</strong><br>
-                                <a href="https://wa.me/6283171889474" target="_blank">https://wa.me/6283171889474</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fab fa-telegram"></i>
-                            </div>
-                            <div>
-                                <strong>Telegram:</strong><br>
-                                <a href="https://t.me/rmddz" target="_blank">https://t.me/rmddz</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-info-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div>
-                                <strong>Testimoni:</strong><br>
-                                <a href="https://t.me/rmddztrust" target="_blank">https://t.me/rmddztrust</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-whatsapp" style="width: 100%; font-size: 1.2rem; padding: 18px;">
-                        <i class="fab fa-whatsapp"></i> HUBUNGI VIA WHATSAPP SEKARANG
+                <div class="hero-buttons">
+                    <a href="produk.html" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i> LIHAT PRODUK
+                    </a>
+                    <a href="#contact-section" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> HUBUNGI KAMI
                     </a>
                 </div>
             </div>
-        </section>
-    </main>
+            
+            <div class="hero-illustration">
+                <div class="pixel-box pixel-1"></div>
+                <div class="pixel-box pixel-2"></div>
+                <div class="pixel-box pixel-3"></div>
+                <div class="server-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US SECTION -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title pixel-title">
+                <span class="title-badge">KENAPA</span> ROMADZ STORE?
+            </h2>
+            <p class="section-subtitle">Infrastruktur premium untuk kebutuhan hosting & layanan digital.</p>
+            
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon" style="background-color: var(--purple);">
+                        <i class="fas fa-bolt fa-2x"></i>
+                    </div>
+                    <h3 class="card-title">Setup Cepat & Fast Response</h3>
+                    <p>Proses setup dalam hitungan menit dengan response time kurang dari 5 menit untuk setiap pertanyaan.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon" style="background-color: var(--green);">
+                        <i class="fas fa-shield-alt fa-2x"></i>
+                    </div>
+                    <h3 class="card-title">Aman & Terpercaya</h3>
+                    <p>Keamanan data terjamin dengan sistem terenkripsi dan telah melayani ratusan client sejak 2021.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon" style="background-color: var(--blue);">
+                        <i class="fas fa-headset fa-2x"></i>
+                    </div>
+                    <h3 class="card-title">CS Support Aktif</h3>
+                    <p>Customer support aktif 12 jam/hari siap membantu masalah teknis dan konsultasi kebutuhan Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title pixel-title">
+                <span class="title-badge">PRODUK</span> UNGGULAN
+            </h2>
+            
+            <div class="products-preview">
+                <div class="product-preview-card">
+                    <div class="product-icon" style="background-color: var(--blue);">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Panel Pterodactyl</h3>
+                    <p>Installasi & setup panel game hosting</p>
+                    <a href="produk.html" class="btn-small">Lihat Detail</a>
+                </div>
+                
+                <div class="product-preview-card">
+                    <div class="product-icon" style="background-color: var(--pink);">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Script Bot</h3>
+                    <p>Perbaikan & custom fitur bot</p>
+                    <a href="produk.html" class="btn-small">Lihat Detail</a>
+                </div>
+                
+                <div class="product-preview-card">
+                    <div class="product-icon" style="background-color: var(--orange);">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Akun Premium</h3>
+                    <p>Netflix, Spotify, Capcut, dll</p>
+                    <a href="produk.html" class="btn-small">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact-section" class="contact">
+        <div class="container">
+            <h2 class="section-title pixel-title">
+                <span class="title-badge">CONTACT</span> ADMIN
+            </h2>
+            
+            <div class="contact-box">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon" style="background-color: var(--green);">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <strong>WhatsApp:</strong><br>
+                            <a href="https://wa.me/6283171889474" target="_blank">+62 831-7188-9474</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon" style="background-color: var(--blue);">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <div>
+                            <strong>Telegram:</strong><br>
+                            <a href="https://t.me/rmddz" target="_blank">@rmddz</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon" style="background-color: var(--purple);">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:romadzstoreid@gmail.com">romadzstoreid@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon" style="background-color: var(--orange);">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div>
+                            <strong>Testimoni:</strong><br>
+                            <a href="https://t.me/rmddztrust" target="_blank">@rmddztrust</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-whatsapp btn-large">
+                    <i class="fab fa-whatsapp"></i> HUBUNGI VIA WHATSAPP
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>© Romadz Store ID — Hak Cipta Dilindungi</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-pixel">R</span>OMADZ <span class="logo-pixel">S</span>TORE
+                </div>
+                <p class="footer-text">© Romadz Store ID — Hak Cipta Dilindungi</p>
+                <p class="footer-subtext">Solusi Digital Profesional Sejak 2021</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile Navigation Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navMobile = document.getElementById('navMobile');
-        
-        hamburger.addEventListener('click', () => {
-            navMobile.classList.toggle('active');
-            hamburger.innerHTML = navMobile.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Page Navigation
-        const navLinks = document.querySelectorAll('.nav-link');
-        const pageContents = document.querySelectorAll('.page-content');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Get target page
-                const targetPage = link.getAttribute('data-page');
-                
-                // Update active nav link
-                navLinks.forEach(navLink => {
-                    navLink.classList.remove('active');
-                });
-                link.classList.add('active');
-                
-                // Hide all pages and show target page
-                pageContents.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                document.getElementById(targetPage).classList.add('active');
-                
-                // Close mobile menu if open
-                navMobile.classList.remove('active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-                
-                // Scroll to top of page
-                window.scrollTo(0, 0);
-            });
-        });
-        
-        // Product item hover effect enhancement
-        const productItems = document.querySelectorAll('.product-item');
-        
-        productItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                item.style.transform = 'translateY(-3px)';
-                item.style.boxShadow = '6px 6px 0px #000000';
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateY(0)';
-                item.style.boxShadow = '4px 4px 0px #000000';
-            });
-        });
-        
-        // Button click effect
-        const buttons = document.querySelectorAll('.btn');
-        
-        buttons.forEach(button => {
-            button.addEventListener('mousedown', () => {
-                button.style.transform = 'translateY(0)';
-                button.style.boxShadow = '2px 2px 0px #000000';
-            });
-            
-            button.addEventListener('mouseup', () => {
-                button.style.transform = 'translateY(-2px)';
-                button.style.boxShadow = '6px 6px 0px #000000';
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = 'translateY(0)';
-                button.style.boxShadow = '4px 4px 0px #000000';
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
