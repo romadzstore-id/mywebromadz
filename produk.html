@@ -3,15 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produk & Layanan - Romadz Store</title>
+    <title>Produk - Romadz Store</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
     <style>
         /* Additional styles for produk page */
-        .product-category {
-            margin-bottom: 80px;
+        .page-hero {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .page-hero h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        
+        .page-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .products-section {
+            padding: 80px 0;
+        }
+        
+        .category {
+            margin-bottom: 64px;
         }
         
         .category-header {
@@ -19,8 +43,6 @@
             align-items: center;
             gap: 16px;
             margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--border);
         }
         
         .category-icon {
@@ -30,18 +52,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
             font-size: 1.5rem;
-            color: var(--white);
         }
         
         .category-title {
             font-size: 1.75rem;
             margin: 0;
-        }
-        
-        .category-description {
-            color: var(--gray);
-            margin-top: 8px;
         }
         
         .products-grid {
@@ -52,112 +69,58 @@
         
         .product-card {
             background-color: var(--white);
-            border-radius: 12px;
-            border: 1px solid var(--border);
+            border-radius: var(--radius);
             padding: 24px;
+            border: 1px solid var(--border);
             transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
         
         .product-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
         }
         
-        .product-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-        }
-        
-        .product-card-title {
+        .product-title {
             font-size: 1.25rem;
-            margin: 0;
-            flex: 1;
-        }
-        
-        .product-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            background-color: var(--primary-light);
-            color: var(--primary);
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-left: 12px;
+            margin-bottom: 12px;
+            color: var(--black);
         }
         
         .product-description {
             color: var(--gray);
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        
-        .product-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-        
-        .product-feature {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 12px;
-            background-color: var(--light-gray);
-            border-radius: 20px;
-            font-size: 0.875rem;
-            color: var(--dark-gray);
-        }
-        
-        .product-feature i {
-            color: var(--primary);
-            font-size: 0.75rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
         
         .product-actions {
+            margin-top: 20px;
             display: flex;
             gap: 12px;
-            margin-top: auto;
         }
         
-        .page-hero {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            color: white;
+        .cta-section {
+            background-color: var(--light-gray);
             padding: 80px 0;
-            margin-bottom: 60px;
-        }
-        
-        .page-hero-content {
-            max-width: 800px;
-            margin: 0 auto;
             text-align: center;
         }
         
-        .page-hero-title {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-            color: white;
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .page-hero-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.9;
+        .cta-content h2 {
+            margin-bottom: 16px;
+        }
+        
+        .cta-content p {
             margin-bottom: 32px;
         }
         
-        .pricing-note {
-            text-align: center;
-            color: var(--gray);
-            font-style: italic;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
         }
     </style>
 </head>
@@ -171,10 +134,10 @@
             </a>
             
             <nav class="nav-desktop">
-                <a href="index.html">Home</a>
+                <a href="index.html">Beranda</a>
                 <a href="produk.html" class="active">Produk</a>
                 <a href="index.html#contact">Kontak</a>
-                <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-primary btn-sm">
+                <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-primary cta-button">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
             </nav>
@@ -187,10 +150,10 @@
         </div>
         
         <nav class="nav-mobile" id="navMobile">
-            <a href="index.html">Home</a>
+            <a href="index.html">Beranda</a>
             <a href="produk.html" class="active">Produk</a>
             <a href="index.html#contact">Kontak</a>
-            <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-primary btn-block mt-3">
+            <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-primary btn-block">
                 <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
         </nav>
@@ -199,333 +162,183 @@
     <!-- PAGE HERO -->
     <section class="page-hero">
         <div class="container">
-            <div class="page-hero-content">
-                <h1 class="page-hero-title">Produk & Layanan</h1>
-                <p class="page-hero-subtitle">Solusi lengkap untuk semua kebutuhan hosting, bot, dan layanan digital Anda.</p>
-                <a href="index.html#contact" class="btn btn-secondary btn-lg">
-                    <i class="fas fa-phone-alt"></i> Konsultasi Gratis
-                </a>
-            </div>
+            <h1>Produk & Layanan</h1>
+            <p>Solusi lengkap untuk kebutuhan hosting, bot, dan layanan digital Anda</p>
         </div>
     </section>
 
-    <!-- PRODUCTS CATEGORIES -->
-    <section class="section">
+    <!-- PRODUCTS -->
+    <section class="products-section">
         <div class="container">
-            <!-- KEBUTUHAN HOSTING -->
-            <div id="hosting" class="product-category">
+            <!-- HOSTING -->
+            <div id="hosting" class="category">
                 <div class="category-header">
-                    <div class="category-icon" style="background-color: var(--blue);">
+                    <div class="category-icon" style="background-color: #2563EB;">
                         <i class="fas fa-server"></i>
                     </div>
-                    <div>
-                        <h2 class="category-title">Kebutuhan Hosting</h2>
-                        <p class="category-description">Solusi hosting dan panel untuk game server dan aplikasi Anda.</p>
-                    </div>
+                    <h2 class="category-title">Hosting & Panel</h2>
                 </div>
                 
                 <div class="products-grid">
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Jasa Install Panel Pterodactyl</h3>
-                            <span class="product-badge">Populer</span>
-                        </div>
-                        <p class="product-description">Instalasi dan konfigurasi panel Pterodactyl untuk game server hosting dengan setup cepat dan optimal.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Fast Setup</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Full Support</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Optimized</span>
-                        </div>
+                        <h3 class="product-title">Panel Pterodactyl</h3>
+                        <p class="product-description">
+                            Instalasi dan konfigurasi panel game hosting dengan setup cepat dan optimal.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Jasa%20Install%20Panel%20Pterodactyl" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
+                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Panel%20Pterodactyl" 
+                               target="_blank" class="btn btn-primary">
+                                Pesan
                             </a>
                         </div>
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Jasa Install Tema Pterodactyl</h3>
-                        </div>
-                        <p class="product-description">Kustomisasi tema panel Pterodactyl sesuai kebutuhan dengan berbagai pilihan tema premium.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Custom Design</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Responsive</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Dark/Light Mode</span>
-                        </div>
+                        <h3 class="product-title">Tema Pterodactyl</h3>
+                        <p class="product-description">
+                            Kustomisasi tema panel sesuai kebutuhan dengan pilihan tema premium.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Jasa%20Install%20Tema%20Pterodactyl" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
+                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Tema%20Pterodactyl" 
+                               target="_blank" class="btn btn-primary">
+                                Pesan
                             </a>
                         </div>
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Install / Fix Nodes</h3>
-                        </div>
-                        <p class="product-description">Setup dan perbaikan nodes untuk panel Pterodactyl dengan konfigurasi jaringan yang optimal.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Multi Location</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Load Balancing</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> 24/7 Monitoring</span>
-                        </div>
+                        <h3 class="product-title">Domain Cloudflare</h3>
+                        <p class="product-description">
+                            Registrasi domain dengan proteksi Cloudflare untuk keamanan maksimal.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Install%20/%20Fix%20Nodes" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Domain Cloudflare 1 Tahun</h3>
-                        </div>
-                        <p class="product-description">Registrasi domain dengan proteksi Cloudflare untuk keamanan dan performa maksimal.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Free SSL</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> DDoS Protection</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> DNS Management</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Domain%20Cloudflare%201%20Tahun" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Panel Pterodactyl Private</h3>
-                            <span class="product-badge">Premium</span>
-                        </div>
-                        <p class="product-description">Panel Pterodactyl private dengan instalasi eksklusif dan kustomisasi penuh sesuai kebutuhan.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Private Instance</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Full Control</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Priority Support</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Panel%20Pterodactyl%20Private" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
+                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Domain%20Cloudflare" 
+                               target="_blank" class="btn btn-primary">
+                                Pesan
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- KEBUTUHAN SCRIPT BOT -->
-            <div id="bot" class="product-category">
+            <!-- SCRIPT BOT -->
+            <div id="bot" class="category">
                 <div class="category-header">
-                    <div class="category-icon" style="background-color: var(--pink);">
+                    <div class="category-icon" style="background-color: #EC4899;">
                         <i class="fas fa-robot"></i>
                     </div>
-                    <div>
-                        <h2 class="category-title">Kebutuhan Script Bot</h2>
-                        <p class="category-description">Pengembangan dan perbaikan script bot untuk WhatsApp, Telegram, dan Discord.</p>
-                    </div>
+                    <h2 class="category-title">Script Bot</h2>
                 </div>
                 
                 <div class="products-grid">
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Perbaikan / Debug Script</h3>
-                        </div>
-                        <p class="product-description">Debugging dan perbaikan script bot yang error dengan analisis mendalam dan solusi permanen.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Error Analysis</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Bug Fixing</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Code Review</span>
-                        </div>
+                        <h3 class="product-title">Debug Script</h3>
+                        <p class="product-description">
+                            Perbaikan dan debugging script bot dengan analisis mendalam.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Perbaikan%20/%20Debug%20Script" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
+                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Debug%20Script" 
+                               target="_blank" class="btn btn-primary">
+                                Pesan
                             </a>
                         </div>
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Tambah Fitur Bot</h3>
-                        </div>
-                        <p class="product-description">Pengembangan dan penambahan fitur baru pada bot sesuai permintaan dengan kode yang optimal.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Custom Features</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> API Integration</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Performance Optimized</span>
-                        </div>
+                        <h3 class="product-title">Tambah Fitur</h3>
+                        <p class="product-description">
+                            Pengembangan dan penambahan fitur baru pada bot sesuai permintaan.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Tambah%20Fitur%20Bot" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
+                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Tambah%20Fitur%20Bot" 
+                               target="_blank" class="btn btn-primary">
+                                Pesan
                             </a>
                         </div>
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Rename / Rebranding Script</h3>
-                        </div>
-                        <p class="product-description">Rebranding script bot dengan perubahan nama, logo, dan identitas sesuai brand Anda.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Complete Rename</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Logo & Assets</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Documentation</span>
-                        </div>
+                        <h3 class="product-title">Rebranding</h3>
+                        <p class="product-description">
+                            Rebranding script bot dengan perubahan nama dan identitas.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Rename%20/%20Rebranding%20Script" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
+                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Rebranding%20Script" 
+                               target="_blank" class="btn btn-primary">
+                                Pesan
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- KEBUTUHAN LAINNYA -->
-            <div id="premium" class="product-category">
+            <!-- PREMIUM -->
+            <div id="premium" class="category">
                 <div class="category-header">
-                    <div class="category-icon" style="background-color: var(--orange);">
-                        <i class="fas fa-layer-group"></i>
+                    <div class="category-icon" style="background-color: #F59E0B;">
+                        <i class="fas fa-user-shield"></i>
                     </div>
-                    <div>
-                        <h2 class="category-title">Kebutuhan Lainnya</h2>
-                        <p class="category-description">Berbagai layanan digital tambahan untuk mendukung aktivitas online Anda.</p>
-                    </div>
+                    <h2 class="category-title">Akun Premium</h2>
                 </div>
                 
                 <div class="products-grid">
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Nokos WhatsApp Fresh / Save</h3>
-                        </div>
-                        <p class="product-description">Akun WhatsApp fresh atau save untuk kebutuhan verifikasi dan aktivasi dengan jaminan kerja.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Fresh Number</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Save Number</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Guaranteed</span>
-                        </div>
+                        <h3 class="product-title">Netflix & Spotify</h3>
+                        <p class="product-description">
+                            Akun premium Netflix, Spotify, dan layanan streaming lainnya.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Nokos%20WhatsApp%20Fresh%20/%20Save" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
+                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Akun%20Premium" 
+                               target="_blank" class="btn btn-primary">
+                                Pesan
                             </a>
                         </div>
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Akun Premium</h3>
-                            <span class="product-badge">Hot</span>
-                        </div>
-                        <p class="product-description">Akun premium Netflix, Spotify, Capcut, Canva Pro, dan layanan premium lainnya dengan garansi.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Netflix</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Spotify</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Capcut Pro</span>
-                        </div>
+                        <h3 class="product-title">Canva & Capcut</h3>
+                        <p class="product-description">
+                            Akun Canva Pro, Capcut Pro, dan tools kreatif premium.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Akun%20Premium" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
+                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Canva%20Capcut" 
+                               target="_blank" class="btn btn-primary">
+                                Pesan
                             </a>
                         </div>
                     </div>
                     
                     <div class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Jasa Suntik All Sosmed</h3>
-                        </div>
-                        <p class="product-description">Jasa suntik followers, likes, dan views untuk semua platform media sosial dengan hasil natural.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> All Platform</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Real Growth</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Safe & Secure</span>
-                        </div>
+                        <h3 class="product-title">Layanan Lain</h3>
+                        <p class="product-description">
+                            WhatsApp fresh, suntik sosmed, dan layanan digital lainnya.
+                        </p>
                         <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20tertarik%20dengan%20Jasa%20Suntik%20All%20Sosmed" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Pesan Sekarang
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-info-circle"></i> Detail
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div id="other" class="product-card">
-                        <div class="product-card-header">
-                            <h3 class="product-card-title">Layanan Lain (Tanya Admin)</h3>
-                            <span class="product-badge" style="background-color: var(--secondary-light); color: var(--secondary);">Custom</span>
-                        </div>
-                        <p class="product-description">Konsultasi kebutuhan khusus Anda. Hubungi admin untuk layanan custom sesuai permintaan.</p>
-                        <div class="product-features">
-                            <span class="product-feature"><i class="fas fa-check"></i> Custom Request</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Consultation</span>
-                            <span class="product-feature"><i class="fas fa-check"></i> Free Quote</span>
-                        </div>
-                        <div class="product-actions">
-                            <a href="https://wa.me/6283171889474?text=Saya%20ingin%20konsultasi%20tentang%20layanan%20custom" target="_blank" class="btn btn-primary btn-sm">
-                                <i class="fab fa-whatsapp"></i> Konsultasi Gratis
-                            </a>
-                            <a href="index.html#contact" class="btn btn-outline btn-sm">
-                                <i class="fas fa-comments"></i> Chat Admin
+                            <a href="https://wa.me/6283171889474?text=Saya%20ingin%20konsultasi%20layanan" 
+                               target="_blank" class="btn btn-primary">
+                                Konsultasi
                             </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <p class="pricing-note">*Harga semua layanan dapat berubah. Hubungi admin untuk informasi harga terkini dan penawaran khusus.</p>
-            
-            <div class="text-center mt-5">
-                <a href="index.html#contact" class="btn btn-primary btn-lg">
-                    <i class="fas fa-headset"></i> Konsultasi dengan Admin
-                </a>
             </div>
         </div>
     </section>
 
     <!-- CTA SECTION -->
-    <section class="section section-dark">
+    <section class="cta-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Siap Mengembangkan Bisnis Digital Anda?</h2>
-                <p class="section-subtitle">Tim profesional kami siap membantu mewujudkan solusi digital yang tepat untuk kebutuhan Anda.</p>
-            </div>
-            
-            <div class="text-center">
-                <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-success btn-lg">
-                    <i class="fab fa-whatsapp"></i> Hubungi via WhatsApp
-                </a>
-                <a href="index.html#contact" class="btn btn-outline btn-lg ml-2">
-                    <i class="fas fa-envelope"></i> Kirim Email
-                </a>
+            <div class="cta-content">
+                <h2>Butuh Layanan Khusus?</h2>
+                <p>Hubungi kami untuk konsultasi kebutuhan custom atau informasi lebih detail.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="index.html#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -536,26 +349,23 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">
-                        <div class="logo-icon" style="background-color: white; color: var(--primary);">R</div>
+                        <div class="logo-icon">R</div>
                         <span>Romadz Store</span>
                     </div>
                     <p class="footer-description">
-                        Penyedia layanan digital profesional dengan sistem cepat, aman, dan scalable sejak 2021.
+                        Penyedia layanan digital profesional sejak 2021.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-success">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                    </div>
+                    <a href="https://wa.me/6283171889474" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
                 </div>
                 
                 <div class="footer-links">
                     <h3>Layanan</h3>
                     <ul>
-                        <li><a href="#hosting">Hosting & Panel</a></li>
+                        <li><a href="#hosting">Hosting</a></li>
                         <li><a href="#bot">Script Bot</a></li>
                         <li><a href="#premium">Akun Premium</a></li>
-                        <li><a href="#other">Layanan Lainnya</a></li>
                     </ul>
                 </div>
                 
@@ -565,7 +375,6 @@
                         <li><a href="index.html">Beranda</a></li>
                         <li><a href="produk.html">Produk</a></li>
                         <li><a href="index.html#contact">Kontak</a></li>
-                        <li><a href="https://t.me/rmddztrust" target="_blank">Testimoni</a></li>
                     </ul>
                 </div>
                 
@@ -575,7 +384,6 @@
                         <li><a href="https://wa.me/6283171889474" target="_blank">WhatsApp</a></li>
                         <li><a href="https://t.me/rmddz" target="_blank">Telegram</a></li>
                         <li><a href="mailto:romadzstoreid@gmail.com">Email</a></li>
-                        <li><a href="https://t.me/rmddztrust" target="_blank">Channel Testimoni</a></li>
                     </ul>
                 </div>
             </div>
