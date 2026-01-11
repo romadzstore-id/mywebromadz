@@ -5,15 +5,12 @@ const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 const toast = document.getElementById('toast');
 const toastMessage = document.getElementById('toastMessage');
-const contactLinks = document.querySelectorAll('.contact-link');
+const footerDomain = document.querySelector('.footer-domain');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
     // Start loading progress
     startLoadingProgress();
-    
-    // Initialize tooltips
-    initTooltips();
     
     // Initialize animations
     initAnimations();
@@ -23,6 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add smooth scroll behavior
     initSmoothScroll();
+    
+    // Add WhatsApp button tracking
+    initWhatsAppTracking();
+    
+    // Add domain copy functionality
+    if (footerDomain) {
+        initDomainCopy();
+    }
 });
 
 // Loading Screen
@@ -30,6 +35,10 @@ function startLoadingProgress() {
     const loadingProgress = document.querySelector('.loading-progress');
     if (loadingProgress) {
         loadingProgress.style.width = '100%';
+        
+        // Preload logo image
+        const logoImg = new Image();
+        logoImg.src = 'https://files.catbox.moe/tdv5h0.jpg';
         
         // Hide loading overlay after animation completes
         setTimeout(() => {
@@ -72,17 +81,17 @@ document.addEventListener('click', (e) => {
 // Set active nav link based on current page
 function setActiveNavLink() {
     const currentPath = window.location.pathname;
-    const currentPage = currentPath.split('/').pop() || 'index.html';
+    const currentPage = currentPath.split('/').pop() || '';
     
     navLinks.forEach(link => {
         link.classList.remove('active');
         
         const linkHref = link.getAttribute('href');
-        if (linkHref === '/' && currentPage === '') {
+        if (linkHref === '/' && (currentPage === '' || currentPage === 'index.html')) {
             link.classList.add('active');
-        } else if (linkHref.includes(currentPage)) {
+        } else if (linkHref === '/produk.html' && currentPage === 'produk.html') {
             link.classList.add('active');
-        } else if (currentPage === '' && linkHref === '/') {
+        } else if (linkHref === '#contact' && window.location.hash === '#contact') {
             link.classList.add('active');
         }
     });
@@ -111,29 +120,65 @@ function initSmoothScroll() {
                 
                 // Update URL hash without scrolling
                 history.pushState(null, null, href);
+                
+                // Update active nav
+                setActiveNavLink();
             }
         });
     });
 }
 
-// Contact Link Interactions
-contactLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        if (!link.getAttribute('href').startsWith('http')) return;
-        
-        e.preventDefault();
-        const href = link.getAttribute('href');
-        const platform = link.closest('.contact-card').querySelector('.contact-title').textContent;
-        
-        // Show toast notification
-        showToast(`Membuka ${platform}...`, 'info');
-        
-        // Open link after a short delay
-        setTimeout(() => {
-            window.open(href, '_blank');
-        }, 800);
+// WhatsApp Tracking
+function initWhatsAppTracking() {
+    const whatsappButtons = document.querySelectorAll('a[href*="whatsapp.com"], a[href*="wa.me"]');
+    
+    whatsappButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            // Get product name if available
+            let productName = 'Layanan Digital';
+            const productCard = button.closest('.product-card');
+            if (productCard) {
+                const productTitle = productCard.querySelector('.product-title');
+                if (productTitle) {
+                    productName = productTitle.textContent.trim();
+                }
+            }
+            
+            // Show toast notification
+            showToast(`Membuka WhatsApp untuk: ${productName}`, 'info');
+            
+            // Track click (simulated)
+            console.log(`WhatsApp button clicked for: ${productName}`);
+        });
     });
-});
+}
+
+// Domain Copy Functionality
+function initDomainCopy() {
+    footerDomain.addEventListener('click', () => {
+        const domain = 'romadzstore.biz.id';
+        
+        // Copy to clipboard
+        navigator.clipboard.writeText(domain).then(() => {
+            showToast(`Domain "${domain}" berhasil disalin!`, 'success');
+            
+            // Visual feedback
+            footerDomain.style.color = 'white';
+            footerDomain.style.fontWeight = '600';
+            
+            setTimeout(() => {
+                footerDomain.style.color = '';
+                footerDomain.style.fontWeight = '';
+            }, 2000);
+            
+        }).catch(err => {
+            showToast('Gagal menyalin domain. Silakan salin manual.', 'error');
+        });
+    });
+    
+    // Add tooltip
+    footerDomain.title = 'Klik untuk menyalin domain';
+}
 
 // Toast Notification System
 function showToast(message, type = 'info') {
@@ -201,38 +246,6 @@ window.addEventListener('scroll', () => {
     lastScrollTop = scrollTop;
 });
 
-// Initialize tooltips
-function initTooltips() {
-    const tooltipElements = document.querySelectorAll('[title]');
-    tooltipElements.forEach(el => {
-        const title = el.getAttribute('title');
-        if (title) {
-            el.removeAttribute('title');
-            
-            // Create tooltip element if it doesn't exist
-            if (!el.querySelector('.tooltip')) {
-                const tooltip = document.createElement('span');
-                tooltip.className = 'tooltip';
-                tooltip.textContent = title;
-                el.appendChild(tooltip);
-                
-                // Add event listeners
-                el.addEventListener('mouseenter', () => {
-                    tooltip.style.opacity = '1';
-                    tooltip.style.visibility = 'visible';
-                    tooltip.style.transform = 'translateY(0)';
-                });
-                
-                el.addEventListener('mouseleave', () => {
-                    tooltip.style.opacity = '0';
-                    tooltip.style.visibility = 'hidden';
-                    tooltip.style.transform = 'translateY(10px)';
-                });
-            }
-        }
-    });
-}
-
 // Initialize animations
 function initAnimations() {
     // Intersection Observer for scroll animations
@@ -249,7 +262,8 @@ function initAnimations() {
                 
                 // Add delay for staggered animations
                 if (entry.target.classList.contains('service-card') || 
-                    entry.target.classList.contains('product-card')) {
+                    entry.target.classList.contains('product-card') ||
+                    entry.target.classList.contains('alternative-item')) {
                     const cards = Array.from(entry.target.parentElement.children);
                     const index = cards.indexOf(entry.target);
                     entry.target.style.transitionDelay = `${index * 0.1}s`;
@@ -259,13 +273,13 @@ function initAnimations() {
     }, observerOptions);
 
     // Observe elements for animation
-    document.querySelectorAll('.service-card, .product-card, .contact-card, .category-header').forEach(el => {
+    document.querySelectorAll('.service-card, .product-card, .contact-main, .alternative-item, .category-header').forEach(el => {
         observer.observe(el);
     });
 }
 
 // Card hover animation enhancement
-const cards = document.querySelectorAll('.service-card, .product-card, .contact-card');
+const cards = document.querySelectorAll('.service-card, .product-card, .alternative-item');
 cards.forEach(card => {
     card.addEventListener('mouseenter', (e) => {
         const rect = card.getBoundingClientRect();
@@ -295,11 +309,11 @@ animationStyles.textContent = `
         }
     }
     
-    .service-card, .product-card, .contact-card, .category-header {
+    .service-card, .product-card, .alternative-item, .contact-main, .category-header {
         opacity: 0;
     }
     
-    .service-card:hover, .product-card:hover {
+    .service-card:hover, .product-card:hover, .alternative-item:hover {
         --mouse-x: 50%;
         --mouse-y: 50%;
         background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), 
@@ -334,6 +348,12 @@ document.addEventListener('keydown', (e) => {
             behavior: 'smooth'
         });
     }
+    
+    // Ctrl/Cmd + K to focus search (if any)
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        showToast('Gunakan WhatsApp untuk konsultasi cepat!', 'info');
+    }
 });
 
 // Performance optimization: Debounce scroll events
@@ -358,9 +378,10 @@ function updateActiveSection() {
         
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             navLinks.forEach(link => {
-                link.classList.remove('active');
                 if (link.getAttribute('href') === `#${sectionId}`) {
                     link.classList.add('active');
+                } else if (sectionId !== 'contact') {
+                    link.classList.remove('active');
                 }
             });
         }
@@ -370,6 +391,7 @@ function updateActiveSection() {
 // Preload important resources
 function preloadResources() {
     const resources = [
+        'https://files.catbox.moe/tdv5h0.jpg',
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
         'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap'
     ];
@@ -377,7 +399,7 @@ function preloadResources() {
     resources.forEach(resource => {
         const link = document.createElement('link');
         link.rel = 'preload';
-        link.as = 'style';
+        link.as = resource.includes('.jpg') ? 'image' : 'style';
         link.href = resource;
         document.head.appendChild(link);
     });
@@ -401,37 +423,131 @@ forms.forEach(form => {
     });
 });
 
-// Copy domain to clipboard
-const domainElement = document.querySelector('.footer-domain');
-if (domainElement) {
-    domainElement.addEventListener('click', () => {
-        const domain = domainElement.textContent;
-        navigator.clipboard.writeText(domain).then(() => {
-            showToast(`Domain "${domain}" disalin ke clipboard!`, 'success');
-        }).catch(err => {
-            showToast('Gagal menyalin domain.', 'error');
+// Product card interaction enhancement
+const productCards = document.querySelectorAll('.product-card');
+productCards.forEach(card => {
+    const whatsappBtn = card.querySelector('.btn-primary');
+    if (whatsappBtn) {
+        // Add click effect
+        whatsappBtn.addEventListener('click', (e) => {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            const rect = whatsappBtn.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                width: ${size}px;
+                height: ${size}px;
+                top: ${y}px;
+                left: ${x}px;
+            `;
+            
+            whatsappBtn.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
         });
-    });
+    }
+});
+
+// Add ripple animation
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    @keyframes ripple {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
     
-    // Add cursor pointer
-    domainElement.style.cursor = 'pointer';
-    domainElement.title = 'Klik untuk menyalin domain';
+    .btn-primary {
+        position: relative;
+        overflow: hidden;
+    }
+`;
+document.head.appendChild(rippleStyle);
+
+// WhatsApp floating button for mobile
+function createWhatsAppFloatingButton() {
+    if (window.innerWidth <= 768) {
+        const floatingBtn = document.createElement('a');
+        floatingBtn.href = 'https://wa.me/6283171889474?text=Halo%20Romadz%20Store,%20saya%20ingin%20konsultasi%20tentang%20layanan%20digital';
+        floatingBtn.target = '_blank';
+        floatingBtn.className = 'whatsapp-float';
+        floatingBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
+        floatingBtn.title = 'Chat via WhatsApp';
+        
+        document.body.appendChild(floatingBtn);
+        
+        // Add styles for floating button
+        const floatStyle = document.createElement('style');
+        floatStyle.textContent = `
+            .whatsapp-float {
+                position: fixed;
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+                color: white;
+                border-radius: 50%;
+                text-align: center;
+                font-size: 30px;
+                box-shadow: var(--shadow-lg);
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                transition: var(--transition);
+                animation: float 3s ease-in-out infinite;
+            }
+            
+            .whatsapp-float:hover {
+                transform: scale(1.1);
+                box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            }
+            
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+        `;
+        document.head.appendChild(floatStyle);
+    }
 }
 
-// Lazy loading for images (if any)
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
+// Initialize floating button
+setTimeout(createWhatsAppFloatingButton, 3000);
+
+// Product badge color coding
+function initProductBadges() {
+    const badges = document.querySelectorAll('.product-badge');
+    badges.forEach(badge => {
+        const badgeType = badge.textContent.trim();
+        if (badgeType === 'POPULAR') {
+            badge.style.background = 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)';
+        } else if (badgeType === 'NEW') {
+            badge.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
+        } else if (badgeType === 'RECOMMENDED') {
+            badge.style.background = 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)';
+        } else if (badgeType === 'HOT') {
+            badge.style.background = 'linear-gradient(135deg, #DC2626 0%, #B91C1C 100%)';
+        }
     });
 }
+
+// Initialize product badges
+initProductBadges();
