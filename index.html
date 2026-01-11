@@ -12,51 +12,94 @@
 
     <div id="loading-screen">
         <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Logo" class="loading-logo">
-        <p>Loading Store...</p>
+        <p>Memuat Romadz Store...</p>
         <div class="loader-line"></div>
     </div>
-
-    <div id="toast-container"></div>
 
     <nav class="navbar">
         <div class="logo">
             <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Romadz Store">
             <span>Romadz Store</span>
         </div>
+        
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="produk.html">Produk</a></li>
-            <li><a href="#" onclick="showToast('Silahkan hubungi via WA/Telegram')">Contact</a></li>
+            <li><a href="https://wa.me/6283171889474" target="_blank">Contact</a></li>
         </ul>
+
         <div class="hamburger">
-            <i class="fas fa-bars"></i>
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
         </div>
     </nav>
 
     <header class="hero">
+        <div class="glow-effect"></div>
         <div class="hero-content">
-            <span class="badge">Professional & Trusted</span>
+            <span class="badge"><i class="fas fa-check-circle"></i> Best Digital Solution</span>
             <h1>Romadz Store</h1>
-            <p class="subtitle">Digital Services & Hosting Solutions</p>
-            <p class="description">Solusi terbaik untuk kebutuhan digital Anda. Cepat, Aman, dan Berkualitas.</p>
+            <p class="subtitle">Platform Top Up & Jasa Digital Terpercaya</p>
+            <p class="description">
+                Kami menyediakan layanan Hosting Pterodactyl, Script Bot, dan kebutuhan digital lainnya 
+                dengan proses cepat dan harga bersaing. Tingkatkan performa digital Anda bersama kami.
+            </p>
             
             <div class="cta-group">
-                <a href="produk.html" class="btn btn-primary">Mulai Sekarang</a>
-                <a href="produk.html" class="btn btn-outline">Lihat Produk <i class="fas fa-arrow-right"></i></a>
+                <a href="produk.html" class="btn btn-primary">
+                    <i class="fas fa-shopping-bag"></i> Lihat Produk
+                </a>
+                <a href="https://wa.me/6283171889474" class="btn btn-outline">
+                    <i class="fab fa-whatsapp"></i> Chat Admin
+                </a>
             </div>
 
             <div class="social-icons">
-                <a href="#" class="icon-link" onclick="showToast('Membuka WhatsApp...')"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="icon-link" onclick="showToast('Membuka Telegram...')"><i class="fab fa-telegram-plane"></i></a>
-                <a href="#" class="icon-link" onclick="showToast('Lihat Testimoni...')"><i class="fas fa-star"></i></a>
+                <a href="https://wa.me/6283171889474" target="_blank" class="icon-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://t.me/rmddz" target="_blank" class="icon-link telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="https://t.me/rmddztrust" target="_blank" class="icon-link testimoni" title="Cek Testimoni"><i class="fas fa-star"></i></a>
             </div>
         </div>
-        
-        <div class="glow-effect"></div>
     </header>
 
+    <section class="features-section">
+        <div class="container-small">
+            <div class="section-header">
+                <h2>Kenapa Harus Romadz Store?</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="f-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Fast Response</h3>
+                    <p>Admin standby membalas pesan Anda dengan cepat, ramah, dan solutif setiap saat.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="f-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>100% Bergaransi</h3>
+                    <p>Seluruh produk dan layanan kami memiliki garansi penuh. Kenyamanan Anda prioritas kami.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="f-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Amanah & Terpercaya</h3>
+                    <p>Telah melayani banyak pelanggan dengan reputasi baik. Transaksi aman tanpa khawatir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; Romadz Store ID — Hak Cipta Dilindungi</p>
+        <p>&copy; 2024 Romadz Store ID — Hak Cipta Dilindungi</p>
     </footer>
 
     <script src="script.js"></script>

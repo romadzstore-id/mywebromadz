@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produk | Romadz Store</title>
+    <title>Katalog Produk | Romadz Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div id="loading-screen">
-        <div class="loader-spinner"></div>
-    </div>
 
     <div id="toast-container"></div>
 
@@ -24,17 +20,19 @@
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="produk.html" class="active">Produk</a></li>
-            <li><a href="#" onclick="showToast('Silahkan hubungi via WA/Telegram')">Contact</a></li>
+            <li><a href="https://wa.me/6283171889474" target="_blank">Contact</a></li>
         </ul>
         <div class="hamburger">
-            <i class="fas fa-bars"></i>
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
         </div>
     </nav>
 
     <main class="container">
         <div class="page-header">
-            <h2>Layanan Kami</h2>
-            <p>Pilih layanan digital berkualitas tinggi.</p>
+            <h2>Katalog Layanan</h2>
+            <p>Pilih solusi terbaik untuk kebutuhan Anda</p>
         </div>
 
         <section class="category-section">
@@ -43,32 +41,26 @@
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-cogs"></i></div>
                     <h4>Install Panel Pterodactyl</h4>
-                    <p>Jasa instalasi panel full setup siap pakai.</p>
-                    <button class="btn-card" onclick="orderProduct('Install Panel Pterodactyl')">Hubungi Kami</button>
+                    <p>Jasa instalasi panel full setup siap pakai. Anti ribet.</p>
+                    <button class="btn-card" onclick="orderProduct('Install Panel Pterodactyl')">Pesan Sekarang</button>
                 </div>
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
                     <h4>Install Theme Pterodactyl</h4>
-                    <p>Kustomisasi tampilan panel agar lebih menarik.</p>
-                    <button class="btn-card" onclick="orderProduct('Install Theme Pterodactyl')">Hubungi Kami</button>
+                    <p>Ubah tampilan panel Anda menjadi lebih profesional.</p>
+                    <button class="btn-card" onclick="orderProduct('Install Theme Pterodactyl')">Pesan Sekarang</button>
                 </div>
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-tools"></i></div>
                     <h4>Install / Fix Nodes</h4>
-                    <p>Perbaikan dan instalasi node server.</p>
-                    <button class="btn-card" onclick="orderProduct('Install/Fix Nodes')">Hubungi Kami</button>
+                    <p>Perbaikan error node atau instalasi node baru.</p>
+                    <button class="btn-card" onclick="orderProduct('Install/Fix Nodes')">Pesan Sekarang</button>
                 </div>
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-globe"></i></div>
                     <h4>Domain Cloudflare 1 Tahun</h4>
-                    <p>Domain aktif 1 tahun full control.</p>
-                    <button class="btn-card" onclick="orderProduct('Domain Cloudflare')">Hubungi Kami</button>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-lock"></i></div>
-                    <h4>Panel Pterodactyl Private</h4>
-                    <p>Panel admin private performa tinggi.</p>
-                    <button class="btn-card" onclick="orderProduct('Panel Private')">Hubungi Kami</button>
+                    <p>Domain .com/.net/.xyz aktif 1 tahun full control.</p>
+                    <button class="btn-card" onclick="orderProduct('Domain Cloudflare')">Pesan Sekarang</button>
                 </div>
             </div>
         </section>
@@ -78,52 +70,46 @@
             <div class="grid-container">
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-bug"></i></div>
-                    <h4>Perbaikan / Tambah Fitur</h4>
-                    <p>Fix error script bot atau request fitur baru.</p>
-                    <button class="btn-card" onclick="orderProduct('Fix/Tambah Fitur Script')">Hubungi Kami</button>
+                    <h4>Fix & Tambah Fitur</h4>
+                    <p>Perbaikan script error atau request fitur custom.</p>
+                    <button class="btn-card" onclick="orderProduct('Fix/Tambah Fitur Script')">Pesan Sekarang</button>
                 </div>
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-file-signature"></i></div>
                     <h4>Rename Script</h4>
-                    <p>Rebranding script bot sesuai nama Anda.</p>
-                    <button class="btn-card" onclick="orderProduct('Rename Script')">Hubungi Kami</button>
+                    <p>Rebranding script bot dengan nama Anda sendiri.</p>
+                    <button class="btn-card" onclick="orderProduct('Rename Script')">Pesan Sekarang</button>
                 </div>
             </div>
         </section>
 
         <section class="category-section">
-            <h3 class="category-title"><i class="fas fa-box-open"></i> Lainnya</h3>
+            <h3 class="category-title"><i class="fas fa-box-open"></i> Produk Lainnya</h3>
             <div class="grid-container">
                 <div class="card">
                     <div class="card-icon"><i class="fab fa-whatsapp"></i></div>
                     <h4>Nokos WhatsApp</h4>
-                    <p>Nomor kosong fresh atau aged (save).</p>
-                    <button class="btn-card" onclick="orderProduct('Nokos WhatsApp')">Hubungi Kami</button>
+                    <p>Nomor kosong (Fresh/Aged) siap pakai.</p>
+                    <button class="btn-card" onclick="orderProduct('Nokos WhatsApp')">Pesan Sekarang</button>
                 </div>
                 <div class="card">
                     <div class="card-icon"><i class="fas fa-crown"></i></div>
                     <h4>Akun Premium</h4>
-                    <p>Netflix, Capcut, Spotify, dan lainnya.</p>
-                    <button class="btn-card" onclick="orderProduct('Akun Premium')">Hubungi Kami</button>
+                    <p>Netflix, Spotify, Capcut Pro Legal & Bergaransi.</p>
+                    <button class="btn-card" onclick="orderProduct('Akun Premium')">Pesan Sekarang</button>
                 </div>
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-hashtag"></i></div>
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
                     <h4>Jasa Suntik Sosmed</h4>
-                    <p>Followers, Likes, Views untuk semua sosmed.</p>
-                    <button class="btn-card" onclick="orderProduct('Suntik Sosmed')">Hubungi Kami</button>
-                </div>
-                <div class="card">
-                    <div class="card-icon"><i class="fas fa-question-circle"></i></div>
-                    <h4>Request Lainnya</h4>
-                    <p>Butuh hal lain? Tanyakan saja langsung.</p>
-                    <button class="btn-card" onclick="orderProduct('Request Lainnya')">Hubungi Kami</button>
+                    <p>Followers, Like, View instan & aman.</p>
+                    <button class="btn-card" onclick="orderProduct('Suntik Sosmed')">Pesan Sekarang</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; Romadz Store ID — Hak Cipta Dilindungi</p>
+        <p>&copy; 2024 Romadz Store ID — Hak Cipta Dilindungi</p>
     </footer>
 
     <script src="script.js"></script>
