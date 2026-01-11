@@ -1,43 +1,57 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Loading Screen
+    // 1. Loading Controller
     const loader = document.getElementById("loading-screen");
     setTimeout(() => {
         loader.style.opacity = "0";
         setTimeout(() => loader.style.display = "none", 500);
-    }, 1500);
+    }, 1200);
 
-    // 2. Mobile Nav
+    // 2. Mobile Nav Toggle
     const burger = document.querySelector(".hamburger");
     const nav = document.querySelector(".nav-links");
-    
-    burger.addEventListener("click", () => {
-        nav.classList.toggle("active");
-        // Animasi icon burger (opsional)
-        burger.classList.toggle("toggle");
-    });
+    if(burger) {
+        burger.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            burger.classList.toggle("toggle");
+        });
+    }
 
-    // 3. Order Function
-    window.order = (product) => {
-        const wa = "6283171889478";
-        const msg = encodeURIComponent(`Halo Admin Romadz Store, saya ingin memesan: ${product}`);
-        window.open(`https://wa.me/${wa}?text=${msg}`, "_blank");
-    };
-
-    // 4. Scroll Reveal Effect (Simple)
-    const cards = document.querySelectorAll(".b-card, .p-card");
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
+    // 3. Scroll Reveal Animation
+    const reveal = () => {
+        const items = document.querySelectorAll(".reveal");
+        items.forEach(item => {
+            const windowHeight = window.innerHeight;
+            const revealTop = item.getBoundingClientRect().top;
+            if (revealTop < windowHeight - 100) {
+                item.classList.add("active");
             }
         });
-    }, { threshold: 0.1 });
+    };
+    window.addEventListener("scroll", reveal);
+    reveal(); // Jalankan sekali saat load
 
-    cards.forEach(card => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(20px)";
-        card.style.transition = "0.6s ease-out";
-        observer.observe(card);
-    });
+    // 4. Custom Toast Notification System
+    window.showToast = (message) => {
+        const container = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = `<i class="fas fa-info-circle" style="color:#6366f1"></i> ${message}`;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = "0";
+            toast.style.transform = "translateX(20px)";
+            setTimeout(() => toast.remove(), 500);
+        }, 3000);
+    };
+
+    // 5. Handling Order
+    window.handleOrder = (productName) => {
+        showToast(`Membuka WhatsApp untuk: ${productName}`);
+        const phone = "6283171889478";
+        const msg = encodeURIComponent(`Halo Romadz Store, saya ingin memesan: ${productName}`);
+        setTimeout(() => {
+            window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
+        }, 1000);
+    };
 });

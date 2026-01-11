@@ -3,69 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sosmed & Komunitas | Romadz Store</title>
+    <title>Sosmed | Romadz Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="toast-container"></div>
     <nav class="navbar">
-        <div class="logo">
+        <div class="logo" onclick="window.location.href='/'">
             <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Logo">
             <span>Romadz Store</span>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="produk.html">Produk</a></li>
-            <li><a href="sosmed.html" class="active">Sosmed</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Produk">Produk</a></li>
+            <li><a href="/Sosmed" class="active">Sosmed</a></li>
         </ul>
         <div class="hamburger"><span></span><span></span><span></span></div>
     </nav>
 
-    <div class="container sosmed-page">
-        <div class="header-minimal">
-            <h2>Social Hub</h2>
-            <p>Platform Komunikasi & Bukti Kepercayaan</p>
+    <main class="container page-content">
+        <div class="page-header reveal">
+            <h2>Social Media & Community</h2>
+            <p>Terhubung langsung dengan kami melalui platform resmi</p>
         </div>
 
-        <div class="sos-wrapper">
-            <div class="sos-section">
+        <div class="sosmed-layout">
+            <div class="sos-group reveal">
                 <h3>Admin Support</h3>
-                <div class="sos-flex">
-                    <a href="https://wa.me/6283171889478" target="_blank" class="sos-item wa">
+                <div class="sos-grid">
+                    <a href="https://wa.me/6283171889478" target="_blank" class="sos-tile wa">
                         <i class="fab fa-whatsapp"></i> WhatsApp Admin
                     </a>
-                    <a href="https://t.me/rmddz" target="_blank" class="sos-item tg">
+                    <a href="https://t.me/rmddz" target="_blank" class="sos-tile tg">
                         <i class="fab fa-telegram-plane"></i> Telegram Admin
                     </a>
                 </div>
             </div>
 
-            <div class="sos-section">
-                <h3>Testimoni & Trust</h3>
-                <div class="sos-flex">
-                    <a href="https://t.me/rmddztrust" target="_blank" class="sos-item trust">
-                        <i class="fas fa-check-circle"></i> Trust Telegram
-                    </a>
-                    <a href="https://whatsapp.com/channel/0029VbBBd4M3mFXzClY8983Q" target="_blank" class="sos-item trust">
-                        <i class="fas fa-bullhorn"></i> Channel WA (Proof)
-                    </a>
-                </div>
-            </div>
-
-            <div class="sos-section">
-                <h3>Groups Marketplace</h3>
-                <div class="group-grid">
-                    <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" target="_blank">Group 1</a>
-                    <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" target="_blank">Group 2</a>
-                    <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" target="_blank">Group 3</a>
-                    <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" target="_blank">Group 4</a>
-                    <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" target="_blank">Group 5</a>
-                    <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" target="_blank" class="special">Group Stok Khusus</a>
+            <div class="sos-group reveal">
+                <h3>Marketplace Groups</h3>
+                <div class="group-flex">
+                    <a href="https://chat.whatsapp.com/DMlW3e4CdZ71ICRQA2HZ4n" class="g-item">Group 1</a>
+                    <a href="https://chat.whatsapp.com/JsDqyCZDHnxIJi8ciU0GPF" class="g-item">Group 2</a>
+                    <a href="https://chat.whatsapp.com/CvAQThReFiLFO2IcBH8X7m" class="g-item">Group 3</a>
+                    <a href="https://chat.whatsapp.com/JohNc0ty7RYKuAGPNOuYuU" class="g-item">Group 4</a>
+                    <a href="https://chat.whatsapp.com/HHQu02C1ZRX4eQFE7rkjpd" class="g-item">Group 5</a>
+                    <a href="https://chat.whatsapp.com/EtVz7hjYiE8DJvIMIgfzGP" class="g-item highlight">Stok Khusus</a>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="copyright">© Romadz Store ID — Hak Cipta Dilindungi</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

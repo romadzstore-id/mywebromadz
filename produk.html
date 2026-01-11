@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Produk | Romadz Store</title>
+    <title>Produk | Romadz Store</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -11,81 +11,66 @@
 <body>
     <div id="toast-container"></div>
     <nav class="navbar">
-        <div class="logo">
+        <div class="logo" onclick="window.location.href='/'">
             <img src="https://files.catbox.moe/tdv5h0.jpg" alt="Logo">
             <span>Romadz Store</span>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="produk.html" class="active">Produk</a></li>
-            <li><a href="sosmed.html">Sosmed</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Produk" class="active">Produk</a></li>
+            <li><a href="/Sosmed">Sosmed</a></li>
         </ul>
         <div class="hamburger"><span></span><span></span><span></span></div>
     </nav>
 
-    <div class="container product-page">
-        <div class="header-minimal">
+    <main class="container page-content">
+        <div class="page-header reveal">
             <h2>Katalog Layanan</h2>
-            <p>Pilih produk digital berkualitas untuk Anda</p>
+            <p>Solusi Digital Terbaik Untuk Anda</p>
         </div>
 
-        <h3 class="cat-label"><i class="fas fa-server"></i> Hosting & Panel</h3>
-        <div class="p-grid">
-            <div class="p-card">
-                <h4>Install Panel Pterodactyl</h4>
-                <p>Setup panel admin Pterodactyl versi terbaru siap pakai.</p>
-                <button onclick="order('Install Panel Pterodactyl')">Hubungi Kami</button>
+        <section class="product-section">
+            <h3 class="category-label"><i class="fas fa-server"></i> Hosting & Panel</h3>
+            <div class="product-grid">
+                <div class="p-card reveal">
+                    <h4>Install Panel Pterodactyl</h4>
+                    <p>Setup panel manajemen server otomatis & efisien.</p>
+                    <button class="btn-buy" onclick="handleOrder('Install Panel Pterodactyl')">Beli Sekarang</button>
+                </div>
+                <div class="p-card reveal">
+                    <h4>Install Theme Pterodactyl</h4>
+                    <p>Kustomisasi tampilan panel agar lebih eksklusif.</p>
+                    <button class="btn-buy" onclick="handleOrder('Theme Pterodactyl')">Beli Sekarang</button>
+                </div>
+                <div class="p-card reveal">
+                    <h4>Domain Cloudflare 1Thn</h4>
+                    <p>Aktivasi domain instan dengan kontrol penuh.</p>
+                    <button class="btn-buy" onclick="handleOrder('Domain Cloudflare')">Beli Sekarang</button>
+                </div>
             </div>
-            <div class="p-card">
-                <h4>Install Theme Pterodactyl</h4>
-                <p>Kustomisasi UI panel agar terlihat modern dan premium.</p>
-                <button onclick="order('Install Theme Pterodactyl')">Hubungi Kami</button>
-            </div>
-            <div class="p-card">
-                <h4>Install / Fix Nodes</h4>
-                <p>Konfigurasi node server dan perbaikan error sistem.</p>
-                <button onclick="order('Fix Nodes')">Hubungi Kami</button>
-            </div>
-            <div class="p-card">
-                <h4>Domain Cloudflare 1Thn</h4>
-                <p>Domain kustom (.com/.net/.xyz) aktif selama 1 tahun.</p>
-                <button onclick="order('Domain Cloudflare')">Hubungi Kami</button>
-            </div>
-        </div>
 
-        <h3 class="cat-label"><i class="fas fa-code"></i> Script Bot</h3>
-        <div class="p-grid">
-            <div class="p-card">
-                <h4>Perbaikan / Tambah Fitur</h4>
-                <p>Optimasi script bot dan penambahan fitur sesuai request.</p>
-                <button onclick="order('Add Feature Script')">Hubungi Kami</button>
+            <h3 class="category-label"><i class="fas fa-code"></i> Script Bot</h3>
+            <div class="product-grid">
+                <div class="p-card reveal">
+                    <h4>Fix & Add Feature</h4>
+                    <p>Perbaikan bug dan penambahan fitur script bot.</p>
+                    <button class="btn-buy" onclick="handleOrder('Fix Feature Bot')">Beli Sekarang</button>
+                </div>
+                <div class="p-card reveal">
+                    <h4>Rename Script</h4>
+                    <p>Rebranding script bot sesuai brand Anda.</p>
+                    <button class="btn-buy" onclick="handleOrder('Rename Script')">Beli Sekarang</button>
+                </div>
             </div>
-            <div class="p-card">
-                <h4>Rename Script</h4>
-                <p>Jasa rebranding nama author dan sistem pada script.</p>
-                <button onclick="order('Rename Script')">Hubungi Kami</button>
-            </div>
-        </div>
+        </section>
+    </main>
 
-        <h3 class="cat-label"><i class="fas fa-box"></i> Lainnya</h3>
-        <div class="p-grid">
-            <div class="p-card">
-                <h4>Nokos WhatsApp</h4>
-                <p>Nomor kosong fresh/aged untuk verifikasi aman.</p>
-                <button onclick="order('Nokos WhatsApp')">Hubungi Kami</button>
-            </div>
-            <div class="p-card">
-                <h4>Akun Premium</h4>
-                <p>Netflix, Capcut, Spotify, dan aplikasi premium lainnya.</p>
-                <button onclick="order('Akun Premium')">Hubungi Kami</button>
-            </div>
-            <div class="p-card">
-                <h4>Suntik Sosmed</h4>
-                <p>Meningkatkan followers, like, dan views secara instan.</p>
-                <button onclick="order('Suntik Sosmed')">Hubungi Kami</button>
-            </div>
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p class="copyright">© Romadz Store ID — Hak Cipta Dilindungi</p>
         </div>
-    </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
