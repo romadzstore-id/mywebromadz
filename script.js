@@ -1,62 +1,23 @@
 // Mobile Navigation Toggle
-const hamburger = document.getElementById('hamburger');
-const navMobile = document.getElementById('navMobile');
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-if (hamburger && navMobile) {
-    hamburger.addEventListener('click', () => {
-        navMobile.classList.toggle('active');
-        hamburger.classList.toggle('active');
+if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
     });
-}
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (navMobile && navMobile.classList.contains('active') && 
-        !navMobile.contains(e.target) && 
-        !hamburger.contains(e.target)) {
-        navMobile.classList.remove('active');
-        hamburger.classList.remove('active');
-    }
-});
-
-// Contact Form Submission
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const name = this.querySelector('input[type="text"]').value;
-        const email = this.querySelector('input[type="email"]').value;
-        const message = this.querySelector('textarea').value;
-        
-        // Create WhatsApp message
-        const whatsappMessage = `Halo Romadz Store,\n\nSaya ${name}\nEmail: ${email}\n\nPesan:\n${message}`;
-        const encodedMessage = encodeURIComponent(whatsappMessage);
-        const whatsappUrl = `https://wa.me/6283171889474?text=${encodedMessage}`;
-        
-        // Open WhatsApp
-        window.open(whatsappUrl, '_blank');
-        
-        // Reset form
-        this.reset();
-        
-        // Show success feedback
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Terkirim!';
-        submitBtn.style.backgroundColor = '#10B981';
-        
-        setTimeout(() => {
-            submitBtn.textContent = originalText;
-            submitBtn.style.backgroundColor = '';
-        }, 2000);
-    });
+    // Close menu when clicking on a link
+    document.querySelectorAll(".nav-item a").forEach(n => n.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        navMenu.classList.remove("active");
+    }));
 }
 
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         
         const targetId = this.getAttribute('href');
@@ -68,76 +29,109 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: targetElement.offsetTop - 80,
                 behavior: 'smooth'
             });
-            
-            // Close mobile menu if open
-            if (navMobile && navMobile.classList.contains('active')) {
-                navMobile.classList.remove('active');
-                hamburger.classList.remove('active');
-            }
         }
     });
 });
 
-// Add active class to current page in navigation
+// Highlight current page in navigation
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-const navLinks = document.querySelectorAll('nav a');
+const navItems = document.querySelectorAll('.nav-item');
 
-navLinks.forEach(link => {
-    const linkHref = link.getAttribute('href');
+navItems.forEach(item => {
+    const link = item.querySelector('a');
+    if (link) {
+        const linkHref = link.getAttribute('href');
+        if ((currentPage === '' || currentPage === 'index.html') && linkHref === 'index.html') {
+            item.classList.add('active');
+        } else if (currentPage === linkHref) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    }
+});
+
+// Add hover effect to cards
+const cards = document.querySelectorAll('.feature-card, .preview-card, .contact-card, .product-card');
+
+cards.forEach(card => {
+    // Add event listeners for hover effect
+    card.addEventListener('mouseenter', () => {
+        card.style.transition = 'all 0.3s ease';
+    });
     
-    if (linkHref === currentPage || 
-        (currentPage === 'index.html' && (linkHref === 'index.html' || linkHref === '/'))) {
-        link.classList.add('active');
-    } else {
-        link.classList.remove('active');
-    }
-});
-
-// Add scroll effect to header
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 20) {
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.boxShadow = 'none';
-    }
-});
-
-// Initialize animations
-document.addEventListener('DOMContentLoaded', () => {
-    // Add fade-in animation to elements
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-
-    // Observe cards and sections
-    document.querySelectorAll('.feature-card, .service-card, .product-card').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(el);
+    // Add click effect for mobile
+    card.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+            card.style.transform = 'translateY(-4px)';
+            card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.12)';
+            
+            setTimeout(() => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
+            }, 300);
+        }
     });
 });
 
-// Add loading state to buttons
-document.querySelectorAll('a.btn[href*="wa.me"]').forEach(button => {
-    button.addEventListener('click', function(e) {
-        // Add loading indicator
-        const originalHTML = this.innerHTML;
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Membuka WhatsApp...';
+// Sticky header behavior
+const header = document.querySelector('.header');
+let lastScrollTop = 0;
+
+if (header) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        setTimeout(() => {
-            this.innerHTML = originalHTML;
-        }, 2000);
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
     });
+}
+
+// Product card interaction enhancement
+const productCards = document.querySelectorAll('.product-card');
+
+productCards.forEach(card => {
+    const btn = card.querySelector('.btn');
+    
+    if (btn) {
+        card.addEventListener('mouseenter', () => {
+            btn.style.transform = 'scale(1.05)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            btn.style.transform = 'scale(1)';
+        });
+    }
+});
+
+// Page load animation
+window.addEventListener('load', () => {
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+});
+
+// WhatsApp button interaction
+const whatsappButtons = document.querySelectorAll('.btn-whatsapp, .btn-primary[href*="whatsapp"]');
+
+whatsappButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        // Optional: Add analytics tracking here
+        console.log('WhatsApp button clicked');
+    });
+});
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('ROMADZ STORE website loaded successfully');
 });
