@@ -3,125 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Romadz Store | Digital Service & Cloud Solution</title>
-    
+    <title>ROMADZ STORE - Digital Service & Cloud Solution</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
 </head>
 <body>
-
-    <div id="loader-overlay">
-        <div class="loader-content">
-            <div class="spinner"></div>
-            <h2>Loading Store...</h2>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Store<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></div>
         </div>
     </div>
 
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="brand-logo">ROMADZ STORE</a>
+            <a href="index.html" class="logo">
+                <span class="logo-text">ROMADZ <span class="logo-highlight">STORE</span></span>
+            </a>
             
             <div class="nav-menu" id="navMenu">
                 <a href="index.html" class="nav-link active">Home</a>
                 <a href="produk.html" class="nav-link">Produk</a>
-                <a href="#contact-section" class="nav-link">Contact</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-
-            <div class="hamburger" id="hamburger">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="container hero-content">
-            <span class="badge-hero">Professional Digital Solution</span>
-            <h1 class="fade-in">Digital Service &<br>Cloud Solution</h1>
-            <p class="fade-in delay-1">
-                Romadz Store adalah penyedia layanan digital profesional yang berfokus pada hosting, 
-                panel management, bot development, dan solusi cloud modern untuk bisnis Anda.
-            </p>
-            <div class="hero-buttons fade-in delay-2">
-                <a href="#features" class="btn btn-primary">Mulai Sekarang</a>
-                <a href="produk.html" class="btn btn-outline">Lihat Produk</a>
-            </div>
-        </div>
-    </header>
-
-    <section id="features" class="section-padding">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <div class="section-header">
-                <h2>Mengapa Romadz Store?</h2>
-                <p>Infrastruktur premium untuk performa maksimal.</p>
-            </div>
-
-            <div class="grid-3">
-                <div class="feature-card scroll-animate">
-                    <div class="icon-box">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <h3>Infrastruktur Andal</h3>
-                    <p>Server uptime tinggi dengan spesifikasi enterprise untuk menjamin kestabilan layanan Anda 24/7.</p>
-                </div>
-
-                <div class="feature-card scroll-animate">
-                    <div class="icon-box accent-violet">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h3>Sistem Aman</h3>
-                    <p>Proteksi berlapis dan manajemen data yang aman, menjaga privasi dan aset digital Anda tetap terlindungi.</p>
-                </div>
-
-                <div class="feature-card scroll-animate">
-                    <div class="icon-box accent-emerald">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <h3>Dukungan Profesional</h3>
-                    <p>Tim teknis berpengalaman siap membantu konfigurasi, instalasi, dan penyelesaian masalah teknis.</p>
+            <div class="hero-content">
+                <h1 class="hero-title">ROMADZ <span class="highlight">STORE</span></h1>
+                <h2 class="hero-subtitle">Digital Service & Cloud Solution</h2>
+                <p class="hero-description">
+                    Romadz Store adalah penyedia layanan digital profesional yang berfokus pada hosting, panel management, bot development, dan solusi cloud modern.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">MULAI</a>
+                    <a href="produk.html" class="btn btn-secondary">LIHAT PRODUK</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section">
+    <!-- Brand Section -->
+    <section class="services" id="services">
         <div class="container">
-            <div class="cta-box scroll-animate">
-                <h2>Siap membangun solusi digital Anda?</h2>
-                <p>Tingkatkan performa bisnis digital Anda bersama partner terpercaya.</p>
-                <div class="contact-icons-wrapper" id="contact-section">
-                    <a href="https://wa.me/6283171889474" target="_blank" class="icon-link" aria-label="WhatsApp">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span class="tooltip">WhatsApp</span>
-                    </a>
-                    <a href="https://t.me/rmddz" target="_blank" class="icon-link" aria-label="Telegram">
-                        <i class="fa-brands fa-telegram"></i>
-                        <span class="tooltip">Telegram Admin</span>
-                    </a>
-                    <a href="https://t.me/rmddztrust" target="_blank" class="icon-link" aria-label="Testimoni">
-                        <i class="fa-solid fa-star"></i>
-                        <span class="tooltip">Testimoni</span>
-                    </a>
+            <h2 class="section-title">Mengapa Memilih <span class="highlight">Romadz Store</span>?</h2>
+            <p class="section-subtitle">Kami menyediakan solusi digital yang dapat diandalkan untuk kebutuhan bisnis Anda</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="service-title">Infrastruktur Andal</h3>
+                    <p class="service-description">Server dengan performa tinggi dan uptime 99.9% untuk memastikan layanan Anda selalu tersedia.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="service-title">Sistem Aman</h3>
+                    <p class="service-description">Keamanan berlapis dengan enkripsi SSL, firewall, dan monitoring 24/7 untuk melindungi data Anda.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="service-title">Dukungan Profesional</h3>
+                    <p class="service-description">Tim support berpengalaman siap membantu Anda kapan saja dengan respons cepat dan solusi tepat.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2024 Romadz Store ID — Hak Cipta Dilindungi</p>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Siap Membangun Solusi Digital Anda?</h2>
+                <p class="cta-description">Konsultasikan kebutuhan digital Anda dengan tim profesional kami untuk solusi terbaik.</p>
+                <a href="#contact" class="btn btn-primary btn-large">Hubungi Kami</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi <span class="highlight">Kami</span></h2>
+            <p class="section-subtitle">Tersedia melalui berbagai platform untuk kemudahan komunikasi</p>
+            
+            <div class="contact-icons">
+                <a href="https://wa.me/6283171889474" class="contact-icon" target="_blank" id="whatsappBtn" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="tooltip">WhatsApp</span>
+                </a>
+                
+                <a href="https://t.me/rmddz" class="contact-icon" target="_blank" id="telegramBtn" title="Telegram">
+                    <i class="fab fa-telegram"></i>
+                    <span class="tooltip">Telegram</span>
+                </a>
+                
+                <a href="https://t.me/rmddztrust" class="contact-icon" target="_blank" id="testimoniBtn" title="Testimoni">
+                    <i class="fas fa-star"></i>
+                    <span class="tooltip">Testimoni</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© Romadz Store ID — Hak Cipta Dilindungi</p>
         </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message" id="toastMessage"></span>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
